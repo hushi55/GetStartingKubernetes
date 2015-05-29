@@ -1,22 +1,24 @@
 #!/bin/sh
 
-ETCD_PEER_ADDR=192.168.230.3:7001
-ETCD_ADDR=192.168.230.3:4001
-ETCD_DATA_DIR=/var/lib/etcd
+KUBE_BIN_DIR=/kingdee/kubernetes/bin
+ETCD_PEER_ADDR='http://172.20.10.221:2380,http://172.20.10.221:7001'
+ETCD_ADDR='http://172.20.10.221:2379,http://172.20.10.221:4001'
+ETCD_ADVERTISE_CLIEN='http://172.20.10.221:2379,http://172.20.10.221:4001'
+ETCD_DATA_DIR=/kingdee/etcd/data
 ETCD_NAME=kubernetes
 
 ! test -d $ETCD_DATA_DIR && mkdir -p $ETCD_DATA_DIR
-cat <<EOF >//usr/lib/systemd/system/etcd.service
+cat <<EOF >/usr/lib/systemd/system/etcd.service
 [Unit]
 Description=Etcd Server
 
 [Service]
-ExecStart=/opt/kubernetes/bin/etcd \\
-	-peer-addr=$ETCD_PEER_ADDR \\
-	-addr=$ETCD_ADDR \\
-	-data-dir=$ETCD_DATA_DIR \\
-	-name=$ETCD_NAME \\
-	-bind-addr=0.0.0.0
+ExecStart=${KUBE_BIN_DIR}/etcd \\
+	--data-dir $ETCD_DATA_DIR \\
+	--advertise-client-urls ${ETCD_ADVERTISE_CLIEN} \\
+	--listen-client-urls ${ETCD_ADDR} \\
+	--listen-peer-urls ${ETCD_PEER_ADDR} \\
+	--name $ETCD_NAME \\
 
 [Install]
 WantedBy=multi-user.target
@@ -24,4 +26,5 @@ EOF
 
 systemctl daemon-reload
 systemctl enable etcd
+systemctl stop etcd
 systemctl start etcd

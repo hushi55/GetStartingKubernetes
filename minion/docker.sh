@@ -61,4 +61,5 @@ EOF
 
 systemctl daemon-reload
 systemctl enable docker
+systemctl stop docker
 systemctl start docker

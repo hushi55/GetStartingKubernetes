@@ -1,9 +1,11 @@
 #!/bin/sh
 
+KUBE_BIN_DIR=/kingdee/kubernetes/bin
 KUBE_LOGTOSTDERR=true
 KUBE_LOG_LEVEL=4
-KUBE_BIND_ADDRESS=192.168.230.4
-KUBE_ETCD_SERVERS=http://192.168.230.3:4001
+KUBE_BIND_ADDRESS=172.20.10.221
+KUBE_ETCD_SERVERS=http://172.20.10.221:4001
+KUBE_MASTER=http://172.20.10.221:8080
 
 cat <<EOF >/usr/lib/systemd/system/proxy.service
 [Unit]
@@ -13,11 +15,11 @@ Description=Kubernetes Proxy
 After=network.target
 
 [Service]
-ExecStart=/opt/kubernetes/bin/kube-proxy \\
+ExecStart=${KUBE_BIN_DIR}/kube-proxy \\
     --logtostderr=${KUBE_LOGTOSTDERR} \\
     --v=${KUBE_LOG_LEVEL} \\
-    --bind_address=${KUBE_BIND_ADDRESS} \\
-    --etcd_servers=${KUBE_ETCD_SERVERS} 
+    --bind-address=${KUBE_BIND_ADDRESS} \\
+    --master=${KUBE_ETCD_SERVERS} 
 Restart=on-failure
 
 [Install]
@@ -26,4 +28,5 @@ EOF
 
 systemctl daemon-reload
 systemctl enable proxy
+systemctl stop proxy
 systemctl start proxy
