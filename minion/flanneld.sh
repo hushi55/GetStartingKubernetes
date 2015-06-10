@@ -9,7 +9,6 @@ KUBE_FLANNELD_SUBNET="/kingdee/kubernetes/bin/flanneld-subnet.env"
 
 cat <<EOF >/usr/lib/systemd/system/kubelet.service
 [Unit]
-[Unit]
 Description=Flanneld overlay  network
 
 [Service]
