@@ -4,7 +4,7 @@ KUBE_BIN_DIR=/kingdee/kubernetes/bin
 KUBE_LOGTOSTDERR=false
 KUBE_LOG_LEVEL=0
 KUBE_ETCD_SERVERS=http://172.20.10.221:4001
-KUBE_BIN_DIR=/kingdee/kubernetes/logs
+KUBE_FLANNELD_LOG=/kingdee/kubernetes/logs
 KUBE_FLANNELD_SUBNET="/kingdee/kubernetes/bin/flanneld-subnet.env"
 
 cat <<EOF >/usr/lib/systemd/system/kubelet.service
@@ -16,7 +16,7 @@ Description=Flanneld overlay  network
 ExecStart=${KUBE_BIN_DIR}/flanneld \\
     --logtostderr=${KUBE_LOGTOSTDERR} \\
     -etcd-endpoints=${KUBE_ETCD_SERVERS} \\
-    -log_dir=${KUBE_BIN_DIR} \\
+    -log_dir=${KUBE_FLANNELD_LOG} \\
     --v=${KUBE_LOG_LEVEL} \\
     -subnet-file=${KUBE_FLANNELD_SUBNET} 
 Restart=on-failure
