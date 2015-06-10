@@ -7,7 +7,7 @@ KUBE_ETCD_SERVERS=http://172.20.10.221:4001
 KUBE_FLANNELD_LOG=/kingdee/kubernetes/logs
 KUBE_FLANNELD_SUBNET="/kingdee/kubernetes/bin/flanneld-subnet.env"
 
-cat <<EOF >/usr/lib/systemd/system/kubelet.service
+cat <<EOF >/usr/lib/systemd/system/flanneld.service
 [Unit]
 Description=Flanneld overlay  network
 
