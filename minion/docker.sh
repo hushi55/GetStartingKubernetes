@@ -2,6 +2,7 @@
 
 DOCKER_BRIDGE=kbr0
 DOCKER_CONFIG=/etc/sysconfig/docker
+DOCKER_FLANNELD_SUBNET=10.252.2.0/24
 
 ## create Linux bridge
 brctl addbr kbr0
@@ -51,7 +52,7 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker -d --bridge=$DOCKER_BRIDGE -H fd:// $OPTIONS
+ExecStart=/usr/bin/docker -d --bridge=$DOCKER_BRIDGE -H fd:// $OPTIONS --bip=${DOCKER_FLANNELD_SUBNET}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
@@ -59,7 +60,14 @@ LimitNPROC=1048576
 Also=docker.socket
 EOF
 
+## 
+systemctl stop docker
+systemctl disable docker
+
+## remove docker0
+ip link set dev docker0 down
+brctl delbr docker0
+
 systemctl daemon-reload
 systemctl enable docker
-systemctl stop docker
 systemctl start docker
