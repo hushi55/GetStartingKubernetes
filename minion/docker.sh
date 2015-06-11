@@ -24,7 +24,7 @@ wget https://get.docker.com/builds/Linux/x86_64/docker-latest -O /usr/bin/docker
 chmod +x /usr/bin/docker
 
 cat <<EOF >$DOCKER_CONFIG
-OPTIONS=--selinux-enabled=false
+OPTIONS=--selinux-enabled=false --bip=${DOCKER_FLANNELD_SUBNET}
 EOF
 
 cat <<EOF >/usr/lib/systemd/system/docker.socket
@@ -52,7 +52,7 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker -d --bridge=$DOCKER_BRIDGE -H fd:// $OPTIONS --bip=${DOCKER_FLANNELD_SUBNET}
+ExecStart=/usr/bin/docker -d --bridge=$DOCKER_BRIDGE -H fd:// $OPTIONS 
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
