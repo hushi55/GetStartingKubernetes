@@ -2,7 +2,7 @@
 
 DOCKER_BRIDGE=kbr0
 DOCKER_CONFIG=/etc/sysconfig/docker
-DOCKER_FLANNELD_SUBNET=10.252.2.0/24
+DOCKER_FLANNELD_SUBNET=10.100.0.0/24
 
 ## create Linux bridge
 brctl addbr kbr0
@@ -61,8 +61,10 @@ Also=docker.socket
 EOF
 
 ## 
-systemctl stop docker
-systemctl disable docker
+systemctl stop docker.socket
+systemctl disable docker.socket
+systemctl stop docker.service
+systemctl disable docker.service
 
 ## remove docker0
 ip link set dev docker0 down
