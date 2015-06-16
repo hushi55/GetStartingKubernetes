@@ -1,5 +1,10 @@
 #!/bin/sh
 
+## add group docker
+groupadd docker
+## install brctl
+yum install -y bridge-utils
+
 DOCKER_CONFIG=/etc/sysconfig/docker
 DOCKER_FLANNELD_SUBNET=10.100.0.0/16
 
@@ -41,14 +46,14 @@ Also=docker.socket
 EOF
 
 ## 
-systemctl stop docker.socket
-systemctl disable docker.socket
-systemctl stop docker.service
-systemctl disable docker.service
-
-## remove docker0
-ip link set dev docker0 down
-brctl delbr docker0
+#systemctl stop docker.socket
+#systemctl disable docker.socket
+#systemctl stop docker.service
+#systemctl disable docker.service
+#
+### remove docker0
+#ip link set dev docker0 down
+#brctl delbr docker0
 
 systemctl daemon-reload
 systemctl enable docker
