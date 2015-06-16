@@ -18,13 +18,7 @@ Description=Flanneld overlay  network
 
 [Service]
 EnvironmentFile=/etc/environment
-ExecStartPre=-/bin/bash -c "until ${KUBE_ETCDCTL} \\ 
-			-C ${KUBE_ETCD_SERVERS} \\
-			set ${KUBE_FLANNELD_ETCD_PREFIX}/config \\ 
-			'{\"Network\": \"${KUBE_FLANNEL_SUBNET}\"}'; \\
-				do echo \"waiting for etcd to become available...\"; \\
-				sleep 5; done"
-				
+ExecStartPre=-/bin/bash -c "until ${KUBE_ETCDCTL} -C ${KUBE_ETCD_SERVERS}  set ${KUBE_FLANNELD_ETCD_PREFIX}/config  '{\"Network\": \"${KUBE_FLANNEL_SUBNET}\"}';  do echo \"waiting for etcd to become available...\";  sleep 5; done"
 ExecStart=${KUBE_BIN_DIR}/flanneld \\
     -logtostderr=${KUBE_LOGTOSTDERR} \\
     -etcd-endpoints=${KUBE_ETCD_SERVERS} \\
@@ -33,10 +27,7 @@ ExecStart=${KUBE_BIN_DIR}/flanneld \\
     -iface=${KUBE_FLANNELD_LAN} \\
     #-subnet-file=${KUBE_FLANNELD_SUBNET} \\
     -etcd-prefix=${KUBE_FLANNELD_ETCD_PREFIX} 
-    
-ExecStartPost=-/bin/bash -c \\
-		"until [ -e /run/flannel/subnet.env ]; \\
-		 do echo \"waiting for write.\"; sleep 3; done"
+    ExecStartPost=-/bin/bash -c  "until [ -e /run/flannel/subnet.env ];  do echo \"waiting for write.\"; sleep 3; done"
 Restart=on-failure
 RestartSec=5
 
