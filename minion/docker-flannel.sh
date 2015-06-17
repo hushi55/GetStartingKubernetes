@@ -37,9 +37,8 @@ Requires=docker.socket
 
 [Service]
 Type=notify
-EnvironmentFile=-$DOCKER_CONFIG
 EnvironmentFile=-$KUBE_FLANNELD_SUBNET
-ExecStart=/usr/bin/docker -d -H fd:// $OPTIONS --bip=${FLANNEL_SUBNET}
+ExecStart=/usr/bin/docker -d -H fd:// --selinux-enabled=false  --bip=${FLANNEL_SUBNET}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
