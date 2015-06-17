@@ -7,6 +7,7 @@ yum install -y bridge-utils
 
 DOCKER_CONFIG=/etc/sysconfig/docker
 DOCKER_FLANNELD_SUBNET=10.100.0.0/16
+KUBE_FLANNELD_SUBNET=/kingdee/kubernetes/bin/flanneld-subnet.env
 
 cat <<EOF >$DOCKER_CONFIG
 OPTIONS=--selinux-enabled=false 
@@ -37,7 +38,8 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker -d -H fd:// $OPTIONS --bip=${DOCKER_FLANNELD_SUBNET}
+EnvironmentFile=-$KUBE_FLANNELD_SUBNET
+ExecStart=/usr/bin/docker -d -H fd:// $OPTIONS --bip=${FLANNEL_SUBNET}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
