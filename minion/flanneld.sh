@@ -27,7 +27,7 @@ ExecStart=${KUBE_BIN_DIR}/flanneld \\
     -iface=${KUBE_FLANNELD_LAN} \\
     -subnet-file=${KUBE_FLANNELD_SUBNET} \\
     -etcd-prefix=${KUBE_FLANNELD_ETCD_PREFIX} 
-#ExecStartPost=-/bin/bash -c  "until [ -e /run/flannel/subnet.env ];  do echo \"waiting for write.\"; sleep 3; done"
+ExecStartPost=-/bin/bash -c  "until [ -e ${KUBE_FLANNELD_SUBNET} ];  do echo \"waiting for write.\"; sleep 3; done"
 Restart=on-failure
 RestartSec=5
 
