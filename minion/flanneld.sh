@@ -5,11 +5,10 @@ KUBE_LOGTOSTDERR=false
 KUBE_LOG_LEVEL=0
 KUBE_ETCD_SERVERS=http://172.20.10.221:4001
 KUBE_FLANNELD_LOG=/kingdee/kubernetes/logs
-KUBE_FLANNELD_SUBNET="/kingdee/kubernetes/bin/flanneld-subnet.env"
+KUBE_FLANNELD_NETCFG="/kingdee/kubernetes/bin/flanneld-subnet.env"
 KUBE_FLANNELD_LAN=eth0
 KUBE_ETCDCTL=${KUBE_BIN_DIR}/etcdctl
-HOSTNAME=`hostname`
-KUBE_FLANNELD_ETCD_PREFIX="/kingdee/network/flannel_${HOSTNAME}"
+KUBE_FLANNELD_ETCD_PREFIX="/kingdee/network/flannel"
 KUBE_FLANNEL_SUBNET=10.100.0.0/16
 
 cat <<EOF >/usr/lib/systemd/system/flanneld.service
@@ -25,9 +24,9 @@ ExecStart=${KUBE_BIN_DIR}/flanneld \\
     -log_dir=${KUBE_FLANNELD_LOG} \\
     -v=${KUBE_LOG_LEVEL} \\
     -iface=${KUBE_FLANNELD_LAN} \\
-    -subnet-file=${KUBE_FLANNELD_SUBNET} \\
+    -subnet-file=${KUBE_FLANNELD_NETCFG} \\
     -etcd-prefix=${KUBE_FLANNELD_ETCD_PREFIX} 
-ExecStartPost=-/bin/bash -c  "until [ -e ${KUBE_FLANNELD_SUBNET} ];  do echo \"waiting for write.\"; sleep 3; done"
+ExecStartPost=-/bin/bash -c  "until [ -e ${KUBE_FLANNELD_NETCFG} ];  do echo \"waiting for write.\"; sleep 3; done"
 Restart=on-failure
 RestartSec=5
 
