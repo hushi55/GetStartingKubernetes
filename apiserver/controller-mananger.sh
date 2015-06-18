@@ -1,11 +1,12 @@
 #!/bin/sh
 
 KUBE_BIN_DIR=/kingdee/kubernetes/bin
-KUBE_LOGTOSTDERR=true
-KUBE_LOG_LEVEL=4
+KUBE_LOGTOSTDERR=false
+KUBE_LOG_LEVEL=0
+KUBE_LOG_DIR=/kingdee/kubernetes/logs
 KUBE_MASTER=172.20.10.221:8080
-KUBE_ADDRESS=172.20.10.221
-MINION_ADDRESSES=172.20.10.222,172.20.10.223
+KUBE_ADDRESS=0.0.0.0
+MINION_ADDRESSES=172.20.10.117,172.20.10.118,172.20.10.119
 
 cat <<EOF >/usr/lib/systemd/system/controller-manager.service
 [Unit]
@@ -17,7 +18,7 @@ ExecStart=${KUBE_BIN_DIR}/kube-controller-manager \\
     --logtostderr=${KUBE_LOGTOSTDERR} \\
 	--address=${KUBE_ADDRESS} \\
     --v=${KUBE_LOG_LEVEL} \\
-	--machines=${MINION_ADDRESSES} \\
+	--log-dir=${KUBE_LOG_DIR} \\
     --master=${KUBE_MASTER}
 Restart=on-failure
 
