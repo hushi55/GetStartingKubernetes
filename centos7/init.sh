@@ -1,8 +1,12 @@
 #!/bin/sh
 
 # stop firewall
-systemctl stop firewalld.service
-systemctl disable firewalld.service
+systemctl disable  firewalld
+systemctl stop firewalld
+
+# install iptables
+yum install -y iptables-services
+systemctl start iptables.service
 
 # install netstat
 yum install -y bridge-utils
