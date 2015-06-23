@@ -43,10 +43,10 @@ EnvironmentFile=-$KUBE_FLANNELD_SUBNET
 ExecStart=/usr/bin/docker -d \\ 
 			--storage-driver=devicemapper \\
 			--storage-opt dm.override_udev_sync_check=true \\
-			-H fd:// \\
-			${OPTIONS}  \\
+			-H unix:///var/run/docker.sock \\
 			--bip=${FLANNEL_SUBNET}  \\
-			--mtu=${FLANNEL_MTU}
+			--mtu=${FLANNEL_MTU} \\
+			${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
