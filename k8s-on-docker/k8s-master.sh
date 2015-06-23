@@ -53,7 +53,8 @@ echo "========= etcd contain id :" ${etcd_image_id}
 flannl_subnet=`printf "'{\"Network\":\"%s\"}'" "$K8S_FLANNL_SUBNET_CONF"`
 echo "========= flannl_subnet :" ${flannl_subnet}
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${etcd_image_id} etcdctl set /coreos.com/network/config ${flannl_subnet}
-
+echo "waiting for etcd to become available..."
+sleep 5;
 
 echo "========= installing docker-bootstrap flannld ..."
 ## init flannld subnet config
