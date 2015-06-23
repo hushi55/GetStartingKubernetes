@@ -38,6 +38,7 @@ Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 ExecStart=/usr/bin/docker -d \\
 			--storage-driver=devicemapper \\
+			--storage-opt dm.override_udev_sync_check=true \\
 			-H unix:///var/run/docker-bootstrap.sock \\
 			-p /var/run/docker-bootstrap.pid \\
 			--iptables=false \\
