@@ -49,12 +49,14 @@ echo "========= installing docker-bootstrap etcd ..."
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' --data-dir /var/etcd/data
 
 etcd_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep ${K8S_ETCD_IMAGE} | awk '{print $1}'`
+
+echo "waiting for etcd to become available..."
+sleep 5;
+
 echo "========= etcd contain id :" ${etcd_image_id}
 flannl_subnet=`printf "'{\"Network\":\"%s\"}'" "$K8S_FLANNL_SUBNET_CONF"`
 echo "========= flannl_subnet :" ${flannl_subnet}
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${etcd_image_id} etcdctl set /coreos.com/network/config ${flannl_subnet}
-echo "waiting for etcd to become available..."
-sleep 5;
 
 echo "========= installing docker-bootstrap flannld ..."
 ## init flannld subnet config
