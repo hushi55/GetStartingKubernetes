@@ -41,7 +41,6 @@ ExecStart=/usr/bin/docker -d \\
 			-p /var/run/docker-bootstrap.pid \\
 			--iptables=false \\
 			--ip-masq=false \\
-			--bridge=none \\
 			--graph=/var/lib/docker-bootstrap \\
 			${OPTIONS}
 LimitNOFILE=1048576
