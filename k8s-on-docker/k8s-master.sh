@@ -46,7 +46,8 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host ${K8S_ETCD_I
 ## init flannld subnet config
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d --privileged -v /dev/net:/dev/net ${K8S_FLANNL_IMAGE}
 
-flannl_image_id=`sudo docker ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
+flannl_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
+echo "flannl contain id :" ${flannl_image_id}
 
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env > ${K8S_FLANNL_CONF_FILE}
 
