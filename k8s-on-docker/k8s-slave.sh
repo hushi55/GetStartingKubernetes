@@ -34,10 +34,11 @@ systemctl disable kubelet
 systemctl disable proxy
 
 
-echo "========= installing last version docker ..."
+## docker 1.7 devicemapper have same problems
+#echo "========= installing last version docker ..."
 ## install new version docker 
-cp /root/docker /usr/bin/
-chmod +x /usr/bin/docker
+#cp /root/docker /usr/bin/
+#chmod +x /usr/bin/docker
 
 
 echo "========= installing docker-bootstrap ..."

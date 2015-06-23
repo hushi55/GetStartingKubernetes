@@ -36,13 +36,14 @@ Documentation=http://docs.docker.com
 After=network.target docker.socket
 Requires=docker.socket
 
+#--storage-driver=devicemapper \\
+#			--storage-opt dm.override_udev_sync_check=true \\
+
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 EnvironmentFile=-$KUBE_FLANNELD_SUBNET
 ExecStart=/usr/bin/docker -d \\ 
-			--storage-driver=devicemapper \\
-			--storage-opt dm.override_udev_sync_check=true \\
 			-H unix:///var/run/docker.sock \\
 			--bip=${FLANNEL_SUBNET}  \\
 			--mtu=${FLANNEL_MTU} \\
