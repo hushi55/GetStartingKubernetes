@@ -39,7 +39,12 @@ docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
 
 
 ## run etcd
-sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --addr=127.0.0.1:4001 --bind-addr=0.0.0.0:4001 --data-dir=/var/etcd/data
+sudo docker -H unix:///var/run/docker-bootstrap.sock run \
+			--net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd \
+			--listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' \
+			--advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' \
+			--listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' \
+			--data-dir=/var/etcd/data
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host ${K8S_ETCD_IMAGE} etcdctl set /coreos.com/network/config '{ "Network": "${K8S_FLANNL_SUBNET_CONF}" }'
 
 
