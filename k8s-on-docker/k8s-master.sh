@@ -6,7 +6,7 @@ K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
 K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
-yum install -y zip unzip bzip2 tar
+yum install -y zip unzip bzip2 tar gzip
 
 ## stop per install k8s
 systemctl stop apiserver
@@ -30,8 +30,8 @@ systemctl disable docker.service
 sh ./docker-bootstrap.sh
 
 ## load images
-unzip /root/gcr.io.tar.gz -d /root
-docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr-pause.tar.gz
+gzip -d /root/gcr.io.tar.gz
+docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr.io.tar
 docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
 
 
@@ -51,8 +51,7 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat
 sh ./docker-main.sh
 
 ## load images
-unzip /root/gcr.io.tar.gz -d /root
-docker load -i /root/gcr-pause.tar.gz
+docker load -i /root/gcr.io.tar
 docker load -i /root/flannl-imgae.tar
 
 ## kubernetes master
