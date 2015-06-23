@@ -37,6 +37,7 @@ Requires=docker-bootstrap.socket
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 ExecStart=/usr/bin/docker -d \\
+			--storage-driver=devicemapper \\
 			-H unix:///var/run/docker-bootstrap.sock \\
 			-p /var/run/docker-bootstrap.pid \\
 			--iptables=false \\

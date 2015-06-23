@@ -40,7 +40,7 @@ Requires=docker.socket
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 EnvironmentFile=-$KUBE_FLANNELD_SUBNET
-ExecStart=/usr/bin/docker -d -H fd:// ${OPTIONS}  --bip=${FLANNEL_SUBNET}  --mtu=${FLANNEL_MTU}
+ExecStart=/usr/bin/docker -d --storage-driver=devicemapper \\ -H fd:// ${OPTIONS}  --bip=${FLANNEL_SUBNET}  --mtu=${FLANNEL_MTU}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
