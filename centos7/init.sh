@@ -1,5 +1,8 @@
 #!/bin/sh
 
+## update yum source
+yum update -y
+
 # stop firewall
 systemctl disable  firewalld
 systemctl stop firewalld
@@ -10,11 +13,13 @@ systemctl start iptables.service
 
 # install netstat
 yum install -y bridge-utils
+yum install -y wget curl
 yum install -y net-tools
 yum install -y telnet
 yum install -y tcpdump
 yum install -y git
-yum install -y wget
 yum install -y strace
 yum install -y vim 
-yum install -y zip unzip
+yum install -y zip unzip bzip2 tar
+yum groupinstall "Development Tools" –y
+yum -y install ntp ntpdate
