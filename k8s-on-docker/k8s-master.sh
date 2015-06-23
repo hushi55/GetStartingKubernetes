@@ -6,6 +6,8 @@ K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
 K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
+yum install -y zip unzip bzip2 tar
+
 ## stop per install k8s
 systemctl stop apiserver
 systemctl stop controller-manager
@@ -27,6 +29,11 @@ systemctl disable docker.service
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
 
+## load images
+unzip /root/gcr.io.tar.gz -d /root
+docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr-pause.tar.gz
+docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
+
 
 ## run etcd
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --addr=127.0.0.1:4001 --bind-addr=0.0.0.0:4001 --data-dir=/var/etcd/data
@@ -42,6 +49,11 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat
 
 ## run docker main
 sh ./docker-main.sh
+
+## load images
+unzip /root/gcr.io.tar.gz -d /root
+docker load -i /root/gcr-pause.tar.gz
+docker load -i /root/flannl-imgae.tar
 
 ## kubernetes master
 sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests-multi

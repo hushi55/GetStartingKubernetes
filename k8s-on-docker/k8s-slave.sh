@@ -5,6 +5,8 @@ K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
 K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
+yum install -y zip unzip bzip2 tar
+
 ## stop per install k8s
 systemctl stop flanneld
 systemctl stop docker-bootstrap.socket
@@ -24,8 +26,17 @@ systemctl disable docker
 systemctl disable kubelet
 systemctl disable proxy
 
+## install new version docker 
+cp /root/docker /usr/bin/
+chmod +x /usr/bin/docker
+
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
+
+## load images
+unzip /root/gcr.io.tar.gz -d /root
+docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr-pause.tar.gz
+docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
 
 ## run flannel
 sudo docker -H unix:///var/run/docker-bootstrap.sock run -d --net=host --privileged -v /dev/net:/dev/net ${K8S_FLANNL_IMAGE} /opt/bin/flanneld --etcd-endpoints=http://${K8S_MASTER_IP}:4001
@@ -34,8 +45,14 @@ flannl_image_id=`sudo docker ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
 
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env > ${K8S_FLANNL_CONF_FILE}
 
+
 ## run docker main
 sh ./docker-main.sh
+
+## load images
+unzip /root/gcr.io.tar.gz -d /root
+docker load -i /root/gcr-pause.tar.gz
+docker load -i /root/flannl-imgae.tar
 
 sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://${K8S_MASTER_IP}:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=$(hostname -i)
 sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://${K8S_MASTER_IP}:8080 --v=2
