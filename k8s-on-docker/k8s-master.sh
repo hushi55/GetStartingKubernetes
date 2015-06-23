@@ -33,6 +33,7 @@ systemctl disable docker.service
 
 
 echo "========= installing docker-bootstrap ..."
+rm  -rf /var/lib/docker-bootstrap
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
 
@@ -69,6 +70,7 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat
 
 
 echo "========= installing docker-main ..."
+rm  -rf /var/lib/docker
 ## run docker main
 sh ./docker-main.sh
 
