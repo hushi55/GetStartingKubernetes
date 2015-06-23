@@ -43,11 +43,7 @@ Requires=docker.socket
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 EnvironmentFile=-$KUBE_FLANNELD_SUBNET
-ExecStart=/usr/bin/docker -d \\ 
-			-H unix:///var/run/docker.sock \\
-			--bip=${FLANNEL_SUBNET}  \\
-			--mtu=${FLANNEL_MTU} \\
-			${OPTIONS}
+ExecStart=/usr/bin/docker -d  -H unix:///var/run/docker.sock --bip=${FLANNEL_SUBNET} --mtu=${FLANNEL_MTU} ${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
