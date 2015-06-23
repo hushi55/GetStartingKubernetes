@@ -7,12 +7,18 @@ K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
 ## stop per install k8s
 systemctl stop flanneld
+systemctl stop docker-bootstrap.socket
+systemctl stop docker-bootstrap.service
+systemctl stop docker.service
 systemctl stop docker.socket
 systemctl stop docker
 systemctl stop kubelet
 systemctl stop proxy
 
 systemctl disable flanneld
+systemctl disable docker-bootstrap.socket
+systemctl disable docker-bootstrap.service
+systemctl stop docker.service
 systemctl disable docker.socket
 systemctl disable docker
 systemctl disable kubelet

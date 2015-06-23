@@ -11,10 +11,18 @@ systemctl stop apiserver
 systemctl stop controller-manager
 systemctl stop scheduler
 systemctl stop etcd
+systemctl stop docker-bootstrap.socket
+systemctl stop docker-bootstrap.service
+systemctl stop docker.socket
+systemctl stop docker.service
 systemctl disable apiserver
 systemctl disable controller-manager
 systemctl disable scheduler
 systemctl disable etcd
+systemctl disable docker-bootstrap.socket
+systemctl disable docker-bootstrap.service
+systemctl disable docker.socket
+systemctl disable docker.service
 
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh

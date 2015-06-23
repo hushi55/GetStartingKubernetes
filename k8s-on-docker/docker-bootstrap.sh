@@ -40,8 +40,7 @@ ExecStart=/usr/bin/docker -d \\
 			-H unix:///var/run/docker-bootstrap.sock \\
 			-p /var/run/docker-bootstrap.pid --iptables=false \\
 			--ip-masq=false --bridge=none \\
-			--graph=/var/lib/docker-bootstrap \\
-			> /var/log/docker-bootstrap.log 2>&1
+			--graph=/var/lib/docker-bootstrap
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
