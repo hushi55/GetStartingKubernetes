@@ -3,6 +3,7 @@
 K8S_MASTER_IP=172.20.10.221
 K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
 K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
+K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
 ## stop per install k8s
 systemctl stop flanneld
@@ -25,7 +26,7 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock run -d --net=host --privile
 
 flannl_image_id=`sudo docker ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
 
-sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env
+sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env > ${K8S_FLANNL_CONF_FILE}
 
 ## run docker main
 sh ./docker-main.sh
