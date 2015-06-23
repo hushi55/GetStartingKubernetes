@@ -38,9 +38,12 @@ Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 ExecStart=/usr/bin/docker -d \\
 			-H unix:///var/run/docker-bootstrap.sock \\
-			-p /var/run/docker-bootstrap.pid --iptables=false \\
-			--ip-masq=false --bridge=none \\
-			--graph=/var/lib/docker-bootstrap
+			-p /var/run/docker-bootstrap.pid \\
+			--iptables=false \\
+			--ip-masq=false \\
+			--bridge=none \\
+			--graph=/var/lib/docker-bootstrap \\
+			${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 

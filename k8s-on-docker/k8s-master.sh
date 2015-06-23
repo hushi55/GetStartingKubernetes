@@ -39,14 +39,17 @@ docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
 
 
 ## run etcd
-sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001'	--data-dir=/var/etcd/data
-sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host ${K8S_ETCD_IMAGE} etcdctl set /coreos.com/network/config '{ "Network": "${K8S_FLANNL_SUBNET_CONF}" }'
+sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' --data-dir /var/etcd/data
+
+etcd_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep ${K8S_ETCD_IMAGE} | awk '{print $1}'`
+echo "etcd contain id :" ${etcd_image_id}
+sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${etcd_image_id} etcdctl set /coreos.com/network/config '{ \"Network\": \"${K8S_FLANNL_SUBNET_CONF}\" }'
 
 
 ## init flannld subnet config
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d --privileged -v /dev/net:/dev/net ${K8S_FLANNL_IMAGE}
 
-flannl_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
+flannl_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep ${K8S_FLANNL_IMAGE} | awk '{print $1}'`
 echo "flannl contain id :" ${flannl_image_id}
 
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env > ${K8S_FLANNL_CONF_FILE}
