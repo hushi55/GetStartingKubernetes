@@ -1,21 +1,21 @@
 #!/bin/sh
 
 K8S_MASTER_IP=172.20.10.221
-K8S_KUBE_IMAGE=gcr.io/google_containers/hyperkube:v0.18.2
-K8S_FLANNL_IMAGE=quay.io/coreos/flannel:0.4.1
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
+K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 
 ## stop per install k8s
-systemctl stop flanneld.service
+systemctl stop flanneld
 systemctl stop docker.socket
-systemctl stop docker.service
-systemctl stop kubelet.service
-systemctl stop proxy.service
+systemctl stop docker
+systemctl stop kubelet
+systemctl stop proxy
 
-systemctl disable flanneld.service
+systemctl disable flanneld
 systemctl disable docker.socket
-systemctl disable docker.service
-systemctl disable kubelet.service
-systemctl disable proxy.service
+systemctl disable docker
+systemctl disable kubelet
+systemctl disable proxy
 
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh

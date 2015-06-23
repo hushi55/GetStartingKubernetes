@@ -1,18 +1,19 @@
 #!/bin/sh
 
-K8S_KUBE_IMAGE=gcr.io/google_containers/hyperkube:v0.18.2
-K8S_ETCD_IMAGE=gcr.io/google_containers/etcd:2.0.12
-K8S_FLANNL_IMAGE=quay.io/coreos/flannel:0.4.1
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
+K8S_ETCD_IMAGE='gcr.io/google_containers/etcd:2.0.12'
+K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
+K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
 
 ## stop per install k8s
-systemctl stop apiserver.service
-systemctl stop controller-manager.service
-systemctl stop scheduler.service
-systemctl stop etcd.service
-systemctl disable apiserver.service
-systemctl disable controller-manager.service
-systemctl disable scheduler.service
-systemctl disable etcd.service
+systemctl stop apiserver
+systemctl stop controller-manager
+systemctl stop scheduler
+systemctl stop etcd
+systemctl disable apiserver
+systemctl disable controller-manager
+systemctl disable scheduler
+systemctl disable etcd
 
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
@@ -20,7 +21,7 @@ sh ./docker-bootstrap.sh
 
 ## run etcd
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --addr=127.0.0.1:4001 --bind-addr=0.0.0.0:4001 --data-dir=/var/etcd/data
-sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host ${K8S_ETCD_IMAGE} etcdctl set /coreos.com/network/config '{ "Network": "${KUBE_FLANNEL_SUBNET}" }'
+sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host ${K8S_ETCD_IMAGE} etcdctl set /coreos.com/network/config '{ "Network": "${K8S_FLANNL_SUBNET_CONF}" }'
 
 
 ## init flannld subnet config
