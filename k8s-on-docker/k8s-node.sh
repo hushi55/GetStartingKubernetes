@@ -1,5 +1,7 @@
 #!/bin/sh
 
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
+
 KUBE_ETCD_SERVERS=http://172.20.10.221:4001
 KUBE_API_ADDRESS=0.0.0.0
 KUBE_API_PORT=8080
@@ -10,7 +12,6 @@ KUBE_LOG_LEVEL=0
 KUBE_MASTER=172.20.10.221:8080
 KUBE_ADDRESS=0.0.0.0
 
-echo "xxxxxxxxxxxxx" $1
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
 sudo docker run --net=host -d \
