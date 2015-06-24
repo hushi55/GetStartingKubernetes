@@ -32,6 +32,6 @@ sudo docker run --net=host -d \
 						--logtostderr=${KUBE_LOGTOSTDERR} \
 					    --log-dir=${KUBE_LOG_DIR} \
 					    --v=${KUBE_LOG_LEVEL} \
-					    --bind-address=${KUBE_BIND_ADDRESS} \
+					    --bind-address=${KUBE_ADDRESS} \
 					    --master=${KUBE_MASTER} 
 
