@@ -82,10 +82,13 @@ docker load -i /root/flannl-imgae.tar
 
 
 echo "========= installing docker-main kubernetes master ..."
+
+sh ./k8s-api-server.sh
+sh ./k8s-node.sh
+
+
 ## kubernetes master
-sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests-multi
-
-
-echo "========= installing docker-main kubernetes service proxy ..."
+#sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests-multi
+#echo "========= installing docker-main kubernetes service proxy ..."
 ## service proxy
-sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://127.0.0.1:8080 --v=2
+#sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://127.0.0.1:8080 --v=2
