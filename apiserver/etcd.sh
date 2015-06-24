@@ -1,5 +1,6 @@
 #!/bin/sh
 
+### why not can use 0.0.0.0
 KUBE_BIN_DIR=/kingdee/kubernetes/bin
 ETCD_PEER_ADDR='http://172.20.10.221:2380,http://172.20.10.221:7001'
 ETCD_ADDR='http://172.20.10.221:2379,http://172.20.10.221:4001'

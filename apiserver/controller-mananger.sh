@@ -6,7 +6,6 @@ KUBE_LOG_LEVEL=0
 KUBE_LOG_DIR=/kingdee/kubernetes/logs
 KUBE_MASTER=172.20.10.221:8080
 KUBE_ADDRESS=0.0.0.0
-MINION_ADDRESSES=172.20.10.117,172.20.10.118,172.20.10.119
 
 cat <<EOF >/usr/lib/systemd/system/controller-manager.service
 [Unit]
