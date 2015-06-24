@@ -57,7 +57,7 @@ echo "========= installing docker-bootstrap images flannel ..."
 ## run flannel
 sudo docker -H unix:///var/run/docker-bootstrap.sock run -d --net=host --privileged -v /dev/net:/dev/net ${K8S_FLANNL_IMAGE} /opt/bin/flanneld --etcd-endpoints=http://${K8S_MASTER_IP}:4001
 
-flannl_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep '${K8S_FLANNL_IMAGE}' | awk '{print $1}'`
+flannl_image_id=`sudo docker -H unix:///var/run/docker-bootstrap.sock ps |grep ${K8S_FLANNL_IMAGE} | awk '{print $1}'`
 echo "========= flannl contain id : " ${flannl_image_id}
 
 sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat /run/flannel/subnet.env > ${K8S_FLANNL_CONF_FILE}
