@@ -25,10 +25,17 @@ systemctl disable docker.service
 systemctl disable kubelet
 systemctl disable proxy
 
-## dir mk
+
 KUBE_LOG_DIR=/kingdee/kubernetes/logs
 
+## clean
+echo "cleaning ..."
+rm -rf /kingdee/kubernetes/logs/*
+rm -rf /kingdee/etcd/data/*
+
+## dir mk
 mkdir -p ${KUBE_LOG_DIR}
+mkdir -p /kingdee/etcd/data
 
 echo "installing etcd service ..."
 sh ./etcd.sh

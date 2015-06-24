@@ -25,9 +25,13 @@ systemctl disable docker.service
 systemctl disable kubelet
 systemctl disable proxy
 
-## dir mk
 KUBE_LOG_DIR=/kingdee/kubernetes/logs
 
+## clean
+echo "cleaning ..."
+rm -rf /kingdee/kubernetes/logs/*
+
+## dir mk
 mkdir -p ${KUBE_LOG_DIR}
 
 echo "installing flanneld service ..."
