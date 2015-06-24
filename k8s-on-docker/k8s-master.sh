@@ -83,8 +83,10 @@ docker load -i /root/flannl-imgae.tar
 
 echo "========= installing docker-main kubernetes master ..."
 
-sh ./k8s-api-server.sh
-sh ./k8s-node.sh
+k8s_docker_cmd=`printf 'sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock %s' ${K8S_KUBE_IMAGE}`
+echo "k8s docker cmd : " ${k8s_docker_cmd}
+sh ./k8s-api-server.sh ${k8s_docker_cmd}
+sh ./k8s-node.sh ${k8s_docker_cmd}
 
 
 ## kubernetes master
