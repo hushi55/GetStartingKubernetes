@@ -1,9 +1,9 @@
 #!/bin/sh
 
 KUBE_BIN_DIR=/kingdee/kubernetes/bin
-ETCD_PEER_ADDR='http://0.0.0.0:2380,http://0.0.0.0:7001'
-ETCD_ADDR='http://0.0.0.0:2379,http://0.0.0.0:4001'
-ETCD_ADVERTISE_CLIEN='http://0.0.0.0:2379,http://0.0.0.0:4001'
+ETCD_PEER_ADDR='http://172.20.10.221:2380,http://172.20.10.221:7001'
+ETCD_ADDR='http://172.20.10.221:2379,http://172.20.10.221:4001'
+ETCD_ADVERTISE_CLIEN='http://172.20.10.221:2379,http://172.20.10.221:4001'
 ETCD_DATA_DIR=/kingdee/etcd/data
 ETCD_NAME=kubernetes
 
