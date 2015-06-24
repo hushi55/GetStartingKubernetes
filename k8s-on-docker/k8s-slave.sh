@@ -74,5 +74,8 @@ docker load -i /root/gcr.io.tar
 docker load -i /root/flannl-imgae.tar
 
 echo "========= installing docker-main kubernetes kubelet and proxy ..."
-sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://${K8S_MASTER_IP}:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=$(hostname -i)
-sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://${K8S_MASTER_IP}:8080 --v=2
+
+sh ./k8s-node.sh 
+
+#sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://${K8S_MASTER_IP}:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=$(hostname -i)
+#sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://${K8S_MASTER_IP}:8080 --v=2
