@@ -7,6 +7,8 @@ KUBE_LOG_DIR=/kingdee/kubernetes/logs
 KUBE_BIND_ADDRESS=0.0.0.0
 KUBE_MASTER=http://172.20.10.221:8080
 
+mkdir -p ${KUBE_LOG_DIR}
+
 cat <<EOF >/usr/lib/systemd/system/proxy.service
 [Unit]
 Description=Kubernetes Proxy

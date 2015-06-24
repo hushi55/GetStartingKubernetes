@@ -10,6 +10,8 @@ KUBE_ALLOW_PRIV=false
 KUBE_API_SERVERS=http://172.20.10.221:8080
 KUBE_DOCKER_RUN_DIR=/var/run/docker
 
+mkdir -p ${KUBE_LOG_DIR}
+
 cat <<EOF >/usr/lib/systemd/system/kubelet.service
 [Unit]
 Description=Kubernetes Kubelet
