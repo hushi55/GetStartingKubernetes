@@ -1,5 +1,11 @@
 #!/bin/sh
 
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
+K8S_ETCD_IMAGE='gcr.io/google_containers/etcd:2.0.12'
+K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
+K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
+K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
+
 KUBE_ETCD_SERVERS=http://172.20.10.221:4001
 KUBE_API_ADDRESS=0.0.0.0
 KUBE_API_PORT=8080
