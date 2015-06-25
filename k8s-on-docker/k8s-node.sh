@@ -26,6 +26,7 @@ sudo docker run --net=host -d \
 					    --allow-privileged=${KUBE_ALLOW_PRIV}
 					    
 sudo docker run --net=host -d \
+		--privileged=true  \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube proxy \
