@@ -9,8 +9,6 @@ MINION_PORT=10250
 KUBE_ALLOW_PRIV=false
 KUBE_API_SERVERS=http://172.20.10.221:8080
 KUBE_DOCKER_RUN_DIR=/var/run/docker
-KUBE_CLUSTER_DNS=10.100.100.100
-KUBE_CLUSTER_DOMAIN=k8s.cluster.local
 
 mkdir -p ${KUBE_LOG_DIR}
 
@@ -29,8 +27,6 @@ ExecStart=${KUBE_BIN_DIR}/kubelet \\
 	--api-servers=${KUBE_API_SERVERS} \\
     --port=${MINION_PORT} \\
     --docker-run=${KUBE_DOCKER_RUN_DIR} \\
-    --cluster_dns=${KUBE_CLUSTER_DNS} \\
-	--cluster_domain=${KUBE_CLUSTER_DOMAIN} \\
     --allow-privileged=${KUBE_ALLOW_PRIV}
 Restart=on-failure
 
