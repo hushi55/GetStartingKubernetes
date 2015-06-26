@@ -3,7 +3,7 @@
 ## enable ip forward
 sysctl -w net.ipv4.ip_forward=1
 
-K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.18.2'
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.19.3'
 K8S_ETCD_IMAGE='gcr.io/google_containers/etcd:2.0.12'
 K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
@@ -79,6 +79,7 @@ echo "========= installing docker-main images ..."
 ## load images
 docker load -i /root/gcr.io.tar
 docker load -i /root/flannl-imgae.tar
+docker load -i /root/hyperkube-v0.19.3.tar
 
 
 echo "========= installing docker-main kubernetes master ..."
