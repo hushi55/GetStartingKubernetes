@@ -15,6 +15,7 @@ KUBE_LISTEN_ADDRESS=0.0.0.0
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
 sudo docker run --net=host -d \
+		--privileged=true \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube kubelet \
