@@ -33,8 +33,6 @@ systemctl disable docker.service
 
 
 echo "========= installing docker-main ..."
-rm  -rf /var/lib/docker
-## run docker main
 sh ./docker-main.sh
 
 
