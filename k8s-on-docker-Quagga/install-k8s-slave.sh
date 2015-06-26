@@ -38,11 +38,8 @@ echo "========= installing docker-main ..."
 ## run docker main
 sh ./docker-main.sh
 
-
-#echo "========= loading docker-main images ..."
-## load images
-#docker load -i /root/gcr.io.tar
-#docker load -i /root/flannl-imgae.tar
+echo "========= installing Quagga ..."
+docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/router
 
 echo "========= installing docker-main kubernetes kubelet and proxy ..."
 
