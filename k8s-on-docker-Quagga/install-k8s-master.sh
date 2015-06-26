@@ -37,7 +37,7 @@ sh ./docker-main.sh
 
 
 echo "========= installing Quagga ..."
-docker run -d --name=router --privileges --net=host index.alauda.cn/georce/router
+docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/router
 
 echo "========= installing docker-main kubernetes master ..."
 sh ./k8s-api-server.sh 
