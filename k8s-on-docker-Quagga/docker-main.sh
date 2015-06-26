@@ -54,9 +54,9 @@ EOF
 #systemctl stop docker.service
 #systemctl disable docker.service
 #
-### remove docker0
-ip link set dev docker0 down
-brctl delbr docker0
+### remove docker0 can not rm flannl docker br
+#ip link set dev docker0 down
+#brctl delbr docker0
 
 systemctl daemon-reload
 systemctl enable docker
