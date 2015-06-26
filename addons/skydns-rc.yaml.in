@@ -34,7 +34,7 @@ spec:
         args:
         # command = "/kube2sky"
         - -domain=cluster.local
-        - -kubecfg_file=/etc/dns_token/kubeconfig
+        #- -kubecfg_file=/etc/dns_token/kubeconfig
         volumeMounts:
         - mountPath: /etc/dns_token
           name: dns-token
