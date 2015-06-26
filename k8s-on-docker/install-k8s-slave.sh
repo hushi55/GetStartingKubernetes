@@ -27,7 +27,7 @@ systemctl stop proxy
 systemctl disable flanneld
 systemctl disable docker-bootstrap.socket
 systemctl disable docker-bootstrap.service
-systemctl stop docker.service
+systemctl disable docker.service
 systemctl disable docker.socket
 systemctl disable docker
 systemctl disable kubelet
