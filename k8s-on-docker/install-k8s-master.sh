@@ -38,11 +38,11 @@ rm  -rf /var/lib/docker-bootstrap
 sh ./docker-bootstrap.sh
 
 
-echo "========= loading docker-bootstrap images ..."
+#echo "========= loading docker-bootstrap images ..."
 ## load images
-gzip -d /root/gcr.io.tar.gz
-docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr.io.tar
-docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
+#gzip -d /root/gcr.io.tar.gz
+#docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr.io.tar
+#docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
 
 
 echo "========= installing docker-bootstrap etcd ..."
