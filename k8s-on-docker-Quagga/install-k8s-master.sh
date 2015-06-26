@@ -35,6 +35,11 @@ systemctl disable docker.service
 echo "========= installing docker-main ..."
 sh ./docker-main.sh
 
+## run etcd
+sudo docker run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' --data-dir /var/etcd/data
+echo "waiting for etcd to become available..."
+sleep 5;
+
 
 echo "========= installing Quagga ..."
 docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/router
