@@ -46,4 +46,5 @@ docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/
 
 echo "========= installing docker-main kubernetes master ..."
 sh ./k8s-api-server.sh 
+sh ./k8s-kubelet-proxy.sh
 
