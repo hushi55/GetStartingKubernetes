@@ -10,7 +10,7 @@ KUBE_LOG_DIR=/kingdee/kubernetes/logs
 KUBE_LOGTOSTDERR=true
 KUBE_LOG_LEVEL=0
 KUBE_MASTER=172.20.10.221:8080
-KUBE_ADDRESS=0.0.0.0
+KUBE_LISTEN_ADDRESS=0.0.0.0
 
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
@@ -20,7 +20,7 @@ sudo docker run --net=host -d \
 				/hyperkube kubelet \
 						--logtostderr=${KUBE_LOGTOSTDERR} \
 					    --v=${KUBE_LOG_LEVEL} \
-					    --address=${KUBE_MASTER} \
+					    --address=${KUBE_LISTEN_ADDRESS} \
 						--api-servers=${KUBE_MASTER} \
 					    --allow-privileged=${KUBE_ALLOW_PRIV}
 					    
@@ -31,6 +31,6 @@ sudo docker run --net=host -d \
 				/hyperkube proxy \
 						--logtostderr=${KUBE_LOGTOSTDERR} \
 					    --v=${KUBE_LOG_LEVEL} \
-					    --bind-address=${KUBE_ADDRESS} \
+					    --bind-address=${KUBE_LISTEN_ADDRESS} \
 					    --master=${KUBE_MASTER} 
 
