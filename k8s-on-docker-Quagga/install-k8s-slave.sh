@@ -39,7 +39,7 @@ echo "========= installing docker-main ..."
 sh ./docker-main.sh
 
 echo "========= installing Quagga ..."
-docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/router
+docker run -d  --privileged=true --net=host index.alauda.cn/georce/router
 
 echo "========= installing docker-main kubernetes kubelet and proxy ..."
 

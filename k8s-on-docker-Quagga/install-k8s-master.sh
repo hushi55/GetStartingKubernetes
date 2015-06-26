@@ -42,7 +42,7 @@ sleep 5;
 
 
 echo "========= installing Quagga ..."
-docker run -d --name=router --privileged=true --net=host index.alauda.cn/georce/router
+docker run -d --privileged=true --net=host index.alauda.cn/georce/router
 
 echo "========= installing docker-main kubernetes master ..."
 sh ./k8s-api-server.sh 
