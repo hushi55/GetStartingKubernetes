@@ -68,10 +68,10 @@ echo "========= installing docker-main ..."
 sh ./docker-main.sh
 
 
-echo "========= loading docker-main images ..."
+#echo "========= loading docker-main images ..."
 ## load images
-docker load -i /root/gcr.io.tar
-docker load -i /root/flannl-imgae.tar
+#docker load -i /root/gcr.io.tar
+#docker load -i /root/flannl-imgae.tar
 
 echo "========= installing docker-main kubernetes kubelet and proxy ..."
 
