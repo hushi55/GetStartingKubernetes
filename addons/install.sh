@@ -8,6 +8,7 @@
 
 kubectl create -f skydns-rc.yaml.in
 kubectl create -f skydns-svc.yaml.in
+kubectl create -f token-system-dns.json
 
 kubectl stop -f skydns-rc.yaml.in
 kubectl delete -f skydns-svc.yaml.in
@@ -24,6 +25,7 @@ kubectl create -f kibana-controller.yaml
 kubectl create -f kibana-service.yaml
 kubectl create -f heapster-controller.yaml
 kubectl create -f heapster-service.yaml
+kubectl create -f token-system-monitoring.json
 
 kubectl stop -f es-controller.yaml
 kubectl delete -f es-service.yaml
