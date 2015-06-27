@@ -18,8 +18,8 @@ echo "========= stoping per install k8s ..."
 systemctl stop flanneld
 systemctl stop docker-bootstrap.socket
 systemctl stop docker-bootstrap.service
-systemctl stop docker.service
 systemctl stop docker.socket
+systemctl stop docker.service
 systemctl stop docker
 systemctl stop kubelet
 systemctl stop proxy
@@ -27,8 +27,8 @@ systemctl stop proxy
 systemctl disable flanneld
 systemctl disable docker-bootstrap.socket
 systemctl disable docker-bootstrap.service
-systemctl disable docker.service
 systemctl disable docker.socket
+systemctl disable docker.service
 systemctl disable docker
 systemctl disable kubelet
 systemctl disable proxy
