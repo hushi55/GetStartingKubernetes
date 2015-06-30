@@ -22,15 +22,15 @@ WORKDIR  /tmp/quagga-0.99.24.1
 
 # compile and install
 
+RUN adduser -M quagga
 RUN mkdir -p /etc/quagga
 RUN mkdir -p /var/log/quagga/ && chown quagga:quagga /var/log/quagga
 RUN mkdir -p /var/run/quagga/ && chown quagga:quagga /var/run/quagga
-RUN adduser quagga
 #RUN groupadd quagga
 
 #RUN ./configure --enable-vtysh --enable-user=root --enable-group=root –enable-vty-group=root --sysconfdir=/etc/quagga –libdir=/lib
 RUN ./configure --sysconfdir=/etc/quagga --disable-doc  --localstatedir=/var/run/quagga 
-RUN make -j8 && sudo make install
+RUN make -j8 && make install
 
 # config
 COPY zebra.conf /etc/quagga/zebra.conf
