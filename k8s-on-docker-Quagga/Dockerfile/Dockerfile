@@ -18,17 +18,18 @@ COPY quagga-0.99.24.1.tar.gz /tmp/
 # decompression tar
 WORKDIR /tmp
 RUN tar -zxvf quagga-0.99.24.1.tar.gz
-RUN cd  quagga-0.99.24.1
+WORKDIR  /tmp/quagga-0.99.24.1
 
 # compile and install
 
 RUN mkdir -p /etc/quagga
-RUN mkdir -p /var/log/quagga/
+RUN mkdir -p /var/log/quagga/ && chown quagga:quagga /var/log/quagga
+RUN mkdir -p /var/run/quagga/ && chown quagga:quagga /var/run/quagga
 RUN adduser quagga
-RUN groupadd quagga
+#RUN groupadd quagga
 
 #RUN ./configure --enable-vtysh --enable-user=root --enable-group=root –enable-vty-group=root --sysconfdir=/etc/quagga –libdir=/lib
-RUN ./configure --sysconfdir=/etc/quagga
+RUN ./configure --sysconfdir=/etc/quagga --disable-doc  --localstatedir=/var/run/quagga 
 RUN make -j8 && sudo make install
 
 # config
@@ -38,3 +39,15 @@ COPY ospfd.conf /etc/quagga/ospfd.conf
 
 # clean /tmp dir
 #RUN rm -rf /tmp/*
+
+
+## run zebra
+CMD ["zebra -d"]
+
+
+
+
+
+
+
+
