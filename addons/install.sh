@@ -18,11 +18,12 @@ kubectl delete -f dns/skydns-svc.yaml
 ########            monitoring        ###################
 #########################################################
 
-kubectl create -f cluster-monitoring/influxdb/heapster-controller.yaml
-kubectl create -f cluster-monitoring/influxdb/heapster-service.yaml
+
 kubectl create -f cluster-monitoring/influxdb/influxdb-grafana-controller.yaml
 kubectl create -f cluster-monitoring/influxdb/grafana-service.yaml
 kubectl create -f cluster-monitoring/influxdb/influxdb-service.yaml
+kubectl create -f cluster-monitoring/influxdb/heapster-controller.yaml
+kubectl create -f cluster-monitoring/influxdb/heapster-service.yaml
 
 kubectl stop -f cluster-monitoring/influxdb/heapster-controller.yaml
 kubectl delete -f cluster-monitoring/influxdb/heapster-service.yaml
@@ -32,6 +33,12 @@ kubectl delete -f cluster-monitoring/influxdb/influxdb-service.yaml
 
 
 
+cat << EOF | kubectl create -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: heapster
+EOF
 
 
 #########################################################
