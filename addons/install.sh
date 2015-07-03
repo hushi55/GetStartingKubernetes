@@ -6,12 +6,11 @@
 #########################################################
 
 
-kubectl create -f skydns-rc.yaml.in
-kubectl create -f skydns-svc.yaml.in
-kubectl create -f token-system-dns.json
+kubectl create -f dns/skydns-rc.yaml
+kubectl create -f dns/skydns-svc.yaml
 
-kubectl stop -f skydns-rc.yaml.in
-kubectl delete -f skydns-svc.yaml.in
+kubectl stop -f dns/skydns-rc.yaml
+kubectl delete -f dns/skydns-svc.yaml
 
 
 
@@ -19,20 +18,40 @@ kubectl delete -f skydns-svc.yaml.in
 ########            monitoring        ###################
 #########################################################
 
-kubectl create -f es-controller.yaml
-kubectl create -f es-service.yaml
-kubectl create -f kibana-controller.yaml
-kubectl create -f kibana-service.yaml
-kubectl create -f heapster-controller.yaml
-kubectl create -f heapster-service.yaml
-kubectl create -f token-system-monitoring.json
+kubectl create -f cluster-monitoring/influxdb/heapster-controller.yaml
+kubectl create -f cluster-monitoring/influxdb/heapster-service.yaml
+kubectl create -f cluster-monitoring/influxdb/influxdb-grafana-controller.yaml
+kubectl create -f cluster-monitoring/influxdb/grafana-service.yaml
+kubectl create -f cluster-monitoring/influxdb/influxdb-service.yaml
 
-kubectl stop -f es-controller.yaml
-kubectl delete -f es-service.yaml
-kubectl stop -f kibana-controller.yaml
-kubectl delete -f kibana-service.yaml
-kubectl stop -f heapster-controller.yaml
-kubectl delete -f heapster-service.yaml
+kubectl stop -f cluster-monitoring/influxdb/heapster-controller.yaml
+kubectl delete -f cluster-monitoring/influxdb/heapster-service.yaml
+kubectl stop -f cluster-monitoring/influxdb/influxdb-grafana-controller.yaml
+kubectl delete -f cluster-monitoring/influxdb/grafana-service.yaml
+kubectl delete -f cluster-monitoring/influxdb/influxdb-service.yaml
+
+
+
+
+
+#########################################################
+########       fluentd-elasticsearch      ###############
+#########################################################
+
+
+kubectl create -f fluentd-elasticsearch/es-controller.yaml
+kubectl create -f fluentd-elasticsearch/es-service.yaml
+kubectl create -f fluentd-elasticsearch/kibana-controller.yaml
+kubectl create -f fluentd-elasticsearch/kibana-service.yaml
+
+
+
+kubectl stop -f fluentd-elasticsearch/es-controller.yaml
+kubectl delete -f fluentd-elasticsearch/es-service.yaml
+kubectl stop -f fluentd-elasticsearch/kibana-controller.yaml
+kubectl delete -f fluentd-elasticsearch/kibana-service.yaml
+
+
 
 
 
