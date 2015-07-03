@@ -61,12 +61,12 @@ spec:
         - containerPort: 53
           name: dns-tcp
           protocol: TCP
-        livenessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - nslookup kubernetes.default.svc.k8s.cluster.local localhost >/dev/null
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
+        #livenessProbe:
+        #  exec:
+        #    command:
+        #    - /bin/sh
+        #    - -c
+        #    - nslookup kubernetes.default.svc.k8s.cluster.local localhost >/dev/null
+        #  initialDelaySeconds: 30
+        #  timeoutSeconds: 5
       dnsPolicy: Default  # Don't use cluster DNS.
