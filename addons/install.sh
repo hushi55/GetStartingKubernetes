@@ -35,6 +35,14 @@ kubectl delete -f cluster-monitoring/influxdb/influxdb-service.yaml
 kubectl create -f cluster-monitoring/kube-config/influxdb
 
 
+kubectl stop -f cluster-monitoring/kube-config/influxdb/heapster-controller.json
+kubectl stop -f cluster-monitoring/kube-config/influxdb/influxdb-grafana-controller.json
+kubectl delete -f cluster-monitoring/kube-config/influxdb/heapster-service.json
+kubectl delete -f cluster-monitoring/kube-config/influxdb/grafana-service.json
+kubectl delete -f cluster-monitoring/kube-config/influxdb/influxdb-service.json
+kubectl delete -f cluster-monitoring/kube-config/influxdb/influxdb-ui-service.json
+
+
 
 cat << EOF | kubectl create -f -
 apiVersion: v1

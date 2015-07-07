@@ -12,12 +12,27 @@ KUBE_LOG_LEVEL=0
 KUBE_MASTER=172.20.10.221:8080
 KUBE_LISTEN_ADDRESS=0.0.0.0
 
+function set_service_accounts {
+    SERVICE_ACCOUNT_LOOKUP=${SERVICE_ACCOUNT_LOOKUP:-false}
+    SERVICE_ACCOUNT_KEY=${SERVICE_ACCOUNT_KEY:-"/tmp/kube-serviceaccount.key"}
+    # Generate ServiceAccount key if needed
+    if [[ ! -f "${SERVICE_ACCOUNT_KEY}" ]]; then
+      mkdir -p "$(dirname ${SERVICE_ACCOUNT_KEY})"
+      openssl genrsa -out "${SERVICE_ACCOUNT_KEY}" 2048 2>/dev/null
+    fi
+}
+
+set_service_accounts
+
+
 echo "========= installing docker-main kubernetes master ..."
 ## kubernetes master
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube apiserver \
+							--volume=/tmp:/tmp \
+							--service-account-key-file="${SERVICE_ACCOUNT_KEY}" \
 							--v=${KUBE_LOG_LEVEL} \
 							--logtostderr=${KUBE_LOGTOSTDERR}  \
 							--etcd-servers=${KUBE_ETCD_SERVERS} \
@@ -30,6 +45,8 @@ sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube controller-manager \
+							--volume=/tmp:/tmp \
+							--service-account-private-key-file="${SERVICE_ACCOUNT_KEY}" \
 							--logtostderr=${KUBE_LOGTOSTDERR} \
 							--address=${KUBE_LISTEN_ADDRESS} \
 						    --v=${KUBE_LOG_LEVEL} \
