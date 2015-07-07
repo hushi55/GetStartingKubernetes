@@ -14,6 +14,16 @@ KUBE_LISTEN_ADDRESS=0.0.0.0
 KUBE_CLUSTER_DNS=10.100.100.100
 KUBE_CLUSTER_DOMAIN=k8s.cluster.local
 
+echo "========= runing cadvisor "
+docker inspect cadvisor >/dev/null 2>&1 && docker rm -f cadvisor || true
+docker run -d \
+			--publish=4194:8080 \
+			--name=cadvisor \
+			--volume=/var/run:/var/run:rw \
+			--volume=/sys/fs/cgroup/:/sys/fs/cgroup:ro \
+			--volume=/var/lib/docker/:/var/lib/docker:ro \
+			google/cadvisor:latest
+
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
 sudo docker run --net=host -d \
