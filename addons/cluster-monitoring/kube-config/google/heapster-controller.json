@@ -1,0 +1,39 @@
+{
+    "kind": "ReplicationController",
+    "apiVersion": "v1",
+    "metadata": {
+	"name": "monitoring-heapster-controller",
+	"labels": {
+	    "name": "heapster"
+	}
+    },
+    "spec": {
+	"replicas": 1,
+	"selector": {
+	    "name": "heapster"
+	},
+	"template": {
+	    "metadata": {
+		"labels": {
+		    "name": "heapster"
+		}
+	    },
+	    "spec": {
+		"containers": [
+		    {
+			"name": "heapster",
+			"image": "kubernetes/heapster:v0.14.3",
+			"command": [
+			    "/heapster",
+			    "--source=kubernetes:''",
+			    "--sink=gcm",
+			    "--sink=gcl",
+			    "--poll_duration=2m",
+			    "--stats_resolution=1m"
+			]
+		    }
+		]
+	    }
+	}
+    }
+}
