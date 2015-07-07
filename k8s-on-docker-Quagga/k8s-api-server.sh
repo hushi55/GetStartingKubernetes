@@ -29,9 +29,9 @@ echo "========= installing docker-main kubernetes master ..."
 ## kubernetes master
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
+		--volume=/tmp:/tmp \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube apiserver \
-							--volume=/tmp:/tmp \
 							--service-account-key-file="${SERVICE_ACCOUNT_KEY}" \
 							--v=${KUBE_LOG_LEVEL} \
 							--logtostderr=${KUBE_LOGTOSTDERR}  \
@@ -43,9 +43,9 @@ sudo docker run --net=host -d \
 
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
+		--volume=/tmp:/tmp \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube controller-manager \
-							--volume=/tmp:/tmp \
 							--service-account-private-key-file="${SERVICE_ACCOUNT_KEY}" \
 							--logtostderr=${KUBE_LOGTOSTDERR} \
 							--address=${KUBE_LISTEN_ADDRESS} \
