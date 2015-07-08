@@ -25,12 +25,44 @@
 			"name": "heapster",
 			"command": [
 			    "/heapster",
-			    "--source=kubernetes:https://kubernetes",
+			    "--source=cadvisor:external?cadvisorPort=4194",
 			    "--sink=influxdb:http://monitoring-influxdb:80"
 			]
 		    }
-		]
-	    }
-	}
+		],
+		 "lifecycle": {
+          "postStart": {
+            "exec": {
+              "command": [
+                "/bin/sh ",
+				"-c ",
+				" cat << EOF > /var/run/heapster/hosts/hosts ",
+				"{",
+				"  \"Items\": [                       ",
+				"{                               ",
+				"  \"Name\": \"docker221\",          ",
+				"  \"IP\": \"172.20.10.221\"         ",
+				"},                              ",
+				"{                               ",
+				"  \"Name\": \"docker117\",          ",
+				"  \"IP\": \"172.20.10.117\"         ",
+				"},                              ",
+				"{                               ",
+				"  \"Name\": \"docker118\",          ",
+				"  \"IP\": \"172.20.10.118\"         ",
+				"},                              ",
+				"{                               ",
+				"  \"Name\": \"docker119\",          ",
+				"  \"IP\": \"172.20.10.119\"         ",
+				"}",
+				"  ]                                ",
+				" }                                 ",
+				" EOF "
+              ]
+             }
+	       }
+		}
+		}
     }
+	}
 }
