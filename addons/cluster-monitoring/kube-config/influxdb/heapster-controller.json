@@ -21,11 +21,11 @@
 	    "spec": {
 		"containers": [
 		    {
-			"image": "kubernetes/heapster:v0.15.0",
+			"image": "kubernetes/heapster:v0.16.0",
 			"name": "heapster",
 			"command": [
 			    "/heapster",
-			    "--source=cadvisor:external?cadvisorPort=4194",
+			    "--source=kubernetes:https://kubernetes",
 			    "--sink=influxdb:http://monitoring-influxdb:80"
 			]
 		    }
