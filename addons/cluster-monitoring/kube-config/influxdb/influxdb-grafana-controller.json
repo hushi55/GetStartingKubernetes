@@ -38,7 +38,7 @@
             "env": [
               {
                 "name": "INFLUXDB_EXTERNAL_URL",
-                "value": "/api/v1/proxy/namespaces/default/services/monitoring-grafana/db/"
+                "value": "http://172.20.10.221:8080/api/v1/proxy/namespaces/default/services/monitoring-grafana/db/"
               },
               {
                 "name": "INFLUXDB_HOST",
