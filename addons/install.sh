@@ -71,11 +71,9 @@ kubectl create -f fluentd-elasticsearch/es-controller.yaml
 kubectl create -f fluentd-elasticsearch/es-service.yaml
 kubectl create -f fluentd-elasticsearch/kibana-controller.yaml
 kubectl create -f fluentd-elasticsearch/kibana-service.yaml
-kubectl create -f fluentd-elasticsearch/fluentd-es.yaml
 
 
 
-kubectl stop -f fluentd-elasticsearch/fluentd-es.yaml
 kubectl stop -f fluentd-elasticsearch/es-controller.yaml
 kubectl delete -f fluentd-elasticsearch/es-service.yaml
 kubectl stop -f fluentd-elasticsearch/kibana-controller.yaml

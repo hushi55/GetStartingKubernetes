@@ -20,7 +20,7 @@ spec:
         kubernetes.io/cluster-service: "true"
     spec:
       containers:
-        - image: gcr.io/google_containers/heapster:v0.16.0
+        - image: kubernetes/heapster:v0.16.0
           name: heapster
           resources:
             limits:
@@ -28,5 +28,5 @@ spec:
               memory: 200Mi
           command:
             - /heapster
-            - --source=kubernetes:''
+            - --source=cadvisor:external?cadvisorPort=4194&hostsFile=/var/run/heapster/hosts/hostfile
             - --sink=influxdb:http://monitoring-influxdb:8086
