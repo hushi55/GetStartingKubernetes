@@ -34,6 +34,7 @@ echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
 sudo docker run --net=host -d \
 		--privileged=true \
+		--volume=${KUBE_STATIC_POD_DIR_CONF}:${KUBE_STATIC_POD_DIR_CONF}:ro \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube kubelet \
@@ -43,7 +44,6 @@ sudo docker run --net=host -d \
 						--api-servers=${KUBE_MASTER} \
 						--cluster_dns=${KUBE_CLUSTER_DNS} \
 						--cluster_domain=${KUBE_CLUSTER_DOMAIN} \
-						--volume=${KUBE_STATIC_POD_DIR_CONF}:${KUBE_STATIC_POD_DIR_CONF}:ro \
 						--config="${KUBE_STATIC_POD_DIR_CONF}" \
 					    --allow-privileged=${KUBE_ALLOW_PRIV}
 					    
