@@ -110,6 +110,23 @@ kubectl create -f guestbook/frontend-service.json
 
 
 
+#########################################################
+########               kube ui        ###################
+#########################################################
+
+
+kubectl create -f kube-ui/kube-ui-rc.yaml
+kubectl create -f kube-ui/kube-ui-svc.yaml
+
+
+
+kubectl stop -f kube-ui/kube-ui-rc.yaml
+kubectl delete -f kube-ui/kube-ui-svc.yaml
+
+
+
+
+
 
 
 
