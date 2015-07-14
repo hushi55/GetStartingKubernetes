@@ -23,3 +23,4 @@ yum install -y vim
 yum install -y zip unzip bzip2 tar
 yum groupinstall "Development Tools" –y
 yum -y install ntp ntpdate
+yum -y install symlinks*

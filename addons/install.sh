@@ -59,6 +59,9 @@ metadata:
 EOF
 
 
+docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
+
+
 #########################################################
 ########       fluentd-elasticsearch      ###############
 #########################################################
@@ -68,9 +71,11 @@ kubectl create -f fluentd-elasticsearch/es-controller.yaml
 kubectl create -f fluentd-elasticsearch/es-service.yaml
 kubectl create -f fluentd-elasticsearch/kibana-controller.yaml
 kubectl create -f fluentd-elasticsearch/kibana-service.yaml
+kubectl create -f fluentd-elasticsearch/fluentd-es.yaml
 
 
 
+kubectl stop -f fluentd-elasticsearch/fluentd-es.yaml
 kubectl stop -f fluentd-elasticsearch/es-controller.yaml
 kubectl delete -f fluentd-elasticsearch/es-service.yaml
 kubectl stop -f fluentd-elasticsearch/kibana-controller.yaml
