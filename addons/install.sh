@@ -59,7 +59,17 @@ metadata:
 EOF
 
 
+#########################################################
+########          clean for docker        ###############
+#########################################################
+
+
+##clean docker contain
 docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
+
+
+## clearn soft link
+symlinks -d 
 
 
 #########################################################

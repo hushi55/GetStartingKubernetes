@@ -41,6 +41,10 @@ func main() {
 	flag.Parse()
 	glog.Info("Kubernetes Elasticsearch logging discovery")
 
+	config := &client.Config{
+		  Host:     "http://172.20.10.221:8080",
+	}
+
 	c, err := client.NewInCluster()
 	if err != nil {
 		glog.Fatalf("Failed to make client: %v", err)
