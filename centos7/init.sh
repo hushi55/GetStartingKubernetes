@@ -22,5 +22,6 @@ yum install -y strace
 yum install -y vim 
 yum install -y zip unzip bzip2 tar
 yum groupinstall "Development Tools" –y
-yum -y install ntp ntpdate
-yum -y install symlinks*
+yum install -y ntp ntpdate
+yum install -y symlinks*
+yum install -y libpcap initscripts rsyslog

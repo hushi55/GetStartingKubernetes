@@ -10,16 +10,13 @@ LABEL Description="This image is used to root fs of kingdee's weibo system" Vend
 
 RUN yum install -y libpcap initscripts rsyslog
 
-COPY /root/packetbeat-1.0.0-beta2-x86_64.rpm packetbeat-1.0.0-beta2-x86_64.rpm
+COPY packetbeat-1.0.0-beta2-x86_64.rpm packetbeat-1.0.0-beta2-x86_64.rpm
 
 RUN rpm -vi packetbeat-1.0.0-beta2-x86_64.rpm
 
 RUN mkdir -p /etc/packetbeat/
 
-RUN rsyslogd
-
 COPY packetbeat.yml /etc/packetbeat/
 
-
-CMD ["/bin/bash", "-c", "/usr/bin/packetbeat", "-c", "/etc/packetbeat/packetbeat.yml"]
+CMD ["/bin/bash", "-c", "rsyslogd && /usr/bin/packetbeat", "-c", "/etc/packetbeat/packetbeat.yml"]
 
