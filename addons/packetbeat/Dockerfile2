@@ -8,7 +8,7 @@ MAINTAINER -10 <shi_hu@kingdee.com>
 LABEL Description="This image is used to root fs of kingdee's weibo system" Vendor="Infrastructure Platform Group Products" Version="1.0"
 
 
-RUN apt-get update && apt-get install -y openssh-server apache2 supervisor
+RUN apt-get update && apt-get install -y supervisor
 RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
 
 #RUN yum install -y libpcap initscripts rsyslog
@@ -24,5 +24,4 @@ RUN mkdir -p /etc/packetbeat/
 
 COPY packetbeat.yml /etc/packetbeat/
 
-CMD ["/bin/bash", "-c", "rsyslogd && /usr/bin/packetbeat", "-c", "/etc/packetbeat/packetbeat.yml"]
-
+CMD ["/usr/bin/supervisord"]
