@@ -70,7 +70,7 @@ output:
   # number of files: maximum number of files in path
   file:
     enabled: true
-    path: "/var/log/"
+    path: "/var/log/packetbeat"
     filename: startupscript.log
     rotate_every_kb: 100000
     number_of_files: 10

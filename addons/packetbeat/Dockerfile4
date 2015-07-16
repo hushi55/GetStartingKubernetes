@@ -1,0 +1,14 @@
+# Centos jetty
+#
+# VERSION               0.0.1
+
+FROM packetbeat
+MAINTAINER -10 <shi_hu@kingdee.com>
+
+LABEL Description="This image is used to root fs of kingdee's weibo system" Vendor="Infrastructure Platform Group Products" Version="1.0"
+
+RUN mkdir -p /var/log/packetbeat
+
+VOLUME ["/var/log/packetbeat"]
+
+COPY packetbeat.yml /etc/packetbeat/

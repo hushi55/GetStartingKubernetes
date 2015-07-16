@@ -45,6 +45,9 @@ echo "========= installing Quagga ..."
 docker run -d --privileged=true --net=host index.alauda.cn/georce/router
 #docker run -d  --privileged=true --net=host  osrg/quagga
 
+echo "========= installing packetbeat ..."
+docker run --net=host -d packetbeat packetbeat -e -c /etc/packetbeat/packetbeat.yml
+
 echo "========= installing docker-main kubernetes master ..."
 sh ./k8s-api-server.sh 
 sh ./k8s-kubelet-proxy.sh
