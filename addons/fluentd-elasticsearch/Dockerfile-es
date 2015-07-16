@@ -16,4 +16,6 @@ COPY td-agent.conf /etc/td-agent/td-agent.conf
 
 COPY install-marvel.sh /
 
+RUN chmod +x /install-marvel.sh
+
 RUN /install-marvel.sh
