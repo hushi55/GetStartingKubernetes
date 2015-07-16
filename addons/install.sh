@@ -68,6 +68,10 @@ EOF
 docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
 
 
+iptables -t nat -A POSTROUTING -s 10.100.66.0/24  -o  eth0 -j MASQUERADE
+
+sed -i "s/packetbeat-/startupscript-/g" `grep 'packetbeat-' -rl ./dashboards/`
+
 ## clearn soft link
 symlinks -d 
 
