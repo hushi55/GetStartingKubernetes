@@ -72,6 +72,12 @@ iptables -t nat -A POSTROUTING -s 10.100.66.0/24  -o  eth0 -j MASQUERADE
 
 sed -i "s/packetbeat-/startupscript-/g" `grep 'packetbeat-' -rl ./dashboards/`
 
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
 ## clearn soft link
 symlinks -d 
 

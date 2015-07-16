@@ -71,7 +71,7 @@ output:
   file:
     enabled: true
     path: "/var/log/packetbeat"
-    filename: startupscript.log
+    filename: packetbeat.log
     rotate_every_kb: 100000
     number_of_files: 10
         
