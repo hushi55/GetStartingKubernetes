@@ -70,7 +70,7 @@ docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-emp
 
 iptables -t nat -A POSTROUTING -s 10.100.66.0/24  -o  eth0 -j MASQUERADE
 
-sed -i "s/packetbeat-/startupscript-/g" `grep 'packetbeat-' -rl ./dashboards/`
+sed -i "s/packetbeat-/logstash-/g" `grep 'packetbeat-' -rl ./dashboards/`
 
 {
   "query": {
