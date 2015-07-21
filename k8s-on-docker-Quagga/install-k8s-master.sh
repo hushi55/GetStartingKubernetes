@@ -41,8 +41,8 @@ echo "waiting for etcd to become available..."
 sleep 5;
 
 
-echo "========= installing Quagga ..."
-docker run -d --privileged=true --net=host index.alauda.cn/georce/router
+#echo "========= installing Quagga ..."
+#docker run -d --privileged=true --net=host index.alauda.cn/georce/router
 #docker run -d  --privileged=true --net=host  osrg/quagga
 
 echo "========= installing docker-main kubernetes master ..."

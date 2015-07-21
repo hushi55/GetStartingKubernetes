@@ -26,10 +26,10 @@ KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
 # 			--volume=/var/lib/docker/:/var/lib/docker:ro \
 # 			google/cadvisor:latest
 
-echo "========= installing packetbeat to all nodes ..."
-docker run --net=host -d \
-		-v /var/log:/var/log/packetbeat \
-		packetbeat packetbeat -e -c /etc/packetbeat/packetbeat.yml
+#echo "========= installing packetbeat to all nodes ..."
+#docker run --net=host -d \
+#		-v /var/log:/var/log/packetbeat \
+#		packetbeat packetbeat -e -c /etc/packetbeat/packetbeat.yml
 
 			
 echo "========= static pods config "
