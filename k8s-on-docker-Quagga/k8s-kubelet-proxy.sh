@@ -34,7 +34,7 @@ KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
 			
 echo "========= static pods config "
 mkdir -p ${KUBE_STATIC_POD_DIR_CONF}
-cp ../k8s-kubelet-conf/* ${KUBE_STATIC_POD_DIR_CONF}
+cp ../k8s-static-pods/* ${KUBE_STATIC_POD_DIR_CONF}
 
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
