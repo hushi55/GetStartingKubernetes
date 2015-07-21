@@ -37,14 +37,6 @@ rm  -rf /var/lib/docker-bootstrap
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
 
-
-#echo "========= loading docker-bootstrap images ..."
-## load images
-#gzip -d /root/gcr.io.tar.gz
-#docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr.io.tar
-#docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
-
-
 echo "========= installing docker-bootstrap etcd ..."
 ## run etcd
 sudo docker -H unix:///var/run/docker-bootstrap.sock run --net=host -d ${K8S_ETCD_IMAGE} /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' --data-dir /var/etcd/data
@@ -70,28 +62,12 @@ sudo docker -H unix:///var/run/docker-bootstrap.sock exec ${flannl_image_id} cat
 
 
 echo "========= installing docker-main ..."
-rm  -rf /var/lib/docker
-## run docker main
 sh ./docker-main.sh
 
 
-#echo "========= installing docker-main images ..."
-## load images
-#docker load -i /root/gcr.io.tar
-#docker load -i /root/flannl-imgae.tar
-#docker load -i /root/hyperkube-v0.19.3.tar
-
 
 echo "========= installing docker-main kubernetes master ..."
-
-k8s_docker_cmd=`printf 'sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock %s' ${K8S_KUBE_IMAGE}`
-echo "k8s docker cmd : " ${k8s_docker_cmd}
 sh ./k8s-api-server.sh 
 sh ./k8s-kubelet-proxy.sh 
 
 
-## kubernetes master
-#sudo docker run --net=host -d -v /var/run/docker.sock:/var/run/docker.sock  ${K8S_KUBE_IMAGE} /hyperkube kubelet --api_servers=http://localhost:8080 --v=2 --address=0.0.0.0 --enable_server --hostname_override=127.0.0.1 --config=/etc/kubernetes/manifests-multi
-#echo "========= installing docker-main kubernetes service proxy ..."
-## service proxy
-#sudo docker run --net=host -d --privileged ${K8S_KUBE_IMAGE} /hyperkube proxy --master=http://127.0.0.1:8080 --v=2

@@ -58,6 +58,7 @@ EOF
 #systemctl disable docker.service
 #
 ### remove docker0
+echo "========= relaod docker0 config for flannel subnet ..."
 ip link set dev docker0 down
 brctl delbr docker0
 

@@ -61,8 +61,6 @@ systemctl start docker-bootstrap.service
 ## load images
 echo "========= loading docker-bootstrap images ..."
 #gzip -d /root/gcr.io.tar.gz
-docker -H unix:///var/run/docker-bootstrap.sock load -i /root/gcr.io.tar
-docker -H unix:///var/run/docker-bootstrap.sock load -i /root/flannl-imgae.tar
-
+docker -H unix:///var/run/docker-bootstrap.sock load -i ~/k8s-main-docker.tar
 
 
