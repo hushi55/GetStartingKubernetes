@@ -1,6 +1,6 @@
 #!/bin/sh
 
-K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.19.3'
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.21.2'
 K8S_FLANNL_SUBNET_CONF=10.100.0.0/16
 
 KUBE_ETCD_SERVERS=http://172.20.10.221:4001

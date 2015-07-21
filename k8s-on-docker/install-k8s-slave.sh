@@ -4,7 +4,7 @@
 sysctl -w net.ipv4.ip_forward=1
 
 K8S_MASTER_IP=172.20.10.221
-K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.19.3'
+K8S_KUBE_IMAGE='gcr.io/google_containers/hyperkube:v0.21.2'
 K8S_FLANNL_IMAGE='quay.io/coreos/flannel:0.4.1'
 K8S_FLANNL_CONF_FILE=/kingdee/kubernetes/bin/flanneld-subnet.env
 
