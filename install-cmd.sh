@@ -22,10 +22,10 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 #########################################################
 ########    k8s on docker for flannel  ##################
 #########################################################
-cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/k8s-on-docker/ && sh install-k8s-master.sh
+cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/k8s-on-docker-flannel/ && sh install-k8s-master.sh
 
 
-cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/k8s-on-docker/ && sh install-k8s-slave.sh
+cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/k8s-on-docker-flannel/ && sh install-k8s-slave.sh
 
 
 
