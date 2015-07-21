@@ -66,9 +66,3 @@ systemctl daemon-reload
 systemctl enable docker
 systemctl start docker
 
-
-## load images
-#echo "========= installing docker-main images ..."
-#docker load -i /root/gcr.io.tar
-#docker load -i /root/flannl-imgae.tar
-#docker load -i /root/hyperkube-v0.19.3.tar

@@ -33,7 +33,7 @@ systemctl disable docker.service
 
 
 echo "========= installing docker-bootstrap ..."
-rm  -rf /var/lib/docker-bootstrap
+#rm  -rf /var/lib/docker-bootstrap
 ## first run docker-bootstrap
 sh ./docker-bootstrap.sh
 
