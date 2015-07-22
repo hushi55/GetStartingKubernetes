@@ -7,7 +7,7 @@ tar -zxvf flannel-0.5.1-linux-amd64.tar.gz
 cp ./flannel-0.5.1/flanneld /usr/bin/
 chmod +x /usr/bin/flanneld
 
-cp -f ./flannel /etc/init.d/
+cp -f ./flannel /etc/init.d/flannel
 
 chkconfig --add flannel
 chmod +x /etc/init.d/flannel
