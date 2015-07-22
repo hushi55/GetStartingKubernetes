@@ -34,6 +34,8 @@ chkconfig --add flannel
 chmod +x /etc/init.d/flannel
 service flannel start
 
+cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/centos6/ && sh install.sh
+
 
 #########################################################
 ########    k8s on docker for Quagga   ##################
