@@ -28,7 +28,11 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/k8s-on-docker-flannel/ && sh install-k8s-slave.sh
 
 
-
+cp ~/flannel-0.5.1/flanneld /usr/bin/
+chmod +x /usr/bin/flanneld
+chkconfig --add flannel
+chmod +x /etc/init.d/flannel
+service flannel start
 
 
 #########################################################
