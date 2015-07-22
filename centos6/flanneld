@@ -1,6 +1,6 @@
 #!/bin/bash
 # chkconfig: - 85 15
-# description: service(/usr/bin/flanneld --etcd-endpoints=http://172.20.10.221:4001)
+# descrīption: service(/usr/bin/flanneld --etcd-endpoints=http://172.20.10.221:4001)
 
 . /etc/rc.d/init.d/functions
 
