@@ -20,5 +20,9 @@ RUN dpkg -i /tmp/packetbeat_1.0.0-beta2_amd64.deb
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir -p /etc/packetbeat/
-
 COPY packetbeat.yml /etc/packetbeat/
+
+RUN mkdir -p /var/log/packetbeat
+
+VOLUME ["/var/log/packetbeat"]
+
