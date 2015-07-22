@@ -142,6 +142,32 @@ kubectl stop -f kube-ui/kube-ui-rc.yaml
 kubectl delete -f kube-ui/kube-ui-svc.yaml
 
 
+#########################################################
+########               WEIBO        ###################
+#########################################################
+
+
+kubectl create -f microblog-controller.yaml
+kubectl create -f microblog-service.yaml
+kubectl create -f space-controller.yaml
+kubectl create -f space-service.yaml
+kubectl create -f res-controller.yaml
+kubectl create -f res-service.yaml
+kubectl create -f public-controller.yaml
+kubectl create -f public-service.yaml
+
+
+
+kubectl stop -f microblog-controller.yaml
+kubectl delete -f microblog-service.yaml
+kubectl stop -f space-controller.yaml
+kubectl delete -f space-service.yaml
+kubectl stop -f res-controller.yaml
+kubectl delete -f res-service.yaml
+kubectl stop -f public-controller.yaml
+kubectl delete -f public-service.yaml
+
+
 
 
 
