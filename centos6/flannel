@@ -6,14 +6,14 @@
 
 start() {
   echo -n $"Starting $prog"
-  echo -e " flanneld ：															  [确定]"
+  echo -e " flanneld : "															  [确定]"
   /usr/bin/flanneld --etcd-endpoints=http://172.20.10.221:4001 &
   sleep 1
   echo -e "running..."
 }
 stop() {
   echo -n $"Stopping $prog"
-  echo -e " flanneld ：															  [确定]"
+  echo -e " flanneld ："															  [确定]"
   kill -9 `ps -ef | grep "/usr/bin/flanneld" | awk '{print $2}' | awk 'NR==1'`
   sleep 1
   echo -e "stoped"
