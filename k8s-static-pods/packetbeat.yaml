@@ -8,10 +8,9 @@ spec:
   - name: packetbeat
     image: packetbeat
     command:
-            - packetbeat
-            - -e 
-            - -c /etc/packetbeat/packetbeat.yml
-    securityContext:
+            - /usr/bin/packetbeat
+            - -e=false
+            - -c=/etc/packetbeat/packetbeat.yml
     volumeMounts:
       - name: packetbeat-logs
         mountPath: /var/log/packetbeat
