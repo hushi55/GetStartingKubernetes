@@ -9,7 +9,7 @@ spec:
     image: packetbeat
     command:
             - /usr/bin/packetbeat
-            - -e=false
+            - -e=true
             - -c=/etc/packetbeat/packetbeat.yml
     volumeMounts:
       - name: packetbeat-logs
