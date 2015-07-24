@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: monitoring-res-v1
+  namespace: kingdee-master
+  labels:
+    k8s-app: res
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    k8s-app: res
+    version: v1
+  template:
+    metadata:
+      labels:
+        k8s-app: res
+        version: v1
+    spec:
+      containers:
+        - image: kingdee/res-master
+          name: res
