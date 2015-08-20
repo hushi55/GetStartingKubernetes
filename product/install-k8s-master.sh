@@ -22,18 +22,10 @@ systemctl disable docker.service
 systemctl disable kubelet
 
 
-echo "========= copying k8s static pods ..."
-KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
-mkdir -p ${KUBE_LOG_DIR}
-
-cp ./k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
-cp ./k8s-static-master/* ${KUBE_STATIC_POD_DIR_CONF}
-cp ./k8s-static-slave/* ${KUBE_STATIC_POD_DIR_CONF}
-
-
 echo "========= installing docker service ..."
 sh ./docker-main.sh
 
-echo "========= installing k8s kubelet service ..."
-sh ./kubelet.sh
+echo "========= installing k8s docker-main kubernetes master ..."
+sh ./k8s-api-server.sh 
+sh ./k8s-kubelet-proxy.sh
 
