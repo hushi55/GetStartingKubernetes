@@ -64,7 +64,7 @@ systemctl start docker
 
 
 ## load images
-#echo "========= installing docker-main images ..."
+echo "========= installing docker-main images ..."
 docker load -i /home/hyperkube-v1.0.3.tar
 docker load -i /home/k8s.all.tar
 #docker load -i /root/flannl-imgae.tar
