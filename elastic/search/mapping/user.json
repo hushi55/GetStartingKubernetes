@@ -1,0 +1,240 @@
+{"T_User" : {
+        "properties" : {
+          "activeTime" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "address" : {
+            "type" : "string"
+          },
+          "birthday" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "corpName" : {
+            "type" : "string"
+          },
+          "createByAppId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "createrEmail" : {
+            "type" : "string"
+          },
+          "defaultNetwork" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "defaultPhotoId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "department" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "expertise" : {
+            "type" : "string"
+          },
+          "extMap" : {
+            "properties" : {
+              "unreadDisbandNetworkCount" : {
+                "type" : "long"
+              },
+              "unreadInviteCount" : {
+                "type" : "long"
+              }
+            }
+          },
+          "fromXt" : {
+            "type" : "string"
+          },
+          "gender" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "interests" : {
+            "type" : "string"
+          },
+          "isBindWeChat" : {
+            "type" : "boolean"
+          },
+          "isDevelop" : {
+            "type" : "boolean"
+          },
+          "isPublicMailBox" : {
+            "type" : "boolean"
+          },
+          "isPublishBasic" : {
+            "type" : "string"
+          },
+          "isPublishContact" : {
+            "type" : "boolean"
+          },
+          "isResetPwd" : {
+            "type" : "boolean"
+          },
+          "isValidMobile" : {
+            "type" : "boolean"
+          },
+          "jobTitle" : {
+            "type" : "string"
+          },
+          "joinCompanyDay" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "lastWorkemateModifyExt" : {
+            "properties" : {
+              "lastModifyDepartmentTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyDepartmentWorkemateId" : {
+                "type" : "string"
+              },
+              "lastModifyjobTitleTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyjobTitleWorkemateId" : {
+                "type" : "string"
+              }
+            }
+          },
+          "mark" : {
+            "type" : "string"
+          },
+          "mobile" : {
+            "type" : "string"
+          },
+          "mobilePhone" : {
+            "type" : "string"
+          },
+          "modifyDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "msnAccount" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "openId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "password" : {
+            "type" : "string"
+          },
+          "photoId" : {
+            "type" : "string"
+          },
+          "publicEmail" : {
+            "type" : "string"
+          },
+          "qqAccount" : {
+            "type" : "string"
+          },
+          "realName" : {
+            "type" : "string"
+          },
+          "regSource" : {
+            "type" : "string"
+          },
+          "regSourceType" : {
+            "type" : "string"
+          },
+          "registerDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "registrationRecords" : {
+            "properties" : {
+              "application" : {
+                "type" : "string"
+              },
+              "originated" : {
+                "type" : "boolean"
+              },
+              "registrationTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              }
+            }
+          },
+          "skypeAccount" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "status" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "summary" : {
+            "type" : "string"
+          },
+          "twitterAccount" : {
+            "type" : "string"
+          },
+          "userSequence" : {
+            "type" : "double"
+          },
+          "userType" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "verifiedEmail" : {
+            "type" : "boolean"
+          },
+          "verifiedPublicEmail" : {
+            "type" : "boolean"
+          },
+          "website" : {
+            "type" : "string"
+          },
+          "workMail" : {
+            "type" : "string"
+          },
+          "workMailExt" : {
+            "type" : "string"
+          },
+          "workMobile" : {
+            "type" : "string"
+          },
+          "workMobileExt" : {
+            "type" : "string"
+          },
+          "workPhone" : {
+            "type" : "string"
+          },
+          "workPhoneExt" : {
+            "type" : "string"
+          },
+          "xtId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "xtPassword" : {
+            "type" : "string"
+          },
+          "xtUserId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          }
+        }
+	}
+}

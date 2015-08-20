@@ -1,0 +1,944 @@
+{
+	"item" : {
+		"properties" : {
+		   
+		   "T_ClockIn.address" : {
+				"type" : "string"
+			},
+			"T_ClockIn.attendanceLabel" : {
+				"type" : "string"
+			},
+			"T_ClockIn.clockInBasiclat" : {
+				"type" : "double"
+			},
+			"T_ClockIn.clockInBasiclng" : {
+				"type" : "double"
+			},
+			"T_ClockIn.clockInPositionName" : {
+				"type" : "string"
+			},
+			"T_ClockIn.clockInPositionNameDetail" : {
+				"type" : "string"
+			},
+			"T_ClockIn.clockInRemark" : {
+				"type" : "string"
+			},
+			"T_ClockIn.clockInTime" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_ClockIn.clockInlat" : {
+				"type" : "double"
+			},
+			"T_ClockIn.clockInlng" : {
+				"type" : "double"
+			},
+			"T_ClockIn.clockin_geo" : {
+				"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+			},
+			"T_ClockIn.day" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_ClockIn.department" : {
+				"type" : "string"
+			},
+			"T_ClockIn.deptFullPath" : {
+				"type" : "string"
+			},
+			"T_ClockIn.deptId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_ClockIn.deptLongPath" : {
+				"type" : "string"
+			},
+			"T_ClockIn.deviceEntity" : {
+				"properties" : {
+					"appversion" : {
+						"type" : "string"
+					},
+					"bssid" : {
+						"type" : "string"
+					},
+					"deviceid" : {
+						"type" : "string"
+					},
+					"manufacturer" : {
+						"type" : "string"
+					},
+					"model" : {
+						"type" : "string"
+					},
+					"network" : {
+						"type" : "string"
+					},
+					"os" : {
+						"type" : "string"
+					},
+					"osversion" : {
+						"type" : "string"
+					},
+					"screen" : {
+						"type" : "string"
+					},
+					"ssid" : {
+						"type" : "string"
+					},
+					"type" : {
+						"type" : "string"
+					}
+				}
+			},
+			"T_ClockIn.email" : {
+				"type" : "string"
+			},
+			"T_ClockIn.errorMsg" : {
+				"type" : "string"
+			},
+			"T_ClockIn.isDelete" : {
+				"type" : "boolean"
+			},
+			"T_ClockIn.isEffectiveTime" : {
+				"type" : "boolean"
+			},
+			"T_ClockIn.mbShare" : {
+				"type" : "string"
+			},
+			"T_ClockIn.mobilePhone" : {
+				"type" : "string"
+			},
+			"T_ClockIn.myReportDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_ClockIn.networkId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_ClockIn.num" : {
+				"type" : "double"
+			},
+			"T_ClockIn.status" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_ClockIn.userId" : {
+				"type" : "string"
+			},
+			"T_ClockIn.userName" : {
+				"type" : "string"
+			},
+			"T_ClockIn.userNamePin" : {
+				"properties" : {
+					"alphabetic" : {
+						"type" : "boolean"
+					},
+					"head" : {
+						"type" : "string"
+					},
+					"pinYin" : {
+						"type" : "string"
+					},
+					"simple" : {
+						"type" : "string"
+					}
+				}
+			},
+			"T_ClockIn.workNum" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_ClockIn.work_geo" : {
+				"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+			},
+			
+			
+			"T_LoginOut.appId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.ip" : {
+				"type" : "ip"
+			},
+			"T_LoginOut.networkId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.networkType" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.time" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_LoginOut.type" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.userAgent" : {
+				"type" : "string"
+			},
+			"T_LoginOut.userId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			
+			
+			"T_MicroBlog.adminDel" : {
+						"type" : "boolean"
+					},
+					"T_MicroBlog.appId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.comment" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.content" : {
+						"type" : "string"
+					},
+					"T_MicroBlog.del" : {
+						"type" : "boolean"
+					},
+					"T_MicroBlog.delTime" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"T_MicroBlog.favorite" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.forward" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.forwardComment" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.forwardId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.from" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.groupId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.isPrivate" : {
+						"type" : "boolean"
+					},
+					"T_MicroBlog.lockComment" : {
+						"type" : "boolean"
+					},
+					"T_MicroBlog.name" : {
+						"type" : "string"
+					},
+					"T_MicroBlog.numericId" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.nwId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.oldgroupId" : {
+						"type" : "string"
+					},
+					"T_MicroBlog.ownerId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.readCount" : {
+						"type" : "long"
+					},
+					"T_MicroBlog.sendTime" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"T_MicroBlog.subType" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.tagIds" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"T_MicroBlog.update" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"T_MicroBlog.location_geo" : {
+						"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+					},
+					
+					
+			"T_Network.activeUserCount" : {
+				"type" : "long"
+			},
+			"T_Network.addressesId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"adminCommunity" : {
+				"type" : "boolean"
+			},
+			"T_Network.advancedOptions" : {
+				"properties" : {
+					"colleagueApplyAllowed" : {
+						"type" : "boolean"
+					},
+					"colleagueDirectlyJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"externalStaffJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteNeedAudit" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"T_Network.allowEmail" : {
+				"type" : "boolean"
+			},
+			"T_Network.allowSms" : {
+				"type" : "boolean"
+			},
+			"T_Network.alphabetic" : {
+				"type" : "boolean"
+			},
+			"T_Network.anyMemberCanInventOther" : {
+				"type" : "boolean"
+			},
+			"T_Network.className" : {
+				"type" : "string"
+			},
+			"T_Network.closeBirthDay" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeDynamic" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeFollow" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeJoinCompanyDate" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeLike" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeRealName" : {
+				"type" : "boolean"
+			},
+			"T_Network.closeYearsHonor" : {
+				"type" : "boolean"
+			},
+			"T_Network.companySequence" : {
+				"type" : "long"
+			},
+			"T_Network.count" : {
+				"properties" : {
+					"photoCount" : {
+						"type" : "long"
+					}
+				}
+			},
+			"T_Network.createCommunity4AdminRights" : {
+				"type" : "boolean"
+			},
+			"T_Network.creatorId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.delete" : {
+				"type" : "boolean"
+			},
+			"T_Network.description" : {
+				"type" : "string"
+			},
+			"T_Network.displayInDictory" : {
+				"type" : "boolean"
+			},
+			"T_Network.domainId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.domainIdentity" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.domainVerified" : {
+				"type" : "boolean"
+			},
+			"T_Network.eid" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.emailReceiveType" : {
+				"type" : "string"
+			},
+			"T_Network.head" : {
+				"type" : "string"
+			},
+			"T_Network.hot" : {
+				"properties" : {
+					"weekhot" : {
+						"type" : "long"
+					}
+				}
+			},
+			"T_Network.isMicroNetwork" : {
+				"type" : "boolean"
+			},
+			"T_Network.isNeedAuditOfJoin" : {
+				"type" : "boolean"
+			},
+			"T_Network.lockDept" : {
+				"type" : "boolean"
+			},
+			"T_Network.lockEmail" : {
+				"type" : "boolean"
+			},
+			"T_Network.lockJob" : {
+				"type" : "boolean"
+			},
+			"T_Network.lockMobile" : {
+				"type" : "boolean"
+			},
+			"T_Network.logoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.name" : {
+				"type" : "string"
+			},
+			"T_Network.orgInfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.orginfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.parentId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.pinYin" : {
+				"type" : "string"
+			},
+			"T_Network.productFeature" : {
+				"properties" : {
+					"SHORTMAIL" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"T_Network.publicInCompany" : {
+				"type" : "boolean"
+			},
+			"T_Network.recommenderEmail" : {
+				"type" : "string"
+			},
+			"T_Network.registerDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_Network.resetPwdInAgent" : {
+				"type" : "boolean"
+			},
+			"T_Network.sequence" : {
+				"type" : "string"
+			},
+			"T_Network.shortName" : {
+				"type" : "string"
+			},
+			"T_Network.status" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.subDomainName" : {
+				"type" : "string"
+			},
+			"T_Network.subType" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.type" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"T_Network.updateDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_Network.userCount" : {
+				"type" : "long"
+			},
+			"T_Network.xtId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			
+			
+			"T_User.activeTime" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "T_User.address" : {
+            "type" : "string"
+          },
+          "T_User.birthday" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "T_User.corpName" : {
+            "type" : "string"
+          },
+          "T_User.createByAppId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.createrEmail" : {
+            "type" : "string"
+          },
+          "T_User.defaultNetwork" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.defaultPhotoId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.department" : {
+            "type" : "string"
+          },
+          "T_User.email" : {
+            "type" : "string"
+          },
+          "T_User.expertise" : {
+            "type" : "string"
+          },
+          "T_User.extMap" : {
+            "properties" : {
+              "unreadDisbandNetworkCount" : {
+                "type" : "long"
+              },
+              "unreadInviteCount" : {
+                "type" : "long"
+              }
+            }
+          },
+          "T_User.fromXt" : {
+            "type" : "string"
+          },
+          "T_User.gender" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.interests" : {
+            "type" : "string"
+          },
+          "T_User.isBindWeChat" : {
+            "type" : "boolean"
+          },
+          "T_User.isDevelop" : {
+            "type" : "boolean"
+          },
+          "T_User.isPublicMailBox" : {
+            "type" : "boolean"
+          },
+          "T_User.isPublishBasic" : {
+            "type" : "string"
+          },
+          "T_User.isPublishContact" : {
+            "type" : "boolean"
+          },
+          "T_User.isResetPwd" : {
+            "type" : "boolean"
+          },
+          "T_User.isValidMobile" : {
+            "type" : "boolean"
+          },
+          "T_User.jobTitle" : {
+            "type" : "string"
+          },
+          "T_User.joinCompanyDay" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "T_User.lastWorkemateModifyExt" : {
+            "properties" : {
+              "lastModifyDepartmentTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyDepartmentWorkemateId" : {
+                "type" : "string"
+              },
+              "lastModifyjobTitleTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyjobTitleWorkemateId" : {
+                "type" : "string"
+              }
+            }
+          },
+          "T_User.mark" : {
+            "type" : "string"
+          },
+          "T_User.mobile" : {
+            "type" : "string"
+          },
+          "T_User.mobilePhone" : {
+            "type" : "string"
+          },
+          "T_User.modifyDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "T_User.msnAccount" : {
+            "type" : "string"
+          },
+          "T_User.name" : {
+            "type" : "string"
+          },
+          "T_User.openId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.password" : {
+            "type" : "string"
+          },
+          "T_User.photoId" : {
+            "type" : "string"
+          },
+          "T_User.publicEmail" : {
+            "type" : "string"
+          },
+          "T_User.qqAccount" : {
+            "type" : "string"
+          },
+          "T_User.realName" : {
+            "type" : "string"
+          },
+          "T_User.regSource" : {
+            "type" : "string"
+          },
+          "T_User.regSourceType" : {
+            "type" : "string"
+          },
+          "T_User.registerDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "T_User.registrationRecords" : {
+            "properties" : {
+              "application" : {
+                "type" : "string"
+              },
+              "originated" : {
+                "type" : "boolean"
+              },
+              "registrationTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              }
+            }
+          },
+          "T_User.skypeAccount" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.status" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.summary" : {
+            "type" : "string"
+          },
+          "T_User.twitterAccount" : {
+            "type" : "string"
+          },
+          "T_User.userSequence" : {
+            "type" : "double"
+          },
+          "T_User.userType" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.verifiedEmail" : {
+            "type" : "boolean"
+          },
+          "T_User.verifiedPublicEmail" : {
+            "type" : "boolean"
+          },
+          "T_User.website" : {
+            "type" : "string"
+          },
+          "T_User.workMail" : {
+            "type" : "string"
+          },
+          "T_User.workMailExt" : {
+            "type" : "string"
+          },
+          "T_User.workMobile" : {
+            "type" : "string"
+          },
+          "T_User.workMobileExt" : {
+            "type" : "string"
+          },
+          "T_User.workPhone" : {
+            "type" : "string"
+          },
+          "T_User.workPhoneExt" : {
+            "type" : "string"
+          },
+          "T_User.xtId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "T_User.xtPassword" : {
+            "type" : "string"
+          },
+          "T_User.xtUserId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          
+          "T_UserNetwork.accountId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.accountStatus" : {
+				"properties" : {
+					"dayDigest" : {
+						"type" : "boolean"
+					},
+					"extMap" : {
+						"properties" : {
+							"adminType" : {
+								"type" : "boolean"
+							}
+						}
+					},
+					"weekDigest" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"T_UserNetwork.autoToAdmin" : {
+				"type" : "boolean"
+			},
+			"T_UserNetwork.control" : {
+				"properties" : {
+					"isAlwaysNoUse" : {
+						"type" : "boolean"
+					},
+					"isShowDept" : {
+						"type" : "boolean"
+					},
+					"isShowEmail" : {
+						"type" : "boolean"
+					},
+					"isShowJob" : {
+						"type" : "boolean"
+					},
+					"isShowMobile" : {
+						"type" : "boolean"
+					},
+					"isShowName" : {
+						"type" : "boolean"
+					},
+					"isShowPhone" : {
+						"type" : "boolean"
+					},
+					"isShowRealName" : {
+						"type" : "boolean"
+					},
+					"isTop" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"T_UserNetwork.count" : {
+				"properties" : {
+					"photoCount" : {
+						"type" : "long"
+					}
+				}
+			},
+			"T_UserNetwork.eid" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.email" : {
+				"type" : "string"
+			},
+			"T_UserNetwork.extMap" : {
+				"properties" : {
+					"tags" : {
+						"type" : "string"
+					}
+				}
+			},
+			"T_UserNetwork.joinDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_UserNetwork.mobile" : {
+				"type" : "string"
+			},
+			"T_UserNetwork.name" : {
+				"type" : "string"
+			},
+			"T_UserNetwork.networkId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.notificationInterval" : {
+				"type" : "string"
+			},
+			"T_UserNetwork.oid" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.openId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.orgInfoId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.orginfoId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.personId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.role" : {
+				"type" : "string"
+			},
+			"T_UserNetwork.status" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.type" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.update" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_UserNetwork.userId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.userNetworkInfo" : {
+				"properties" : {
+					"alphabetic" : {
+						"type" : "boolean"
+					},
+					"head" : {
+						"type" : "string"
+					},
+					"name" : {
+						"type" : "string"
+					},
+					"pinYin" : {
+						"type" : "string"
+					},
+					"simple" : {
+						"type" : "string"
+					}
+				}
+			},
+			"T_UserNetwork.userType" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_UserNetwork.xtOpenId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			}
+		   
+		}
+	}
+}
+

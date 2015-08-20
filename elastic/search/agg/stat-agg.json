@@ -1,0 +1,25 @@
+
+##### microblog geo
+
+{
+	"aggregations" : {
+        "myLarge-GrainGeoHashGrid" : {
+            "geohash_grid" : {
+                "field" : "T_MicroBlog.location_geo",
+                "precision" : 10
+            }
+        }
+    }
+}
+
+
+{
+	"aggregations" : {
+        "myLarge-GrainGeoHashGrid" : {
+            "geohash_grid" : {
+                "field" : "T_ClockIn.clockin_geo",
+                "precision" : 10
+            }
+        }
+    }
+}

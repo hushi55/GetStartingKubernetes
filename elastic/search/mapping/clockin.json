@@ -1,0 +1,168 @@
+{
+	"T_ClockIn" : {
+		"properties" : {
+			"address" : {
+				"type" : "string"
+			},
+			"attendanceLabel" : {
+				"type" : "string"
+			},
+			"clockInBasiclat" : {
+				"type" : "double"
+			},
+			"clockInBasiclng" : {
+				"type" : "double"
+			},
+			"clockInPositionName" : {
+				"type" : "string"
+			},
+			"clockInPositionNameDetail" : {
+				"type" : "string"
+			},
+			"clockInRemark" : {
+				"type" : "string"
+			},
+			"clockInTime" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"clockInlat" : {
+				"type" : "double"
+			},
+			"clockInlng" : {
+				"type" : "double"
+			},
+			"clockin_geo" : {
+				"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+			},
+			"day" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"department" : {
+				"type" : "string"
+			},
+			"deptFullPath" : {
+				"type" : "string"
+			},
+			"deptId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"deptLongPath" : {
+				"type" : "string"
+			},
+			"deviceEntity" : {
+				"properties" : {
+					"appversion" : {
+						"type" : "string"
+					},
+					"bssid" : {
+						"type" : "string"
+					},
+					"deviceid" : {
+						"type" : "string"
+					},
+					"manufacturer" : {
+						"type" : "string"
+					},
+					"model" : {
+						"type" : "string"
+					},
+					"network" : {
+						"type" : "string"
+					},
+					"os" : {
+						"type" : "string"
+					},
+					"osversion" : {
+						"type" : "string"
+					},
+					"screen" : {
+						"type" : "string"
+					},
+					"ssid" : {
+						"type" : "string"
+					},
+					"type" : {
+						"type" : "string"
+					}
+				}
+			},
+			"email" : {
+				"type" : "string"
+			},
+			"errorMsg" : {
+				"type" : "string"
+			},
+			"isDelete" : {
+				"type" : "boolean"
+			},
+			"isEffectiveTime" : {
+				"type" : "boolean"
+			},
+			"mbShare" : {
+				"type" : "string"
+			},
+			"mobilePhone" : {
+				"type" : "string"
+			},
+			"myReportDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"networkId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"num" : {
+				"type" : "double"
+			},
+			"status" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"userId" : {
+				"type" : "string"
+			},
+			"userName" : {
+				"type" : "string"
+			},
+			"userNamePin" : {
+				"properties" : {
+					"alphabetic" : {
+						"type" : "boolean"
+					},
+					"head" : {
+						"type" : "string"
+					},
+					"pinYin" : {
+						"type" : "string"
+					},
+					"simple" : {
+						"type" : "string"
+					}
+				}
+			},
+			"workNum" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"work_geo" : {
+				"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+			}
+		}
+	}
+}

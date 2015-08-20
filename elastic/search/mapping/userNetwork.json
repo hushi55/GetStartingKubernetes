@@ -1,0 +1,178 @@
+{
+	"T_UserNetwork" : {
+		"properties" : {
+			"accountId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"accountStatus" : {
+				"properties" : {
+					"dayDigest" : {
+						"type" : "boolean"
+					},
+					"extMap" : {
+						"properties" : {
+							"adminType" : {
+								"type" : "boolean"
+							}
+						}
+					},
+					"weekDigest" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"autoToAdmin" : {
+				"type" : "boolean"
+			},
+			"control" : {
+				"properties" : {
+					"isAlwaysNoUse" : {
+						"type" : "boolean"
+					},
+					"isShowDept" : {
+						"type" : "boolean"
+					},
+					"isShowEmail" : {
+						"type" : "boolean"
+					},
+					"isShowJob" : {
+						"type" : "boolean"
+					},
+					"isShowMobile" : {
+						"type" : "boolean"
+					},
+					"isShowName" : {
+						"type" : "boolean"
+					},
+					"isShowPhone" : {
+						"type" : "boolean"
+					},
+					"isShowRealName" : {
+						"type" : "boolean"
+					},
+					"isTop" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"count" : {
+				"properties" : {
+					"photoCount" : {
+						"type" : "long"
+					}
+				}
+			},
+			"eid" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"email" : {
+				"type" : "string"
+			},
+			"extMap" : {
+				"properties" : {
+					"tags" : {
+						"type" : "string"
+					}
+				}
+			},
+			"joinDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"mobile" : {
+				"type" : "string"
+			},
+			"name" : {
+				"type" : "string"
+			},
+			"networkId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"notificationInterval" : {
+				"type" : "string"
+			},
+			"oid" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"openId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"orgInfoId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"orginfoId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"personId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"role" : {
+				"type" : "string"
+			},
+			"status" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"type" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"update" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"userId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"userNetworkInfo" : {
+				"properties" : {
+					"alphabetic" : {
+						"type" : "boolean"
+					},
+					"head" : {
+						"type" : "string"
+					},
+					"name" : {
+						"type" : "string"
+					},
+					"pinYin" : {
+						"type" : "string"
+					},
+					"simple" : {
+						"type" : "string"
+					}
+				}
+			},
+			"userType" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"xtOpenId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			}
+		}
+	}
+}

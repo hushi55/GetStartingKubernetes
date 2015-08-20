@@ -1,0 +1,104 @@
+{
+			"T_MicroBlog" : {
+				"properties" : {
+					"adminDel" : {
+						"type" : "boolean"
+					},
+					"appId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"comment" : {
+						"type" : "long"
+					},
+					"content" : {
+						"type" : "string"
+					},
+					"del" : {
+						"type" : "boolean"
+					},
+					"delTime" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"favorite" : {
+						"type" : "long"
+					},
+					"forward" : {
+						"type" : "long"
+					},
+					"forwardComment" : {
+						"type" : "long"
+					},
+					"forwardId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"from" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"groupId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"isPrivate" : {
+						"type" : "boolean"
+					},
+					"lockComment" : {
+						"type" : "boolean"
+					},
+					"name" : {
+						"type" : "string"
+					},
+					"numericId" : {
+						"type" : "long"
+					},
+					"nwId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"oldgroupId" : {
+						"type" : "string"
+					},
+					"ownerId" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"readCount" : {
+						"type" : "long"
+					},
+					"sendTime" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"subType" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"tagIds" : {
+						"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+					},
+					"update" : {
+						"type" : "date",
+						"format" : "dateOptionalTime"
+					},
+					"location_geo" : {
+						"type" : "geo_point",
+						"fielddata" : {
+							"format" : "compressed",
+							"precision" : "1cm"
+						}
+					}
+				}
+			}
+	}	

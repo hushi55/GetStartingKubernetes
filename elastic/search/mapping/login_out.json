@@ -1,0 +1,41 @@
+{
+	"T_LoginOut" : {
+		"properties" : {
+			"appId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"ip" : {
+				"type" : "ip"
+			},
+			"networkId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"networkType" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"time" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"type" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"userAgent" : {
+				"type" : "string"
+			},
+			"userId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			}
+		}
+	}
+}

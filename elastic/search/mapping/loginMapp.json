@@ -1,0 +1,511 @@
+{
+	"item" : {
+		"properties" : {
+		   
+			"T_LoginOut.appId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.ip" : {
+				"type" : "ip"
+			},
+			"T_LoginOut.networkId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.networkType" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.time" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"T_LoginOut.type" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+			"T_LoginOut.userAgent" : {
+				"type" : "string"
+			},
+			"T_LoginOut.userId" : {
+				"type" : "string",
+				"index" : "not_analyzed",
+				"store" : true
+			},
+					
+			"network.activeUserCount" : {
+				"type" : "long"
+			},
+			"network.addressesId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"adminCommunity" : {
+				"type" : "boolean"
+			},
+			"network.advancedOptions" : {
+				"properties" : {
+					"colleagueApplyAllowed" : {
+						"type" : "boolean"
+					},
+					"colleagueDirectlyJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"externalStaffJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteNeedAudit" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"network.allowEmail" : {
+				"type" : "boolean"
+			},
+			"network.allowSms" : {
+				"type" : "boolean"
+			},
+			"network.alphabetic" : {
+				"type" : "boolean"
+			},
+			"network.anyMemberCanInventOther" : {
+				"type" : "boolean"
+			},
+			"network.className" : {
+				"type" : "string"
+			},
+			"network.closeBirthDay" : {
+				"type" : "boolean"
+			},
+			"network.closeDynamic" : {
+				"type" : "boolean"
+			},
+			"network.closeFollow" : {
+				"type" : "boolean"
+			},
+			"network.closeJoinCompanyDate" : {
+				"type" : "boolean"
+			},
+			"network.closeLike" : {
+				"type" : "boolean"
+			},
+			"network.closeRealName" : {
+				"type" : "boolean"
+			},
+			"network.closeYearsHonor" : {
+				"type" : "boolean"
+			},
+			"network.companySequence" : {
+				"type" : "long"
+			},
+			"network.count" : {
+				"properties" : {
+					"photoCount" : {
+						"type" : "long"
+					}
+				}
+			},
+			"network.createCommunity4AdminRights" : {
+				"type" : "boolean"
+			},
+			"network.creatorId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.delete" : {
+				"type" : "boolean"
+			},
+			"network.description" : {
+				"type" : "string"
+			},
+			"network.displayInDictory" : {
+				"type" : "boolean"
+			},
+			"network.domainId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.domainIdentity" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.domainVerified" : {
+				"type" : "boolean"
+			},
+			"network.eid" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.emailReceiveType" : {
+				"type" : "string"
+			},
+			"network.head" : {
+				"type" : "string"
+			},
+			"network.hot" : {
+				"properties" : {
+					"weekhot" : {
+						"type" : "long"
+					}
+				}
+			},
+			"network.isMicroNetwork" : {
+				"type" : "boolean"
+			},
+			"network.isNeedAuditOfJoin" : {
+				"type" : "boolean"
+			},
+			"network.lockDept" : {
+				"type" : "boolean"
+			},
+			"network.lockEmail" : {
+				"type" : "boolean"
+			},
+			"network.lockJob" : {
+				"type" : "boolean"
+			},
+			"network.lockMobile" : {
+				"type" : "boolean"
+			},
+			"network.logoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.name" : {
+				"type" : "string"
+			},
+			"network.orgInfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.orginfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.parentId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.pinYin" : {
+				"type" : "string"
+			},
+			"network.productFeature" : {
+				"properties" : {
+					"SHORTMAIL" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"network.publicInCompany" : {
+				"type" : "boolean"
+			},
+			"network.recommenderEmail" : {
+				"type" : "string"
+			},
+			"network.registerDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"network.resetPwdInAgent" : {
+				"type" : "boolean"
+			},
+			"network.sequence" : {
+				"type" : "string"
+			},
+			"network.shortName" : {
+				"type" : "string"
+			},
+			"network.status" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.subDomainName" : {
+				"type" : "string"
+			},
+			"network.subType" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.type" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"network.updateDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"network.userCount" : {
+				"type" : "long"
+			},
+			"network.xtId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			
+			
+			"user.activeTime" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "user.address" : {
+            "type" : "string"
+          },
+          "user.birthday" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "user.corpName" : {
+            "type" : "string"
+          },
+          "user.createByAppId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.createrEmail" : {
+            "type" : "string"
+          },
+          "user.defaultNetwork" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.defaultPhotoId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.department" : {
+            "type" : "string"
+          },
+          "user.email" : {
+            "type" : "string"
+          },
+          "user.expertise" : {
+            "type" : "string"
+          },
+          "user.extMap" : {
+            "properties" : {
+              "unreadDisbandNetworkCount" : {
+                "type" : "long"
+              },
+              "unreadInviteCount" : {
+                "type" : "long"
+              }
+            }
+          },
+          "user.fromXt" : {
+            "type" : "string"
+          },
+          "user.gender" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.interests" : {
+            "type" : "string"
+          },
+          "user.isBindWeChat" : {
+            "type" : "boolean"
+          },
+          "user.isDevelop" : {
+            "type" : "boolean"
+          },
+          "user.isPublicMailBox" : {
+            "type" : "boolean"
+          },
+          "user.isPublishBasic" : {
+            "type" : "string"
+          },
+          "user.isPublishContact" : {
+            "type" : "boolean"
+          },
+          "user.isResetPwd" : {
+            "type" : "boolean"
+          },
+          "user.isValidMobile" : {
+            "type" : "boolean"
+          },
+          "user.jobTitle" : {
+            "type" : "string"
+          },
+          "user.joinCompanyDay" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "user.lastWorkemateModifyExt" : {
+            "properties" : {
+              "lastModifyDepartmentTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyDepartmentWorkemateId" : {
+                "type" : "string"
+              },
+              "lastModifyjobTitleTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              },
+              "lastModifyjobTitleWorkemateId" : {
+                "type" : "string"
+              }
+            }
+          },
+          "user.mark" : {
+            "type" : "string"
+          },
+          "user.mobile" : {
+            "type" : "string"
+          },
+          "user.mobilePhone" : {
+            "type" : "string"
+          },
+          "user.modifyDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "user.msnAccount" : {
+            "type" : "string"
+          },
+          "user.name" : {
+            "type" : "string"
+          },
+          "user.openId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.password" : {
+            "type" : "string"
+          },
+          "user.photoId" : {
+            "type" : "string"
+          },
+          "user.publicEmail" : {
+            "type" : "string"
+          },
+          "user.qqAccount" : {
+            "type" : "string"
+          },
+          "user.realName" : {
+            "type" : "string"
+          },
+          "user.regSource" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.regSourceType" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.registerDate" : {
+            "type" : "date",
+            "format" : "dateOptionalTime"
+          },
+          "user.registrationRecords" : {
+            "properties" : {
+              "application" : {
+                "type" : "string"
+              },
+              "originated" : {
+                "type" : "boolean"
+              },
+              "registrationTime" : {
+                "type" : "date",
+                "format" : "dateOptionalTime"
+              }
+            }
+          },
+          "user.skypeAccount" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.status" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.summary" : {
+            "type" : "string"
+          },
+          "user.twitterAccount" : {
+            "type" : "string"
+          },
+          "user.userSequence" : {
+            "type" : "double"
+          },
+          "user.userType" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.verifiedEmail" : {
+            "type" : "boolean"
+          },
+          "user.verifiedPublicEmail" : {
+            "type" : "boolean"
+          },
+          "user.website" : {
+            "type" : "string"
+          },
+          "user.workMail" : {
+            "type" : "string"
+          },
+          "user.workMailExt" : {
+            "type" : "string"
+          },
+          "user.workMobile" : {
+            "type" : "string"
+          },
+          "user.workMobileExt" : {
+            "type" : "string"
+          },
+          "user.workPhone" : {
+            "type" : "string"
+          },
+          "user.workPhoneExt" : {
+            "type" : "string"
+          },
+          "user.xtId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          },
+          "user.xtPassword" : {
+            "type" : "string"
+          },
+          "user.xtUserId" : {
+            "type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+          }
+          
+		   
+		}
+	}
+}
+

@@ -1,0 +1,230 @@
+{
+	"T_Network" : {
+		"properties" : {
+			"activeUserCount" : {
+				"type" : "long"
+			},
+			"addressesId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"adminCommunity" : {
+				"type" : "boolean"
+			},
+			"advancedOptions" : {
+				"properties" : {
+					"colleagueApplyAllowed" : {
+						"type" : "boolean"
+					},
+					"colleagueDirectlyJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"externalStaffJoinAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteAllowed" : {
+						"type" : "boolean"
+					},
+					"memberInviteNeedAudit" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"allowEmail" : {
+				"type" : "boolean"
+			},
+			"allowSms" : {
+				"type" : "boolean"
+			},
+			"alphabetic" : {
+				"type" : "boolean"
+			},
+			"anyMemberCanInventOther" : {
+				"type" : "boolean"
+			},
+			"className" : {
+				"type" : "string"
+			},
+			"closeBirthDay" : {
+				"type" : "boolean"
+			},
+			"closeDynamic" : {
+				"type" : "boolean"
+			},
+			"closeFollow" : {
+				"type" : "boolean"
+			},
+			"closeJoinCompanyDate" : {
+				"type" : "boolean"
+			},
+			"closeLike" : {
+				"type" : "boolean"
+			},
+			"closeRealName" : {
+				"type" : "boolean"
+			},
+			"closeYearsHonor" : {
+				"type" : "boolean"
+			},
+			"companySequence" : {
+				"type" : "long"
+			},
+			"count" : {
+				"properties" : {
+					"photoCount" : {
+						"type" : "long"
+					}
+				}
+			},
+			"createCommunity4AdminRights" : {
+				"type" : "boolean"
+			},
+			"creatorId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"delete" : {
+				"type" : "boolean"
+			},
+			"description" : {
+				"type" : "string"
+			},
+			"displayInDictory" : {
+				"type" : "boolean"
+			},
+			"domainId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"domainIdentity" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"domainVerified" : {
+				"type" : "boolean"
+			},
+			"eid" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"emailReceiveType" : {
+				"type" : "string"
+			},
+			"head" : {
+				"type" : "string"
+			},
+			"hot" : {
+				"properties" : {
+					"weekhot" : {
+						"type" : "long"
+					}
+				}
+			},
+			"isMicroNetwork" : {
+				"type" : "boolean"
+			},
+			"isNeedAuditOfJoin" : {
+				"type" : "boolean"
+			},
+			"lockDept" : {
+				"type" : "boolean"
+			},
+			"lockEmail" : {
+				"type" : "boolean"
+			},
+			"lockJob" : {
+				"type" : "boolean"
+			},
+			"lockMobile" : {
+				"type" : "boolean"
+			},
+			"logoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"name" : {
+				"type" : "string"
+			},
+			"orgInfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"orginfoId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"parentId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"pinYin" : {
+				"type" : "string"
+			},
+			"productFeature" : {
+				"properties" : {
+					"SHORTMAIL" : {
+						"type" : "boolean"
+					}
+				}
+			},
+			"publicInCompany" : {
+				"type" : "boolean"
+			},
+			"recommenderEmail" : {
+				"type" : "string"
+			},
+			"registerDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"resetPwdInAgent" : {
+				"type" : "boolean"
+			},
+			"sequence" : {
+				"type" : "string"
+			},
+			"shortName" : {
+				"type" : "string"
+			},
+			"status" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"subDomainName" : {
+				"type" : "string"
+			},
+			"subType" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"type" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			},
+			"updateDate" : {
+				"type" : "date",
+				"format" : "dateOptionalTime"
+			},
+			"userCount" : {
+				"type" : "long"
+			},
+			"xtId" : {
+				"type" : "string",
+						"index" : "not_analyzed",
+						"store" : true
+			}
+		}
+	}
+}
