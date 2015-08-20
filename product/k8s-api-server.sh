@@ -37,7 +37,6 @@ touch /var/log/kube-apiserver.log
 ## kubernetes master
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v /var/log/kube-apiserver.log:/var/log/kube-apiserver.log \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube apiserver \
 							--v=${KUBE_LOG_LEVEL} \
@@ -46,29 +45,24 @@ sudo docker run --net=host -d \
 							--insecure-bind-address=${KUBE_LISTEN_ADDRESS} \
 							--insecure-port=${KUBE_API_PORT} \
 							--allow-privileged=${KUBE_ALLOW_PRIV} \
-							--service-cluster-ip-range=${K8S_FLANNL_SUBNET_CONF} \
-							1>>/var/log/kube-apiserver.log 2>&1
+							--service-cluster-ip-range=${K8S_FLANNL_SUBNET_CONF}
 
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v /var/log/kube-controller-manager.log:/var/log/kube-controller-manager.log \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube controller-manager \
 							--logtostderr=${KUBE_LOGTOSTDERR} \
 							--address=${KUBE_LISTEN_ADDRESS} \
 						    --v=${KUBE_LOG_LEVEL} \
-							--master=${KUBE_MASTER} \
-							1>>/var/log/kube-controller-manager.log 2>&1
+							--master=${KUBE_MASTER} 
 						    
 						    
 sudo docker run --net=host -d \
 		-v /var/run/docker.sock:/var/run/docker.sock \
-		-v /var/log/kube-scheduler.log:/var/log/kube-scheduler.log \
 		${K8S_KUBE_IMAGE} \
 				/hyperkube scheduler \
 							--logtostderr=${KUBE_LOGTOSTDERR} \
 						    --v=${KUBE_LOG_LEVEL} \
 							--address=${KUBE_LISTEN_ADDRESS} \
-							--master=${KUBE_MASTER} \
-							1>>/var/log/kube-scheduler.log 2>&1
+							--master=${KUBE_MASTER} 
 
