@@ -1,0 +1,2 @@
+/usr/local/bin/etcd -name infra0 --listen-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --advertise-client-urls 'http://0.0.0.0:2379,http://0.0.0.0:4001' --listen-peer-urls 'http://0.0.0.0:2380,http://0.0.0.0:7001' --data-dir /kingdee/data/etcd/data
+-initial-cluster infra0=http://192.168.1.237:2380,infra1=http://192.168.1.238:2380,infra2=http://192.168.1.239:2380 -initial-cluster-state new

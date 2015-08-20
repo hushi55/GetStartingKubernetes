@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: packetbeat
+  namespace: kube-system
+spec:
+  containers:
+  - name: packetbeat
+    image: packetbeat
+    command:
+            - /usr/bin/packetbeat
+            - -e=true
+            - -c=/etc/packetbeat/packetbeat.yml
+    volumeMounts:
+      - name: packetbeat-logs
+        mountPath: /var/log/packetbeat
+  volumes:
+  - name:  packetbeat-logs
+    hostPath:
+      path: /var/log
+  hostNetwork: true
