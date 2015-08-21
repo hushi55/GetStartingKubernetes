@@ -16,10 +16,16 @@ KUBE_CLUSTER_DOMAIN=k8s.cluster.local
 
 KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
 
+KUBE_HEAPSTER_CADVISOR_HOSTFILE=/etc/heapster.d
+
 			
 echo "========= static pods config "
 mkdir -p ${KUBE_STATIC_POD_DIR_CONF}
 cp ./k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
+
+echo "========= static heapster config "
+mkdir -p ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
+cp ./images/heapster/hosts.json ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
 
 echo "========= installing docker-main kubernetes minoins ..."
 ## kubernetes master
