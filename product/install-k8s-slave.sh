@@ -21,6 +21,9 @@ systemctl disable docker.socket
 systemctl disable docker.service
 systemctl disable kubelet
 
+echo "========= cleaning iptables rules ..."
+iptables --flush
+iptables --flush -t nat
 
 echo "========= copying k8s static pods ..."
 KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d

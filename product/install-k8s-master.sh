@@ -22,6 +22,10 @@ systemctl disable docker.service
 systemctl disable kubelet
 
 
+echo "========= cleaning iptables rules ..."
+iptables --flush
+iptables --flush -t nat
+
 echo "========= installing docker service ..."
 sh ./docker-main.sh
 
