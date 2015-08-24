@@ -9,5 +9,4 @@ spec:
     image: index.alauda.cn/georce/router
     securityContext:
     - privileged: true
-
   hostNetwork: true
