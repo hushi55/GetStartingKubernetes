@@ -39,8 +39,8 @@ sudo docker run --net=host -d \
 					    --v=${KUBE_LOG_LEVEL} \
 					    --address=${KUBE_LISTEN_ADDRESS} \
 						--api-servers=${KUBE_MASTER} \
-						--cluster_dns=${KUBE_CLUSTER_DNS} \
-						--cluster_domain=${KUBE_CLUSTER_DOMAIN} \
+						--cluster-dns=${KUBE_CLUSTER_DNS} \
+						--cluster-domain=${KUBE_CLUSTER_DOMAIN} \
 						--config="${KUBE_STATIC_POD_DIR_CONF}" \
 					    --allow-privileged=${KUBE_ALLOW_PRIV}
 					    
