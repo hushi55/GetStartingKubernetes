@@ -12,22 +12,28 @@ spec:
         containerPort: 8080
         hostPort: 4194
     volumeMounts:
+    - name: rootfs
+      mountPath: /rootfs
+      readOnly: true
     - name: varrun
       mountPath: /var/run
       readOnly: false
-    - name: cgroup
-      mountPath: /sys/fs/cgroup
+    - name: sys
+      mountPath: /sys
       readOnly: true
     - name: docker
       mountPath: /var/lib/docker
       readOnly: true
   volumes:
+  - name: rootfs
+    hostPath:
+      path: /
   - name: varrun
     hostPath:
       path: /var/log
-  - name: cgroup
+  - name: sys
     hostPath:
-      path: /sys/fs/cgroup/
+      path: /sys
   - name: docker
     hostPath:
       path: /var/lib/docker/
