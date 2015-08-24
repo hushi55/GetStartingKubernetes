@@ -41,7 +41,7 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker -d --log-level=error -H unix:///var/run/docker.sock ${OPTIONS}
+ExecStart=/usr/bin/docker daemon --log-level=error -H unix:///var/run/docker.sock ${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
