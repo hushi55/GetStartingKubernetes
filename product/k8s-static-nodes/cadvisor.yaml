@@ -37,4 +37,3 @@ spec:
   - name: docker
     hostPath:
       path: /var/lib/docker/
-

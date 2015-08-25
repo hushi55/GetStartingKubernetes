@@ -25,4 +25,3 @@ spec:
   - name: containers
     hostPath:
       path: /var/lib/docker/containers
-

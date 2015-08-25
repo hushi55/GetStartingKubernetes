@@ -26,6 +26,11 @@ SocketGroup=docker
 WantedBy=sockets.target
 EOF
 
+
+#--storage-driver=devicemapper \\
+#			--storage-opt dm.override_udev_sync_check=true \\
+#**-l**, **--log-level**="*debug*|*info*|*error*|*fatal*""
+
 source $DOCKER_CONFIG
 cat <<EOF >/usr/lib/systemd/system/docker.service
 [Unit]
@@ -34,14 +39,10 @@ Documentation=http://docs.docker.com
 After=network.target docker.socket
 Requires=docker.socket
 
-#--storage-driver=devicemapper \\
-#			--storage-opt dm.override_udev_sync_check=true \\
-#**-l**, **--log-level**="*debug*|*info*|*error*|*fatal*""
-
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker -d --log-level=warn -H unix:///var/run/docker.sock ${OPTIONS}
+ExecStart=/usr/bin/docker daemon --log-level=warn --storage-opt dm.override_udev_sync_check=true -H unix:///var/run/docker.sock ${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
