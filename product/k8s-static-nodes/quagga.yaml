@@ -8,5 +8,5 @@ spec:
   - name: quagga
     image: index.alauda.cn/georce/router
     securityContext:
-      - privileged: true
+        privileged: true
   hostNetwork: true
