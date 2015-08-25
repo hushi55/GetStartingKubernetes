@@ -25,15 +25,17 @@ echo "========= cleaning iptables rules ..."
 iptables --flush
 iptables --flush -t nat
 
-echo "========= copying k8s static pods ..."
-KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
+echo "========= static master api schedule controll static pods"
+cp ../k8s-static-slave/* ${KUBE_STATIC_POD_DIR_CONF}
 
-cp ./k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
+echo "========= static pods config "
+mkdir -p ${KUBE_STATIC_POD_DIR_CONF}
+cp ../k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
 
+echo "========= static heapster config "
+mkdir -p ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
+cp ../images/heapster/hosts.json ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
 
-echo "========= installing docker service ..."
-sh ./docker-main.sh
-
-echo "========= installing docker-main kubernetes kubelet and proxy ..."
-sh ./k8s-kubelet-proxy.sh 
+echo "========= install kubelet services "
+sh ./kubelet.sh
 
