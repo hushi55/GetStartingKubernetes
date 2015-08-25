@@ -3,6 +3,7 @@ kind: "Pod"
 metadata: 
   name: "kube-apiserver"
 spec: 
+  hostNetwork: true
   containers: 
     - 
       name: "kube-apiserver"
@@ -11,19 +12,6 @@ spec:
         - "/bin/sh"
         - "-c"
         - "/hyperkube apiserver --v=2 --logtostderr=false  --etcd-servers=http://192.168.1.237:2379,http://192.168.1.238:2379,http://192.168.1.239:2379 --insecure-bind-address=0.0.0.0 --insecure-port=8080 --allow-privileged=false --secure-port=443 --service-cluster-ip-range=10.100.0.0/16 1>>/var/log/kube-apiserver.log 2>&1"
-      ports: 
-        - 
-          name: "https"
-          containerPort: 443
-          hostPort: 443
-        - 
-          name: "http"
-          containerPort: 7080
-          hostPort: 7080
-        - 
-          name: "local"
-          containerPort: 8080
-          hostPort: 8080
       volumeMounts: 
         - 
           name: "logfile"
