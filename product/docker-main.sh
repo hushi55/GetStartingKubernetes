@@ -58,6 +58,9 @@ EOF
 ### remove docker0 can not rm flannl docker br
 #ip link set dev docker0 down
 #brctl delbr docker0
+#ip=`ifconfig  | grep 'inet' | grep -v '127.0.0.1'| grep -v '10.100' | grep -v 'inet6' |  awk '{ print $2}' | awk -F'.' '{print $4}'`
+#bip='10.100.'${ip}'.0/24'
+#docker -d --bip=${bip}
 
 systemctl daemon-reload
 systemctl enable docker
