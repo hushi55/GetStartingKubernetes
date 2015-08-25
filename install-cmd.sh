@@ -55,4 +55,9 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/product/ && sh install-k8s-slave.sh
 
 
+########################
+## docker check config
+########################
+
+https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh
  
