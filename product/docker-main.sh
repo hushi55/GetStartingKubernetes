@@ -64,6 +64,9 @@ systemctl enable docker
 systemctl start docker
 
 
+docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
+
+
 ## load images
 #echo "========= installing docker-main images ..."
 #docker load -i /home/k8s.all.tar
