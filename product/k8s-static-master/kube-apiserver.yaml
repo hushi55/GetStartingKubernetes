@@ -1,4 +1,4 @@
-apiVersion: "v1beta3"
+apiVersion: "v1"
 kind: "Pod"
 metadata: 
   name: "kube-apiserver"
@@ -11,7 +11,7 @@ spec:
       command: 
         - "/bin/sh"
         - "-c"
-        - "/hyperkube apiserver --v=2 --logtostderr=false  --etcd-servers=http://192.168.1.237:2379 --insecure-bind-address=0.0.0.0 --insecure-port=8080 --allow-privileged=false --secure-port=443 --service-cluster-ip-range=10.100.0.0/16 1>>/var/log/kube-apiserver.log 2>&1"
+        - "/hyperkube apiserver --v=2 --logtostderr=false  --etcd-servers=http://192.168.1.237:2379,http://192.168.1.238:2379,http://192.168.1.239:2379 --insecure-bind-address=0.0.0.0 --insecure-port=8080 --allow-privileged=false --secure-port=443 --service-cluster-ip-range=10.100.0.0/16 1>>/var/log/kube-apiserver.log 2>&1"
       ports: 
         - 
           name: "https"

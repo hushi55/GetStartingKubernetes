@@ -6,7 +6,8 @@ spec:
   hostNetwork: true
   containers: 
     - 
-      privileged: true
+      securityContext:
+        privileged: true
       name: "kube-controller-manager"
       image: "gcr.io/google_containers/hyperkube:v1.0.3"
       command: 
