@@ -30,7 +30,7 @@ spec:
       path: /
   - name: varrun
     hostPath:
-      path: /var/log
+      path: /var/run
   - name: sys
     hostPath:
       path: /sys
