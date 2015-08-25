@@ -18,7 +18,7 @@ Description=Docker Socket for the API
 
 [Socket]
 ListenStream=/var/run/docker.sock
-SocketMode=0666
+SocketMode=0660
 SocketUser=root
 SocketGroup=docker
 
