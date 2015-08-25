@@ -69,6 +69,7 @@ docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-emp
 
 
 iptables -t nat -A POSTROUTING -s 10.100.66.0/24  -o  eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.100.20.0/24  -o  eth0 -j MASQUERADE
 
 sed -i "s/packetbeat-/logstash-/g" `grep 'packetbeat-' -rl ./dashboards/`
 
@@ -166,6 +167,29 @@ kubectl stop -f res-controller.yaml
 kubectl delete -f res-service.yaml
 kubectl stop -f public-controller.yaml
 kubectl delete -f public-service.yaml
+
+
+
+
+#########################################################
+########               product        ###################
+#########################################################
+kubectl create -f dns/skydns-rc.yaml
+kubectl create -f dns/skydns-svc.yaml
+
+kubectl stop -f dns/skydns-rc.yaml
+kubectl delete -f dns/skydns-svc.yaml
+
+
+kubectl create -f cluster-monitoring/heapster-controller.yaml
+kubectl create -f cluster-monitoring/heapster-service.yaml
+kubectl create -f cluster-monitoring/influxdb-grafana-controller.yaml
+kubectl create -f cluster-monitoring/grafana-service.yaml
+
+kubectl stop -f cluster-monitoring/heapster-controller.yaml
+kubectl delete -f cluster-monitoring/heapster-service.yaml
+kubectl stop -f cluster-monitoring/influxdb-grafana-controller.yaml
+kubectl delete -f cluster-monitoring/grafana-service.yaml
 
 
 
