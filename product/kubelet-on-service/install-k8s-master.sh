@@ -47,6 +47,10 @@ echo "========= static heapster config "
 mkdir -p ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
 cp ../images/heapster/hosts.json ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
 
+touch /var/log/kube-scheduler.log
+touch /var/log/kube-controller-manager.log
+touch /var/log/kube-apiserver.log
+
 echo "========= install kubelet services "
 sh ./kubelet.sh
 
