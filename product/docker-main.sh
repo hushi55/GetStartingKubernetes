@@ -81,6 +81,13 @@ echo "========= docker cleaning exited and dead contain ..."
 docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
 
 
+echo "========= cleaning kubernetes soft links ..."
+rm -fr /var/lib/kubelet/*
+yum install -y symlinks
+symlinks -d /var/log/containers
+
+
+
 ## load images
 #echo "========= installing docker-main images ..."
 #docker load -i /home/k8s.all.tar
