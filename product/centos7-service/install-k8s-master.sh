@@ -48,6 +48,7 @@ rm -f ${KUBE_STATIC_POD_DIR_CONF}/cadvisor.yaml
 
 echo "========= installing k8s docker-main kubernetes master ..."
 mkdir -p /etc/kubernetes/
+mkdir -p /var/log/k8s
 cp ./config/config		/etc/kubernetes/config
 
 sh ./services/kube-apiserver.sh

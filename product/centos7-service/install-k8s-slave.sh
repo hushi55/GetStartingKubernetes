@@ -48,6 +48,7 @@ sh ../docker-main.sh
 
 echo "========= installing docker-main kubernetes kubelet and proxy ..."
 mkdir -p /etc/kubernetes/
+mkdir -p /var/log/k8s
 cp ./config/config		/etc/kubernetes/config
 sh ./services/kubelet.sh
 sh ./services/kube-proxy.sh

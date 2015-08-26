@@ -15,7 +15,7 @@ KUBE_LOGTOSTDERR_true="--logtostderr=true"
 
 # journal message level, 0 is debug
 KUBE_LOG_LEVEL="--v=0"
-KUBE_LOG_DIR="--log-dir=/var/log/"
+KUBE_LOG_DIR="--log-dir=/var/log/k8s"
 
 
 
