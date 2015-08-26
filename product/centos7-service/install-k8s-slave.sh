@@ -40,6 +40,7 @@ rm -fr /etc/kubelet.d/
 mkdir -p ${KUBE_STATIC_POD_DIR_CONF}
 
 cp ../k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
+rm -f ${KUBE_STATIC_POD_DIR_CONF}/cadvisor.yaml
 
 
 echo "========= installing docker service ..."
