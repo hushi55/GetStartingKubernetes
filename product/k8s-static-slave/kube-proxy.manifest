@@ -1,0 +1,47 @@
+{
+  "apiVersion": "v1",
+  "kind": "Pod",
+  "metadata": {
+    "name": "kube-proxy"
+  },
+  "spec": {
+    "hostNetwork": true,
+    "containers": [
+      {
+        "securityContext": {
+          "privileged": true
+        },
+        "name": "kube-controller-manager",
+        "image": "gcr.io/google_containers/hyperkube:v1.0.3",
+        "command": [
+          "/bin/sh",
+          "-c",
+          "/hyperkube proxy  --logtostderr=false --v=2  --bind-address=0.0.0.0 --master=172.20.10.221:8080 1>>/var/log/kube-proxy.log 2>&1"
+        ],
+        "livenessProbe": {
+          "httpGet": {
+            "path": "/healthz",
+            "port": 10249
+          },
+          "initialDelaySeconds": 15,
+          "timeoutSeconds": 1
+        },
+        "volumeMounts": [
+          {
+            "name": "logfile",
+            "mountPath": "/var/log/kube-proxy.log",
+            "readOnly": false
+          }
+        ]
+      }
+    ],
+    "volumes": [
+      {
+        "name": "logfile",
+        "hostPath": {
+          "path": "/var/log/kube-proxy.log"
+        }
+      }
+    ]
+  }
+}
