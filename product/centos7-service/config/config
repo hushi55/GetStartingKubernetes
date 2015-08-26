@@ -30,7 +30,7 @@ KUBE_MASTER="--master=http://172.20.10.221:8080"
 KUBE_ADDRESS="--address=0.0.0.0"
 
 # k8s bin file dir
-KUBE_BIN_DIR=/kingdee/kubernetes/bin
+KUBE_BIN_DIR="/kingdee/kubernetes/bin"
 
 
 
