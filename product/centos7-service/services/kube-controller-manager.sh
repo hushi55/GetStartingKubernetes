@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ../config/config
+source /etc/kubernetes/config
 
 cat <<EOF >/usr/lib/systemd/system/kube-controller-manager.service
 [Unit]

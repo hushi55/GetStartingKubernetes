@@ -43,7 +43,7 @@ KUBE_STATIC_POD_DIR_CONF=/etc/kubelet.d
 mkdir -p ${KUBE_STATIC_POD_DIR_CONF}
 rm -fr /etc/kubelet.d/
 
-cp ./k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
+cp ../k8s-static-nodes/* ${KUBE_STATIC_POD_DIR_CONF}
 
 echo "========= installing k8s docker-main kubernetes master ..."
 mkdir -p /etc/kubernetes/
