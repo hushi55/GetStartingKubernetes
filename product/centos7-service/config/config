@@ -1,0 +1,88 @@
+###
+# kubernetes system config
+#
+# The following values are used to configure various aspects of all
+# kubernetes services, including
+#
+#   kube-apiserver.service
+#   kube-controller-manager.service
+#   kube-scheduler.service
+#   kubelet.service
+#   kube-proxy.service
+# logging to stderr means we get it in the systemd journal
+KUBE_LOGTOSTDERR_FALSE="--logtostderr=false"
+KUBE_LOGTOSTDERR_true="--logtostderr=true"
+
+# journal message level, 0 is debug
+KUBE_LOG_LEVEL="--v=0"
+KUBE_LOG_DIR="--log-dir=/var/log/"
+
+
+
+# Should this cluster be allowed to run privileged docker containers
+KUBE_ALLOW_PRIV_FALSE="--allow-privileged=false"
+KUBE_ALLOW_PRIV_TRUE="--allow-privileged=true"
+
+# How the controller-manager, scheduler, and proxy find the apiserver
+KUBE_MASTER="--master=http://172.20.10.221:8080"
+
+# How the controller-manager, scheduler bind to interfaces
+KUBE_ADDRESS="--address=0.0.0.0"
+
+# k8s bin file dir
+KUBE_BIN_DIR=/kingdee/kubernetes/bin
+
+
+
+################################################
+####### api server config		 ###############
+################################################
+
+API_SERVER_ETCD_SERVERS="--etcd-servers=http://192.168.1.237:2379,http://192.168.1.238:2379,http://192.168.1.239:2379"
+
+API_SERVER_IP_RANGE="--service-cluster-ip-range=10.100.0.0/16"
+
+API_SERVER_ARGS="--insecure-bind-address=0.0.0.0 --insecure-port=8080"
+
+
+################################################
+####### kube-controller-manager config		 ###
+################################################
+CONTROLLER_ARGS=""
+
+
+
+################################################
+####### kube-scheduler config		 ###########
+################################################
+SCHEDULER_ARGS=""
+
+
+################################################
+####### kubelet config		 ###################
+################################################
+
+# The address for the info server to serve on (set to 0.0.0.0 or "" for all interfaces)
+KUBELET_ADDRESS="--address=0.0.0.0"
+
+# The port for the info server to serve on
+# KUBELET_PORT="--port=10250"
+
+# You may leave this blank to use the actual hostname
+KUBELET_HOSTNAME="--hostname-override=127.0.0.1"
+
+# location of the api-server
+KUBELET_API_SERVER="--api-servers=http://172.20.10.221:8080"
+
+# Add your own!
+KUBELET_ARGS="--cluster-dns=10.100.100.100 --cluster-domain=k8s.cluster.local --config=/etc/kubelet.d"
+
+
+
+
+################################################
+####### kube-proxy config		 ###################
+################################################
+PROXY_BIND_ADDRESS="--bind-address=0.0.0.0"
+PROXY_ARGS=""
+
