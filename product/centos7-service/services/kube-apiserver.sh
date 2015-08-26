@@ -19,7 +19,7 @@ ExecStart=${KUBE_BIN_DIR}/kube-apiserver \\
 	${KUBE_ALLOW_PRIV_TRUE} \\
 	${API_SERVER_ETCD_SERVERS} \\
 	${API_SERVER_IP_RANGE} \\
-	${API_SERVER_ARGS
+	${API_SERVER_ARGS}
 Restart=on-failure
 
 [Install]
