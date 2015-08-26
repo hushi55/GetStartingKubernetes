@@ -14,7 +14,13 @@ spec:
     volumeMounts:
       - name: packetbeat-logs
         mountPath: /var/log/packetbeat
+      - name: localtime
+        mountPath: /etc/localtime
+        readOnly: true
   volumes:
+  - name: localtime
+    hostPath:
+      path: /etc/localtime
   - name:  packetbeat-logs
     hostPath:
       path: /var/log

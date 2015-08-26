@@ -18,6 +18,9 @@ spec:
       mountPath: /varlog
     - name: containers
       mountPath: /var/lib/docker/containers
+    - name: localtime
+      mountPath: /etc/localtime
+      readOnly: true
   volumes:
   - name: varlog
     hostPath:
@@ -25,3 +28,6 @@ spec:
   - name: containers
     hostPath:
       path: /var/lib/docker/containers
+  - name: localtime
+    hostPath:
+      path: /etc/localtime
