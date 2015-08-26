@@ -6,6 +6,5 @@ docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-emp
 
 
 echo "========= cleaning kubernetes soft links ..."
-rm -fr /var/lib/kubelet/*
 yum install -y symlinks
 symlinks -d /var/log/containers
