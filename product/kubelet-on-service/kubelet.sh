@@ -3,7 +3,7 @@
 KUBE_BIN_DIR=/kingdee/kubernetes/bin
 KUBE_LOGTOSTDERR=false
 KUBE_LOG_LEVEL=0
-KUBE_LOG_DIR=/kingdee/kubernetes/logs
+KUBE_LOG_DIR=/var/log
 MINION_ADDRESS=0.0.0.0
 MINION_PORT=10250
 KUBE_ALLOW_PRIV=true
@@ -26,6 +26,7 @@ Requires=docker.socket
 ExecStart=${KUBE_BIN_DIR}/kubelet \\
     --logtostderr=${KUBE_LOGTOSTDERR} \\
     --v=${KUBE_LOG_LEVEL} \\
+    --log-dir=${KUBE_LOG_DIR} \\
     --address=${MINION_ADDRESS} \\
 	--api-servers=${KUBE_API_SERVERS} \\
     --cluster-dns=${KUBE_CLUSTER_DNS} \\
