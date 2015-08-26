@@ -44,6 +44,9 @@ mkdir -p /etc/cadvisor/
 cp ../images/heapster/hosts.json ${KUBE_HEAPSTER_CADVISOR_HOSTFILE}
 cp ../images/heapster/hosts.json /etc/cadvisor/container_hints.json
 
+echo "========= installing docker service ..."
+sh ../docker-main.sh
+
 echo "========= install kubelet services "
 sh ./kubelet.sh
 

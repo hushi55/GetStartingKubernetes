@@ -55,6 +55,9 @@ touch /var/log/kube-scheduler.log
 touch /var/log/kube-controller-manager.log
 touch /var/log/kube-apiserver.log
 
+echo "========= installing docker service ..."
+sh ../docker-main.sh
+
 echo "========= install kubelet services "
 sh ./kubelet.sh
 
