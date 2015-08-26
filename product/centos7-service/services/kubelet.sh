@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./config/config
+source ../config/config
 
 cat <<EOF >/usr/lib/systemd/system/kubelet.service
 [Unit]
