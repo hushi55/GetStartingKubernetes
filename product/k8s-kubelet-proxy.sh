@@ -53,4 +53,9 @@ sudo docker run --net=host -d \
 					    --v=${KUBE_LOG_LEVEL} \
 					    --bind-address=${KUBE_LISTEN_ADDRESS} \
 					    --master=${KUBE_MASTER} 
+					    
+					    
+echo "========= docker cleaning exited and dead contain ..."
+docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
+
 
