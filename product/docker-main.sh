@@ -42,7 +42,12 @@ Requires=docker.socket
 [Service]
 Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
-ExecStart=/usr/bin/docker daemon --log-level=warn --storage-opt dm.override_udev_sync_check=true -H unix:///var/run/docker.sock ${OPTIONS}
+ExecStart=/usr/bin/docker \\
+			daemon \\
+			--log-level=warn \\
+			--storage-opt dm.override_udev_sync_check=true \\
+			-H unix:///var/run/docker.sock \\
+			${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
@@ -63,11 +68,16 @@ EOF
 #bip='10.100.'${ip}'.0/24'
 #docker -d --bip=${bip}
 
+
+echo "========= cleaning iptables rules ..."
+iptables --flush
+iptables --flush -t nat
+
 systemctl daemon-reload
 systemctl enable docker
 systemctl start docker
 
-echo "========= docker cleaning ..."
+echo "========= docker cleaning exited and dead contain ..."
 docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
 
 

@@ -1,5 +1,9 @@
 #!/bin/sh
 
+echo "*               soft    nofile            1048576" >>	/etc/security/limits.conf 
+echo "*               hard    nofile            1048576" >>	/etc/security/limits.conf 
+echo "*               soft    nofile            1048576" >>	/etc/security/limits.d/20-nproc.conf
+
 ## update yum source
 yum update -y
 
