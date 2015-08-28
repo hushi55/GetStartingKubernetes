@@ -67,6 +67,7 @@ EOF
 ##clean docker contain
 docker ps -a | grep -E 'Exited|Dead' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
 
+docker ps -a | grep -v CONTAINER | awk '{print $1}' | xargs --no-run-if-empty docker inspect --format '{{ .Id }} {{ .State.Running }}' | grep  'false' | awk '{print $1}'  | xargs --no-run-if-empty docker rm -f
 
 iptables -t nat -A POSTROUTING -s 10.100.66.0/24  -o  eth0 -j MASQUERADE
 iptables -t nat -A POSTROUTING -s 10.100.20.0/24  -o  eth0 -j MASQUERADE
