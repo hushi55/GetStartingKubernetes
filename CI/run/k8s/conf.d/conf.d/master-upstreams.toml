@@ -2,6 +2,9 @@
 src = "upstream.tmpl"
 ## nginx conf.d
 dest = "master.stream.conf"
+mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-master",
 ]
+check_cmd = "/usr/sbin/nginx -t -c {{.src}}"
+reload_cmd = "/usr/sbin/service nginx restart"

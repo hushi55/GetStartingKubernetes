@@ -12,7 +12,7 @@ mkdir -p ${CONFD_CONF}/templates,conf.d
 ## download confd bin
 curl https://github.com/kelseyhightower/confd/releases/download/v${confd_version}/confd-${confd_version}-linux-amd64 -o /kingdee/confd/bin/confd
 
-cp ./conf.d/conf.toml ${CONFD_CONF}/conf.d
+cp ./conf.d/* ${CONFD_CONF}/conf.d
 cp ./conf.d/templates/master/location/location.tmpl ${CONFD_CONF}/templates
 cp ./conf.d/templates/master/upstream/upstream.tmpl ${CONFD_CONF}/templates
 
