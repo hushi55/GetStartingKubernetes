@@ -44,7 +44,7 @@ spec:
         # command = "/kube2sky"
         - -domain=k8s.cluster.local
         - --kube_master_url=http://172.20.10.221:8080
-        - -etcd-server="http://192.168.1.237:2379"
+        - -etcd-server=http://192.168.1.237:2379
       - name: skydns
         image: gcr.io/google_containers/skydns:2015-03-11-001
         resources:
@@ -55,6 +55,7 @@ spec:
         # command = "/skydns"
         - -machines=http://192.168.1.237:2379,http://192.168.1.238:2379,http://192.168.1.239:2379
         - -addr=0.0.0.0:53
+        - -discover=true
         - -domain=k8s.cluster.local.
         ports:
         - containerPort: 53
