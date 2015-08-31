@@ -1,0 +1,35 @@
+
+
+
+### 注意这里以 namespace 分割 
+#etcdctl -C 192.168.1.237:2379 get /registry/services/endpoints/kube-system/monitoring-grafana
+#{"kind":"Endpoints","apiVersion":"v1","metadata":{"name":"monitoring-grafana",
+#"namespace":"kube-system",
+#"selfLink":"/api/v1/namespaces/kube-system/endpoints/monitoring-grafana",
+#"uid":"cf3066c5-4fa9-11e5-bfd1-aad0aaa03bb7","resourceVersion":"445453",
+#"creationTimestamp":"2015-08-31T06:30:44Z",
+#"labels":{"kubernetes.io/cluster-service":"true","kubernetes.io/name":"Grafana"}},
+#"subsets":[
+#	{"addresses":[{"ip":"10.100.118.4",
+#			"targetRef":{"kind":"Pod","namespace":"kube-system",
+#			"name":"monitoring-influx-grafana-v1-m4kl8",
+#			"uid":"ceaee88f-4fa9-11e5-bfd1-aad0aaa03bb7",
+#			"resourceVersion":"445469"}}],
+#	"ports":[{"port":8080,"protocol":"TCP"}]}
+#]}
+
+{{$endpoints := getvs "/registry/services/endpoints/kingdee-master/*"}}
+{{range $spec := $endpoints}}
+{{$data := json $spec}}
+{{ if $data.subsets }}
+
+	upstream {{$data.metadata.name}} {
+		{{range $si, $se := $data.subsets}}
+		{{range  $ai, $ae := $se.addresses}}
+	    server {{$ae.ip}}:10091
+		{{ end }}
+		{{ end }}
+	}
+
+{{ end }}
+{{ end }}
