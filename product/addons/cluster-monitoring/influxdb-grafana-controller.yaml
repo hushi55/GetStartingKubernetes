@@ -33,3 +33,11 @@ spec:
               value: 192.168.1.237
             - name: INFLUXDB_PORT
               value: "8086"
+          volumeMounts:
+          - name: localtime
+            mountPath: /etc/localtime
+            readOnly: true
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
