@@ -5,7 +5,7 @@ metadata:
   namespace: kingdee-master
   labels: 
     kingdee/space-master: "true"
-    kingdee/name: "space-master"
+    kingdee/name: "space"
 spec: 
   ports: 
     - port: 80

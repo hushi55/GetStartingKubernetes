@@ -7,7 +7,7 @@ metadata:
     k8s-app: microblog
     version: v1
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     k8s-app: microblog
     version: v1

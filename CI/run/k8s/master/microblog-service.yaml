@@ -5,7 +5,7 @@ metadata:
   namespace: kingdee-master
   labels: 
     kingdee/microblog-master: "true"
-    kingdee/name: "microblog-master"
+    kingdee/name: "microblog"
 spec: 
   ports: 
     - port: 80
