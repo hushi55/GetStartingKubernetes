@@ -17,7 +17,7 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-upstream.tmpl
 	upstream {{\$data.metadata.name}} {
 		{{range \$si, \$se := \$data.subsets}}
 		{{range  \$ai, \$ae := \$se.addresses}}
-	    server {{\$ae.ip}}:10091
+	    server {{\$ae.ip}}:10091;
 		{{ end }}
 		{{ end }}
 	}
@@ -67,8 +67,8 @@ mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
 ]
-#check_cmd = "/usr/local/nginx/sbin/nginx -t"
-#reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
+check_cmd = "/usr/local/nginx/sbin/nginx -t"
+reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
 
 EOF
 
