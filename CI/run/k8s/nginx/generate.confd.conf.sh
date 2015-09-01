@@ -67,8 +67,8 @@ mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
 ]
-check_cmd = "/usr/local/nginx/sbin/nginx -t"
-reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
+#check_cmd = "/usr/local/nginx/sbin/nginx -t"
+#reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
 
 EOF
 
