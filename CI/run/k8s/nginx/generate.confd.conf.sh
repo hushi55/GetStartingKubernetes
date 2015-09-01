@@ -65,7 +65,7 @@ cat <<EOF >${confd_conf_dir}/conf.d/${branch}-upstreams.toml
 [template]
 src = "${branch}-upstream.tmpl"
 ## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.stream.conf"
+dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.1.stream.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
@@ -80,7 +80,7 @@ cat <<EOF >${confd_conf_dir}/conf.d/${branch}-locations.toml
 [template]
 src = "${branch}-location.tmpl"
 ## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.locations.conf"
+dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.2.locations.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
