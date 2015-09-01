@@ -59,20 +59,6 @@ EOF
 #######  first  tmp
 #############################################################
 
-cat <<EOF >${confd_conf_dir}/conf.d/${branch}-locations.toml
-
-[template]
-src = "${branch}-location.tmpl"
-## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.locations.conf"
-mode = "0644"
-keys = [
-  "/registry/services/endpoints/kingdee-${branch}",
-]
-#check_cmd = "/usr/local/nginx/sbin/nginx -t"
-#reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
-
-EOF
 
 cat <<EOF >${confd_conf_dir}/conf.d/${branch}-upstreams.toml
 
@@ -89,6 +75,20 @@ reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
 
 EOF
 
+cat <<EOF >${confd_conf_dir}/conf.d/${branch}-locations.toml
+
+[template]
+src = "${branch}-location.tmpl"
+## nginx conf.d
+dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.locations.conf"
+mode = "0644"
+keys = [
+  "/registry/services/endpoints/kingdee-${branch}",
+]
+#check_cmd = "/usr/local/nginx/sbin/nginx -t"
+#reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
+
+EOF
 
 #############################################################
 #############################################################
