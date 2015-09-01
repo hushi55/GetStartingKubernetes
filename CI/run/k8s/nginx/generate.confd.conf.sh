@@ -60,12 +60,12 @@ EOF
 #############################################################
 
 
-cat <<EOF >${confd_conf_dir}/conf.d/${branch}-upstreams.toml
+cat <<EOF >${confd_conf_dir}/conf.d/${branch}-1.upstreams.toml
 
 [template]
 src = "${branch}-upstream.tmpl"
 ## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.1.stream.conf"
+dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.stream.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
@@ -75,12 +75,12 @@ reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
 
 EOF
 
-cat <<EOF >${confd_conf_dir}/conf.d/${branch}-locations.toml
+cat <<EOF >${confd_conf_dir}/conf.d/${branch}-2.locations.toml
 
 [template]
 src = "${branch}-location.tmpl"
 ## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.2.locations.conf"
+dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.locations.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-${branch}",
