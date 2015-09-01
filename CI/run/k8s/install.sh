@@ -15,7 +15,7 @@ mkdir -p ${CONFD_CONF}/{templates,conf.d}
 
 
 ## download confd bin
-curl https://github.com/kelseyhightower/confd/releases/download/v${confd_version}/confd-${confd_version}-linux-amd64 -o ${CONFD_BIN}/confd
+wget https://github.com/kelseyhightower/confd/releases/download/v${confd_version}/confd-${confd_version}-linux-amd64 -o ${CONFD_BIN}/confd
 
 chmod +x ${CONFD_BIN}/confd
 
