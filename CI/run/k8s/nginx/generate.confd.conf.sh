@@ -14,7 +14,8 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-upstream.tmpl
 {{\$data := json \$spec}}
 {{ if \$data.subsets }}
 
-	upstream {{\$data.metadata.name}} {
+	{{\$urls := split \$data.metadata.name "-"}}
+	upstream {{index \$urls 0}}_{{index \$urls 1}} {
 		{{range \$si, \$se := \$data.subsets}}
 		{{range  \$ai, \$ae := \$se.addresses}}
 	    server {{\$ae.ip}}:10091;
@@ -40,7 +41,7 @@ location /{{index \$urls 0}} {
  	error_page 403  /res/error/500.html;
  	error_page 404  /res/error/404.html;
 	error_page 500  /res/error/500.html;
-    proxy_pass http://{{\$data.metadata.name}};
+    proxy_pass http://{{index \$urls 0}}_{{index \$urls 1}};
     #health_check;
     proxy_redirect off;
     proxy_set_header X-Real-IP \$remote_addr;
