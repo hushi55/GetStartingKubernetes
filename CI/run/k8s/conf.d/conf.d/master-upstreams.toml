@@ -1,7 +1,7 @@
 [template]
 src = "upstream.tmpl"
 ## nginx conf.d
-dest = "master.stream.conf"
+dest = "/usr/local/nginx/conf/conf.d/stream/master/master.stream.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints/kingdee-master",
