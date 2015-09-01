@@ -6,11 +6,12 @@ mkdir -p /usr/local/nginx/conf/conf.d/server
 
 cat <<EOF >/usr/local/nginx/conf/conf.d/server/${branch}.server.conf
 
+include  conf.d/stream/${branch}/*.conf;
+ 
 server {
         listen       80;
         server_name  ${branch}.kingdee;
         
-        include  conf.d/stream/${branch}/*.conf; 
         include  conf.d/location/${branch}/*.conf; 
 
         location / {
