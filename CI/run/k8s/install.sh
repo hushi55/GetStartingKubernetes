@@ -21,6 +21,8 @@ wget https://github.com/kelseyhightower/confd/releases/download/v${confd_version
 mv /tmp/confd-${confd_version}-linux-amd64 ${CONFD_BIN}/confd
 chmod +x ${CONFD_BIN}/confd
 
+cd -
+
 #cp ./conf.d/* ${CONFD_CONF}/conf.d
 #cp ./conf.d/templates/master/location/location.tmpl ${CONFD_CONF}/templates
 #cp ./conf.d/templates/master/upstream/upstream.tmpl ${CONFD_CONF}/templates
