@@ -5,8 +5,6 @@ cat <<EOF >/usr/lib/systemd/system/confd.service
 Description=confd for k8s Discovering services
 
 [Service]
-WorkingDirectory=/var/lib/kubelet
-EnvironmentFile=-/etc/kubernetes/config
 ExecStart=/kingdee/confd/bin/confd \\
 			-interval=60 \\
 			-backend etcd -node 192.168.1.237:2379 \\
