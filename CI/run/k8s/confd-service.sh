@@ -14,7 +14,7 @@ LimitNOFILE=1048576
 LimitNPROC=1048576
 
 [Install]
-WantedBy=confd.target
+WantedBy=multi-user.target
 EOF
 
 systemctl daemon-reload
