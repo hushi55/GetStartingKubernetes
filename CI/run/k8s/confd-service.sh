@@ -13,4 +13,10 @@ ExecStart=/kingdee/confd/bin/confd \\
 LimitNOFILE=1048576
 LimitNPROC=1048576
 
+[Install]
+WantedBy=confd.target
 EOF
+
+systemctl daemon-reload
+systemctl enable confd
+systemctl start confd
