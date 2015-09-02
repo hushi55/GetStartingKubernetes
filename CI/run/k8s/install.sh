@@ -53,4 +53,6 @@ sh ./nginx/generate.confd.conf.sh ${BRANCH} ${CONFD_CONF}
 
 
 
-${CONFD_BIN}/confd -onetime -backend etcd -node 192.168.1.237:2379 -confdir=${CONFD_CONF}
+#${CONFD_BIN}/confd -onetime -backend etcd -node 192.168.1.237:2379 -confdir=${CONFD_CONF}
+
+#nohup /kingdee/confd/bin/confd -interval=60 -backend etcd -node 192.168.1.237:2379 -confdir=/kingdee/confd/conf/ > /kingdee/confd/logs/confd.log 2>&1 &
