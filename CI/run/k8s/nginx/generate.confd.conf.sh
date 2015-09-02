@@ -14,14 +14,9 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-upstream.tmpl
 {{\$data := json \$spec}}
 {{ if \$data.subsets }}
 
-	upstream {{\$data.metadata.name}} {
-		{{range \$si, \$se := \$data.subsets}}
-		{{range  \$ai, \$ae := \$se.addresses}}
-	    server {{\$ae.ip}}:10091;
-		{{ end }}
-		{{ end }}
-	}
-
+upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
+	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
+}
 {{ end }}
 {{ end }}
 
@@ -46,10 +41,7 @@ location /{{index \$urls 0}} {
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     proxy_set_header Host \$http_host;
-}
-
-{{ end }}
-{{ end }}
+} {{ end }}{{ end }}
 
 EOF
 
