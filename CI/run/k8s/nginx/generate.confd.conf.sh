@@ -8,26 +8,18 @@ mkdir -p /usr/local/nginx/conf/conf.d/server
 
 
 cat <<EOF >${confd_conf_dir}/templates/${branch}-upstream.tmpl
-
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}/*"}}
-{{range \$spec := \$endpoints}}
-{{\$data := json \$spec}}
-{{ if \$data.subsets }}
-
+{{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
-}
-{{ end }}
+}{{ end }}
 {{ end }}
 
 EOF
 
 cat <<EOF >${confd_conf_dir}/templates/${branch}-location.tmpl
-
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}/*"}}
-{{range \$spec := \$endpoints}}
-{{\$data := json \$spec}}
-{{ if \$data.subsets }}
+{{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 {{\$urls := split \$data.metadata.name "-"}}
 location /{{index \$urls 0}} {
  	proxy_intercept_errors on;
