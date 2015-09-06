@@ -26,7 +26,7 @@
 	upstream {{$data.metadata.name}} {
 		{{range $si, $se := $data.subsets}}
 		{{range  $ai, $ae := $se.addresses}}
-	    server {{$ae.ip}}:10091
+	    server {{$ae.ip}}:10091;
 		{{ end }}
 		{{ end }}
 	}
