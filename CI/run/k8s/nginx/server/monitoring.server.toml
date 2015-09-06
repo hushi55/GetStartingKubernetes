@@ -1,0 +1,10 @@
+[template]
+src = "monitoring.server.tmpl"
+## nginx conf.d
+dest = "/usr/local/nginx/conf/conf.d/server/monitoring.server.conf"
+mode = "0644"
+keys = [
+	"/registry/services/endpoints/kube-system/monitoring-grafana",
+]
+#check_cmd = "/usr/local/nginx/sbin/nginx -t"
+#reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
