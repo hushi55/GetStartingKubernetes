@@ -21,10 +21,11 @@ ENV INFLUXDB_EXTERNAL_URL /db/
 
 RUN curl -L https://github.com/jimmidyson/kuisp/releases/download/v${KUISP_VERSION}/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz | \
       tar xzv && \
-    curl -L http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz | \
-      tar xzv -C /opt && \
+    curl -L http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz -o /tmp/grafana-${GRAFANA_VERSION}.tar.gz && \
+      tar xzvf /tmp/grafana-${GRAFANA_VERSION}.tar.gz -C /opt && \
     mv /opt/grafana-${GRAFANA_VERSION} /opt/grafana && \
-    chown nobody:nobody /opt/grafana/ 
+    chown nobody:nobody /opt/grafana/ && \
+    rm -rf /tmp/*
 
 COPY config.js.tmpl /opt/grafana/config.js.tmpl
 COPY kubernetes-dashboard.json /opt/grafana/app/dashboards/kubernetes.json
