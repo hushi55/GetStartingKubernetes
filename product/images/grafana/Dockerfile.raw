@@ -17,16 +17,7 @@ ENV INFLUXDB_USER root
 ENV INFLUXDB_PASSWORD root
 ENV INFLUXDB_EXTERNAL_URL /db/
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.1/main" > /etc/apk/repositories && \
-	echo "http://nl.alpinelinux.org/alpine/v3.1/main" >> /etc/apk/repositories && \
-	echo "#http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-	echo "#http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-	echo " " >> /etc/apk/repositories && \
-	echo "http://dl-2.alpinelinux.org/alpine/v3.1/main" >> /etc/apk/repositories && \
-	echo "#http://dl-2.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-	echo "#http://dl-2.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-	echo " " >> /etc/apk/repositories && \
-	apk-install ca-certificates curl tar && \
+RUN apk-install ca-certificates curl tar && \
     curl -L https://github.com/jimmidyson/kuisp/releases/download/v${KUISP_VERSION}/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz | \
       tar xzv && \
     mkdir /opt && \

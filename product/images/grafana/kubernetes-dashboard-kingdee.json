@@ -1,7 +1,7 @@
 {
   "id": null,
-  "title": "Kubernetes Cluster!",
-  "originalTitle": "Kubernetes Cluster!",
+  "title": "Kubernetes Cluster!test",
+  "originalTitle": "Kubernetes Cluster!test",
   "tags": [],
   "style": "light",
   "timezone": "browser",
@@ -76,7 +76,7 @@
               "function": "derivative",
               "column": "value",
               "series": "cpu/usage_ns_cumulative",
-              "query": "select container_name, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter group by time(2m), container_name order asc",
+              "query": "select container_name, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter group by time($interval), container_name order asc",
               "condition_filter": false,
               "condition_key": "",
               "condition_op": "=",
@@ -254,7 +254,7 @@
               "function": "derivative",
               "column": "value",
               "series": "cpu/usage_ns_cumulative",
-              "query": "select container_name, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter and container_name =~ /heapster/ group by time(2m), container_name order asc",
+              "query": "select container_name, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter and container_name =~ /heapster/ group by time($interval), container_name order asc",
               "condition_filter": true,
               "interval": "5s",
               "groupby_field_add": true,
@@ -272,7 +272,7 @@
           "annotate": {
             "enable": false
           },
-          "id": 3,
+          "id": 1,
           "seriesOverrides": [],
           "links": [],
           "interval": ""
@@ -368,198 +368,10 @@
           "annotate": {
             "enable": false
           },
-          "id": 4,
+          "id": 2,
           "seriesOverrides": [],
           "links": [],
           "interval": "2s"
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "test",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "ns",
-            "ns"
-          ],
-          "grid": {
-            "max": null,
-            "min": null,
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": true,
-          "spyable": true,
-          "options": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": true,
-            "current": false,
-            "total": false,
-            "avg": true
-          },
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true,
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "randomWalk('random walk')",
-              "function": "derivative",
-              "column": "value",
-              "series": "cpu/usage_ns_cumulative",
-              "query": "select container_name, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter and container_name =~ /influxdb/ group by time(2m), container_name order asc",
-              "condition_filter": true,
-              "interval": "5s",
-              "groupby_field_add": true,
-              "groupby_field": "container_name",
-              "alias": "",
-              "condition": "labels =~ /name:influxGrafana/",
-	      "rawQuery": true,
-              "fill": "0"
-            }
-          ],
-          "aliasColors": {},
-          "title": "influxdb CPU usage",
-          "datasource": null,
-          "renderer": "png",
-          "annotate": {
-            "enable": false
-          },
-          "id": 5,
-          "seriesOverrides": [],
-          "interval": "",
-          "links": []
-        },
-        {
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "bytes",
-            "bytes"
-          ],
-          "grid": {
-            "max": null,
-            "min": null,
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "spyable": true,
-          "options": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": true,
-            "current": false,
-            "total": false,
-            "avg": true
-          },
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true,
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "randomWalk('random walk')",
-              "function": "mean",
-              "column": "value",
-              "series": "memory/usage_bytes_gauge",
-              "query": "select container_name, mean(value) from \"memory/usage_bytes_gauge\" where $timeFilter and container_name =~ /influxdb/ group by time($interval), container_name order asc",
-              "condition_filter": true,
-              "interval": "5s",
-              "groupby_field_add": true,
-              "groupby_field": "container_name",
-              "alias": "",
-	      "rawQuery": true,
-              "condition": "labels =~ /name:influxGrafana/"
-            },
-            {
-              "target": "randomWalk('random walk2')",
-              "function": "mean",
-              "column": "value",
-              "series": "memory/working_set_bytes_gauge",
-              "query": "select container_name, mean(value) from \"memory/working_set_bytes_gauge\" where $timeFilter and container_name =~ /influxdb/ group by time($interval), container_name order asc",
-              "condition_filter": true,
-              "interval": "5s",
-              "groupby_field_add": true,
-              "groupby_field": "container_name",
-              "alias": "",
-	      "rawQuery": true,
-              "condition": "labels =~ /name:influxGrafana/"
-            }
-          ],
-          "aliasColors": {},
-          "title": "influxdb memory usage",
-          "datasource": null,
-          "renderer": "png",
-          "annotate": {
-            "enable": false
-          },
-          "id": 6,
-          "seriesOverrides": [],
-          "links": []
         }
       ],
       "notice": false
@@ -632,7 +444,7 @@
               "function": "derivative",
               "column": "value",
               "series": "cpu/usage_ns_cumulative",
-              "query": "select hostname, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter group by time(2m), hostname fill(null) order asc",
+              "query": "select hostname, derivative(value) from \"cpu/usage_ns_cumulative\" where $timeFilter group by time($interval), hostname fill(null) order asc",
               "condition_filter": true,
               "interval": "5s",
               "groupby_field_add": true,
@@ -650,7 +462,7 @@
           "annotate": {
             "enable": false
           },
-          "id": 7,
+          "id": 3,
           "seriesOverrides": [],
           "interval": "2s",
           "links": []
@@ -695,7 +507,7 @@
             "max": true,
             "current": true,
             "total": false,
-            "avg": false,
+            "avg": true,
             "alignAsTable": true,
             "rightSide": false
           },
@@ -735,7 +547,541 @@
           "annotate": {
             "enable": false
           },
+          "id": 4,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+	{
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "derivative",
+              "column": "value",
+              "series": "network/tx_bytes_cumulative",
+              "query": "select hostname, derivative(value) from \"network/tx_bytes_cumulative\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster network send bytes - Stacked",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
+          "id": 5,
+          "seriesOverrides": [],
+          "links": []
+        },
+	{
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "mean",
+              "column": "value",
+              "series": "filesystem/limit_bytes_gauge",
+              "query": "select hostname, mean(value) from \"filesystem/limit_bytes_gauge\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster filesystem limist bytes - Stacked",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
+          "id": 6,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+	{
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "mean",
+              "column": "value",
+              "series": "filesystem/usage_bytes_gauge",
+              "query": "select hostname, mean(value) from \"filesystem/usage_bytes_gauge\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster filesystem usage bytes - Stacked",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
+          "id": 7,
+          "seriesOverrides": [],
+          "links": []
+        },
+	{
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "derivative",
+              "column": "value",
+              "series": "network/rx_bytes_cumulative",
+              "query": "select hostname, derivative(value) from \"network/rx_bytes_cumulative\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster network read bytes - Stacked",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
           "id": 8,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ],
+      "notice": false
+    },
+	{
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "derivative",
+              "column": "value",
+              "series": "memory/major_page_faults_cumulative",
+              "query": "select hostname, derivative(value) from \"memory/major_page_faults_cumulative\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster major page faults",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
+          "id": 9,
+          "seriesOverrides": [],
+          "links": []
+        },
+	{
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "bytes",
+            "bytes"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": true,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": true,
+            "current": true,
+            "total": false,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "derivative",
+              "column": "value",
+              "series": "memory/page_faults_cumulative",
+              "query": "select hostname, derivative(value) from \"memory/page_faults_cumulative\" where $timeFilter group by time($interval), hostname fill(null) order asc",
+              "condition_filter": true,
+              "interval": "5s",
+              "groupby_field_add": true,
+              "groupby_field": "hostname",
+              "alias": "",
+              "rawQuery": true,
+              "condition": "",
+              "fill": "null"
+            }
+          ],
+          "aliasColors": {},
+          "title": "Cluster page faults",
+          "datasource": null,
+          "renderer": "png",
+          "annotate": {
+            "enable": false
+          },
+          "id": 10,
           "seriesOverrides": [],
           "links": []
         }
@@ -777,7 +1123,7 @@
     }
   ],
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "templating": {
