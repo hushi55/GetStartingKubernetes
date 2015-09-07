@@ -1,4 +1,4 @@
-FROM FROM      kingdee/centos7:v1
+FROM      kingdee/centos7:v1
 MAINTAINER -10 <shi_hu@kingdee.com>
 
 
