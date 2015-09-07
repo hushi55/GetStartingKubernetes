@@ -1,0 +1,36 @@
+FROM FROM      kingdee/centos7:v1
+MAINTAINER -10 <shi_hu@kingdee.com>
+
+
+ENTRYPOINT ["/kuisp"]
+CMD ["-p", "8080", "-c", "/opt/grafana/config.js.tmpl=/opt/grafana/config.js", "-s", "/db/=${INFLUXDB_PROTO}://${INFLUXDB_HOST}:${INFLUXDB_PORT}/db/"]
+EXPOSE 8080
+
+ENV KUISP_VERSION 0.12
+
+ENV GRAFANA_VERSION 2.1.3
+ENV INFLUXDB_NAME k8s
+ENV GRAFANA_DB_NAME grafana
+ENV GRAFANA_DEFAULT_DASHBOARD /dashboard/file/kubernetes.json
+ENV INFLUXDB_PROTO http
+ENV INFLUXDB_HOST influxdb
+ENV INFLUXDB_PORT 8086
+ENV INFLUXDB_USER root
+ENV INFLUXDB_PASSWORD root
+ENV INFLUXDB_EXTERNAL_URL /db/
+
+RUN curl -L https://github.com/jimmidyson/kuisp/releases/download/v${KUISP_VERSION}/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz | \
+      tar xzv && \
+    mkdir /opt && \
+    curl -L http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz | \
+      tar xzv -C /opt && \
+    mv /opt/grafana-${GRAFANA_VERSION} /opt/grafana && \
+    chown nobody:nobody /opt/grafana/ 
+
+COPY config.js.tmpl /opt/grafana/config.js.tmpl
+COPY kubernetes-dashboard.json /opt/grafana/app/dashboards/kubernetes.json
+RUN chmod a+r /opt/grafana/config.js.tmpl && \
+    chmod a+r /opt/grafana/app/dashboards/kubernetes.json
+
+WORKDIR /opt/grafana/
+USER nobody
