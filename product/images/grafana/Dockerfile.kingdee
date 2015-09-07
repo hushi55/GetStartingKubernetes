@@ -19,9 +19,9 @@ ENV INFLUXDB_USER root
 ENV INFLUXDB_PASSWORD root
 ENV INFLUXDB_EXTERNAL_URL /db/
 
-RUN curl -L https://github.com/jimmidyson/kuisp/releases/download/v${KUISP_VERSION}/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz -o /tmp/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz && \
+RUN curl -L http://172.20.10.220/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz -o /tmp/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz && \
       tar xzvf /tmp/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz -C / && \
-    curl -L http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz -o /tmp/grafana-${GRAFANA_VERSION}.tar.gz && \
+    curl -L http://172.20.10.220/grafana-${GRAFANA_VERSION}.tar.gz -o /tmp/grafana-${GRAFANA_VERSION}.tar.gz && \
       tar xzvf /tmp/grafana-${GRAFANA_VERSION}.tar.gz -C /opt && \
     mv /opt/grafana-${GRAFANA_VERSION} /opt/grafana && \
     chown nobody:nobody /opt/grafana/ && \
