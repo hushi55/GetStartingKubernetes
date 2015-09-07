@@ -21,7 +21,6 @@ ENV INFLUXDB_EXTERNAL_URL /db/
 
 RUN curl -L https://github.com/jimmidyson/kuisp/releases/download/v${KUISP_VERSION}/kuisp-${KUISP_VERSION}-linux-amd64.tar.gz | \
       tar xzv && \
-    mkdir /opt && \
     curl -L http://grafanarel.s3.amazonaws.com/grafana-${GRAFANA_VERSION}.tar.gz | \
       tar xzv -C /opt && \
     mv /opt/grafana-${GRAFANA_VERSION} /opt/grafana && \
