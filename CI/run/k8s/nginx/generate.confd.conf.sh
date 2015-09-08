@@ -34,7 +34,6 @@ if (\$uri ~* "/kingdee.com/"){
         set \$group {{\$data.metadata.name}}_ab;
 }
 {{end}}
-{{end}}
 
 {{\$urls := split \$data.metadata.name "-"}}
 location /{{index \$urls 0}} {
