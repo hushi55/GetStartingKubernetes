@@ -32,7 +32,7 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-location.tmpl
 
 {{if exists "/registry/services/endpoints/kingdee-${branch}-ab/\$data.metadata.name"}}
 set \$group {{\$data.metadata.name}};
-{{\$upstream := 'group'}}
+{{\$upstream := "group"}}
 if (\$uri ~* "kingdee.com"){
         set \$group {{\$data.metadata.name}}_ab;
 }
