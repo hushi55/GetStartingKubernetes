@@ -15,11 +15,29 @@ upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{ran
 }{{ end }}
 {{ end }}
 
+{{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
+{{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
+upstream {{\$data.metadata.name}}_ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
+	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
+}{{ end }}
+{{ end }}
+
 EOF
 
 cat <<EOF >${confd_conf_dir}/templates/${branch}-location.tmpl
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}/*"}}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
+
+{{\$upstream := \$data.metadata.name}}
+
+{{if exists "/registry/services/endpoints/kingdee-${branch}-ab/\$data.metadata.name}}
+set \$group {{\$data.metadata.name}};
+{{\$upstream := 'group'}}
+if (\$uri ~* "kingdee.com"){
+        set \$group {{\$data.metadata.name}}_ab;
+}
+{{end}}
+
 {{\$urls := split \$data.metadata.name "-"}}
 location /{{index \$urls 0}} {
  	proxy_intercept_errors on;
@@ -27,7 +45,7 @@ location /{{index \$urls 0}} {
  	error_page 403  /res/error/500.html;
  	error_page 404  /res/error/404.html;
 	error_page 500  /res/error/500.html;
-    proxy_pass http://{{\$data.metadata.name}};
+    proxy_pass http://{{\$upstream}};
     #health_check;
     proxy_redirect off;
     proxy_set_header X-Real-IP \$remote_addr;

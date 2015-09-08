@@ -181,6 +181,12 @@ kubectl create -f dns/skydns-svc.yaml
 kubectl stop -f dns/skydns-rc.yaml
 kubectl delete -f dns/skydns-svc.yaml
 
+kubectl create -f kube-ui/kube-ui-rc.yaml
+kubectl create -f kube-ui/kube-ui-svc.yaml
+
+kubectl stop -f   kube-ui/kube-ui-rc.yaml
+kubectl delete -f kube-ui/kube-ui-svc.yaml
+
 
 kubectl create -f cluster-monitoring/heapster-controller.yaml
 kubectl create -f cluster-monitoring/heapster-service.yaml
