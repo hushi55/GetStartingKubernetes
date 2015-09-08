@@ -30,12 +30,13 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-location.tmpl
 
 {{\$upstream := \$data.metadata.name}}
 
-{{if exists "/registry/services/endpoints/kingdee-${branch}-ab/\$data.metadata.name}}
+{{if exists "/registry/services/endpoints/kingdee-${branch}-ab/\$data.metadata.name"}}
 set \$group {{\$data.metadata.name}};
 {{\$upstream := 'group'}}
 if (\$uri ~* "kingdee.com"){
         set \$group {{\$data.metadata.name}}_ab;
 }
+{{end}}
 {{end}}
 
 {{\$urls := split \$data.metadata.name "-"}}
