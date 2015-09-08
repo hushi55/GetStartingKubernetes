@@ -29,7 +29,7 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-location.tmpl
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 
 {{if exists "/registry/services/endpoints/kingdee-${branch}-ab/\$data.metadata.name"}}
-{{\$upstream = "\$group\"}}
+set \$group {{\$data.metadata.name}};
 if (\$uri ~* "/kingdee.com/"){
         set \$group {{\$data.metadata.name}}_ab;
 }
