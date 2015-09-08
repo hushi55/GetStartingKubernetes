@@ -43,7 +43,8 @@ fi
 
 mkdir -p /usr/local/nginx/conf/conf.d/{location,stream,server}
 
-BRANCH=master
+BRANCH="$1"
+BRANCH=${BRANCH:-smoke}
 
 mkdir -p /usr/local/nginx/conf/conf.d/{location,stream}/${BRANCH}/
 
