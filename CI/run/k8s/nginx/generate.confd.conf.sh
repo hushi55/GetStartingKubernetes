@@ -71,8 +71,7 @@ src = "${branch}-upstream.tmpl"
 dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.stream.conf"
 mode = "0644"
 keys = [
-  "/registry/services/endpoints/kingdee-${branch}",
-  "/registry/services/endpoints/kingdee-${branch}-ab/",
+  "/registry/services/endpoints",
 ]
 check_cmd = "/usr/local/nginx/sbin/nginx -t"
 reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
@@ -87,8 +86,7 @@ src = "${branch}-location.tmpl"
 dest = "/usr/local/nginx/conf/conf.d/location/${branch}/${branch}.locations.conf"
 mode = "0644"
 keys = [
-  "/registry/services/endpoints/kingdee-${branch}",
-  "/registry/services/endpoints/kingdee-${branch}-ab/",
+  "/registry/services/endpoints",
 ]
 #check_cmd = "/usr/local/nginx/sbin/nginx -t"
 #reload_cmd = "/usr/local/nginx/sbin/nginx -s reload"
