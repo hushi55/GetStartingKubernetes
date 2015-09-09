@@ -8,7 +8,7 @@ Description=confd for k8s Discovering services
 ExecStart=/kingdee/confd/bin/confd \\
 			-interval=60 \\
 			-backend etcd -node 192.168.1.237:2379 \\
-			--log-level="debug" -watch=true \\
+			-log-level="debug" -watch=true \\
 			-confdir=/kingdee/confd/conf/
 Restart=on-failure
 
@@ -16,6 +16,8 @@ Restart=on-failure
 WantedBy=multi-user.target
 EOF
 
+systemctl stop confd
+systemctl disable confd
 systemctl daemon-reload
 systemctl enable confd
 systemctl start confd
