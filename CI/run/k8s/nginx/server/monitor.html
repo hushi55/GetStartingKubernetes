@@ -134,6 +134,13 @@
         <ul class="items clearfix">
             <li>
                 <span>
+                    <h5>k8s 系统监控</h5>
+                    用于监控 k8s 集群的运行情况。
+                </span>
+                <a href="http://172.20.10.221:8080/api/v1/proxy/namespaces/kube-system/services/kube-ui/#/dashboard/" target="_blank">k8s监控</a>
+            </li>
+			<li>
+                <span>
                     <h5>Docker 容器监控可视化</h5>
                     用于监控 Docker 容器的运行情况。
                 </span>
@@ -141,10 +148,24 @@
             </li>
 			<li>
                 <span>
+                    <h5>系统网络监控。</h5>
+                    系统网络中的 http monogdb mysql 等访问情况。 
+                </span>
+                <a href="http://192.168.1.238:5601/#/dashboard/Packetbeat-Dashboard?_g=%28%29&_a=%28filters:!%28%29,panels:!%28%28col:1,id:Web-transactions,row:4,size_x:3,size_y:2,type:visualization%29,%28col:4,id:DB-transactions,row:4,size_x:3,size_y:2,type:visualization%29,%28col:7,id:Cache-transactions,row:4,size_x:3,size_y:2,type:visualization%29,%28col:10,id:RPC-transactions,row:4,size_x:3,size_y:2,type:visualization%29,%28col:1,id:Response-times-percentiles,row:6,size_x:6,size_y:3,type:visualization%29,%28col:1,id:Errors-count-over-time,row:9,size_x:6,size_y:3,type:visualization%29,%28col:7,id:Errors-vs-successful-transactions,row:6,size_x:6,size_y:3,type:visualization%29,%28col:1,id:HTTP-error-codes,row:12,size_x:6,size_y:3,type:visualization%29,%28col:7,id:Latency-histogram,row:9,size_x:6,size_y:3,type:visualization%29,%28col:3,id:Client-locations,row:1,size_x:10,size_y:3,type:visualization%29,%28col:1,id:Navigation,row:1,size_x:2,size_y:3,type:visualization%29%29,query:%28query_string:%28analyze_wildcard:!t,query:%27*%27%29%29,title:%27Packetbeat%20Dashboard%27%29" target="_blank">系统网络监控</a>
+            </li>
+			<li>
+                <span>
                     <h5>ELK 收集系统的日志。</h5>
                     所有 Docker 和 系统的日志都收集到 ELK 系统中。 
                 </span>
                 <a href="http://192.168.1.238:5601/" target="_blank">ELK logs</a>
+            </li>
+			<li>
+                <span>
+                    <h5>elasticsearch 监控。</h5>
+                    elasticsearch 集群中索引和系统的监控。 
+                </span>
+                <a href="http://192.168.1.237:9200/_plugin/marvel" target="_blank">Elasticsearch 监控</a>
             </li>
         </ul>
     </div>
