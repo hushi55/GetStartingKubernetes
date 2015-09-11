@@ -11,7 +11,7 @@ cat <<EOF >${confd_conf_dir}/conf.d/${branch}-server.toml
 [template]
 src = "${branch}-server.tmpl"
 ## nginx conf.d
-dest = "/usr/local/nginx/conf/conf.d/stream/${branch}/${branch}.server.conf"
+dest = "/usr/local/nginx/conf/conf.d/server/${branch}.server.conf"
 mode = "0644"
 keys = [
   "/registry/services/endpoints",
