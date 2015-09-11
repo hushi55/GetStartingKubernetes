@@ -41,16 +41,22 @@ fi
 ######################################
 
 
-mkdir -p /usr/local/nginx/conf/conf.d/{location,stream,server}
+#mkdir -p /usr/local/nginx/conf/conf.d/{location,stream,server}
+
 
 BRANCH="$1"
 BRANCH=${BRANCH:-smoke}
 
-mkdir -p /usr/local/nginx/conf/conf.d/{location,stream}/${BRANCH}/
+#mkdir -p /usr/local/nginx/conf/conf.d/{location,stream}/${BRANCH}/
+rm -rf /usr/local/nginx/conf/conf.d/*
+mkdir -p /usr/local/nginx/conf/conf.d/server
+
+
 
 ## 
-sh ./nginx/generate.server.sh ${BRANCH}
-sh ./nginx/generate.confd.conf.sh ${BRANCH} ${CONFD_CONF}
+#sh ./nginx/generate.server.sh ${BRANCH}
+#sh ./nginx/generate.confd.conf.sh ${BRANCH} ${CONFD_CONF}
+sh ./nginx/generate.server.tmpl.sh ${BRANCH} ${CONFD_CONF}
 
 
 
