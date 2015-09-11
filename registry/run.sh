@@ -33,6 +33,9 @@ konrandleine/docker-registry-frontend:v2.0.1
 ##################################################
 ###############	 web UI 	    		###########
 ##################################################
+
+https://github.com/mkuchin/docker-registry-web.git
+
 docker run -d \
 --restart=always \
 -p 5050:8080 \

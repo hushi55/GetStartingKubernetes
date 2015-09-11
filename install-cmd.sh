@@ -60,4 +60,9 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 ########################
 
 https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh
+
+########## kubectl config set
+kubectl config set clusters.cluster.server=http://172.20.10.221:8080
+kubectl config set contexts.context.cluster cluster
+kubectl config set current-context context
  
