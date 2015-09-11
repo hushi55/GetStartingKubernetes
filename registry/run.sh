@@ -1,25 +1,53 @@
 
 
-docker run -d -p 5000:5000  -v /kingdee/docker/registry/images/:/var/lib/registry registry:2
+docker run -d -p 5002:5000  -v /kingdee/docker/registry/images/:/var/lib/registry registry:2
 
 docker run -d -p 5000:5000 --restart=always -v /kingdee/docker/registry/images/:/var/lib/registry registry:2
 docker run -d -p 5000:5000 --restart=always -v /kingdee/docker/registry/images/:/var/lib/registry registry-1.docker.io/distribution/registry:2.1
 docker run -d -p 5000:5000 --restart=always registry:2
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker run -d -p 5000:5000 --restart=always distribution/registry:2.1.1
 
+docker run -p 8081:8080 mlabouardy/registry-ui:latest
 
+docker run -d -p 8081:8080 --restart=always -e REG1=http://172.20.10.220:5000/v2/ atcol/docker-registry-ui:v2
 
 docker run -d --restart=always  --privileged=true --net=host index.alauda.cn/georce/router
 docker run -d -p 8080:8080 --restart=always -e REG1=http://172.20.10.220:5000/v2/ atcol/docker-registry-ui
 docker run -d -p 9087:80 --restart=always -e ENV_DOCKER_REGISTRY_HOST=172.20.10.220 -e ENV_DOCKER_REGISTRY_PORT=5000 konradkleine/docker-registry-frontend
-docker run -d -p 9088:80 --restart=always -e ENV_DOCKER_REGISTRY_HOST=172.20.10.220 -e ENV_DOCKER_REGISTRY_PORT=5000 konradkleine/docker-registry-frontend:v2
 
-docker run -d -p 5001:5000 --restart=always \
-  -v /home/registry/:/var/lib/registry \
-  -v /root/certs:/certs \
-  -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt \
-  -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key \
-  registry:2
+
+##### Git hub
+https://github.com/Takayoshi-Aoyagi/kuzilla
+
+docker run -i -t -p 8080:8080 -e REGISTRY_HOST=172.20.10.220 -e REGISTRY_PORT=5000 hyper/docker-registry-web
+
+docker run -d \
+-p 9089:80 \
+--restart=always \
+-e ENV_DOCKER_REGISTRY_HOST=172.20.10.220 \
+-e ENV_DOCKER_REGISTRY_PORT=5000 \
+-e ENV_MODE_BROWSE_ONLY=true \
+konrandleine/docker-registry-frontend:v2.0.1
+
+##################################################
+###############	 web UI 	    		###########
+##################################################
+docker run -d \
+--restart=always \
+-p 5050:8080 \
+-e REGISTRY_HOST=172.20.10.220 \
+-e REGISTRY_PORT=5000 \
+hyper/docker-registry-web
+
+##################################################
+###############	registry 2.0    		###########
+##################################################
+docker run -d -p 5000:5000 \
+--restart=always \
+-v /home/registry/:/var/lib/registry \
+registry:2
+ 
 
 mkdir -p certs && openssl req \
   -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \
