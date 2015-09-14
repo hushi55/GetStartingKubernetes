@@ -54,7 +54,7 @@ server {
         {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}/*"}}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 
-{{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s-ab" \$data.metadata.name)}}
+{{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$data.metadata.name)}}
 set \$group {{\$data.metadata.name}};
 if (\$uri ~* "/kingdee.com/"){
         set \$group {{\$data.metadata.name}}_ab;
@@ -68,7 +68,7 @@ if (\$uri ~* "/kingdee.com/"){
 		 	error_page 403  /res/error/500.html;
 		 	error_page 404  /res/error/404.html;
 			error_page 500  /res/error/500.html;
-			{{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s-ab" \$data.metadata.name)}}
+			{{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$data.metadata.name)}}
 			proxy_pass http://\$group;
 			{{else}}
 			proxy_pass http://{{\$data.metadata.name}};
