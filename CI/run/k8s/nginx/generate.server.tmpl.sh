@@ -32,7 +32,7 @@ upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{ran
 
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-upstream {{\$data.metadata.name}}_ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
+upstream {{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
 }{{ end }}
 {{ end }}
@@ -57,7 +57,7 @@ server {
 {{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$data.metadata.name)}}
 set \$group {{\$data.metadata.name}};
 if (\$http_debug ~* "v1"){
-        set \$group {{\$data.metadata.name}}_ab;
+        set \$group {{\$data.metadata.name}}-ab;
 }
 {{end}}
 
