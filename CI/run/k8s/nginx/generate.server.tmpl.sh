@@ -56,7 +56,7 @@ server {
 
 {{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$data.metadata.name)}}
 set \$group {{\$data.metadata.name}};
-if (\$uri ~* "/kingdee.com/"){
+if (\$http_debug ~* "v1"){
         set \$group {{\$data.metadata.name}}_ab;
 }
 {{end}}
