@@ -1,5 +1,7 @@
 #!/bin/sh
 
+BASE_DIR=`dirname $0`
+
 ######################################
 ##### install confd     ##############
 ######################################
@@ -56,7 +58,7 @@ mkdir -p /usr/local/nginx/conf/conf.d/server
 ## 
 #sh ./nginx/generate.server.sh ${BRANCH}
 #sh ./nginx/generate.confd.conf.sh ${BRANCH} ${CONFD_CONF}
-sh ./nginx/generate.server.tmpl.sh ${BRANCH} ${CONFD_CONF}
+sh ${BASE_DIR}/nginx/generate.server.tmpl.sh ${BRANCH} ${CONFD_CONF}
 
 
 
