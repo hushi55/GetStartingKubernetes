@@ -31,7 +31,7 @@ upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{ran
 {{ end }}
 
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
-{{\$t := json (index $endpoints 0)}}
+{{\$t := json (index \$endpoints 0)}}
 {{\$flag := \$t.metadata.name }}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 upstream {{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
