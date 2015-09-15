@@ -31,11 +31,7 @@ upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{ran
 {{ end }}
 
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
-{{range \$spec_index, \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-{{if \$spec_index == 0}} 
-{{\$t := json (index \$endpoints 0)}}
-{{\$flag := \$t.metadata.name }}
-{{end}}
+{{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
 upstream {{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
 }{{ end }}
@@ -56,11 +52,13 @@ server {
             root   html;
         }
         
-        {{if \$flag}}
-        {{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$flag)}}
+        {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
+		{{range \$spec_index, \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
+		{{if \$spec_index eq 0}} 
 		if (\$http_debug ~* "v1"){
 		        set \$group -ab;
 		}
+		{{end}}
 		{{end}}
 		{{end}}
         
