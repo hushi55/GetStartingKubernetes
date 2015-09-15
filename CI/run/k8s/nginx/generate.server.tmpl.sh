@@ -54,7 +54,7 @@ server {
         
         {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
 		{{range \$spec_index, \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-		{{if \$spec_index eq 0}} 
+		{{if  eq \$spec_index 0}} 
 		if (\$http_debug ~* "v1"){
 		        set \$group -ab;
 		}
