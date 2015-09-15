@@ -30,10 +30,10 @@ upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{ran
 }{{ end }}
 {{ end }}
 
-{{\$flag := "" }}
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
+{{$t := json ($endpoints $url 0)}}
+{{$flag := $t.metadata.name }}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-{{if \$flag }} {{\$flag = \$data.metadata.name}} {{end}}
 upstream {{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
 }{{ end }}
