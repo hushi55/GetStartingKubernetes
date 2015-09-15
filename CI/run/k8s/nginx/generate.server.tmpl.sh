@@ -42,8 +42,9 @@ server {
         server_name  ${branch}.kingdee;
         
         location / {
-            root   html;
-            index  microblog index.html index.htm;
+            #root   html;
+            #index  microblog index.html index.htm;
+            rewrite ^/.* http://\$server_name/microblog permanent;
         }
 
         error_page   500 502 503 504  /50x.html;
