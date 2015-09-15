@@ -69,4 +69,4 @@ kill -9 `pgrep confd` && nohup /kingdee/confd/bin/confd -interval=60 -backend et
 
 echo "install successed"
 
-return 0
+#return 0
