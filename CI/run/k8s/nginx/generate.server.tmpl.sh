@@ -43,7 +43,7 @@ server {
         
         location / {
             root   html;
-            index  /microblog index.html index.htm;
+            index  microblog index.html index.htm;
         }
 
         error_page   500 502 503 504  /50x.html;
