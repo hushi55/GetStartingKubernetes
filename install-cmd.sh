@@ -59,6 +59,10 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 ## docker check config
 ########################
 
+
+## k8s delete namespace
+kubectl --namespace=kingdee-test23 delete rc,services -l version=v1
+
 https://raw.githubusercontent.com/docker/docker/master/contrib/check-config.sh
 
 ########## kubectl config set
