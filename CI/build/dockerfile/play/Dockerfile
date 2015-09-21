@@ -9,10 +9,11 @@ LABEL Description="This image is used to root fs of kingdee's weibo system" Vend
 
 
 # install play
-COPY play-1.2.6.1.zip /tmp/
+#COPY play-1.2.6.1.zip /tmp/
 COPY start.sh /tmp/
 
-RUN mkdir -p /kingdee/play/ && \
+RUN curl http://172.20.10.220/play-1.2.6.1.zip -o /tmp/play-1.2.6.1.zip && \
+	mkdir -p /kingdee/play/ && \
 	unzip /tmp/play-1.2.6.1.zip -d /kingdee/play/ && \
 	chmod +x /kingdee/play/play-1.2.6.1/play && \
 	mkdir -p /kingdee/jarapp/ && \

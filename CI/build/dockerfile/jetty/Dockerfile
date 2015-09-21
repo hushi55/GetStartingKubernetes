@@ -7,9 +7,10 @@ MAINTAINER -10 <shi_hu@kingdee.com>
 
 LABEL Description="This image is used to root fs of kingdee's weibo system" Vendor="Infrastructure Platform Group Products" Version="1.0"
 
-COPY jetty-distribution-8.1.17.v20150415.zip /tmp/
+#COPY jetty-distribution-8.1.17.v20150415.zip /tmp/
 
-RUN  cd  /tmp && \
+RUN  curl http://172.20.10.220/jetty-distribution-8.1.17.v20150415.zip -o /tmp/jetty-distribution-8.1.17.v20150415.zip && \
+	 cd  /tmp && \
 	 unzip /tmp/jetty-distribution-8.1.17.v20150415.zip -d /kingdee/ && \
 	 cd /kingdee && \
 	 mv jetty-distribution-8.1.17.v20150415 jetty && \

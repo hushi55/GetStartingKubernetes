@@ -1,6 +1,11 @@
 #!/bin/sh
 
-app=$1
+app=${1:-microblog}
+grp=${2:-output}
+branch=${3:-smoke}
+typ=${4:-war}
+
+date=`date +"%Y-%m-%d %H:%m:%S"`
 
 cat <<EOF >./Dockerfile
 # kingdee docker apps 
@@ -19,22 +24,26 @@ COPY global.properties /kingdee/jetty/etc/
 EXPOSE 10091
 
 # install jetty start shell script
-RUN mkdir -p /kingdee/jetty/domains/$app/logs
-RUN mkdir -p /kingdee/jetty/domains/$app/bin
-RUN mkdir -p /kingdee/jetty/domains/$app/etc
+RUN mkdir -p /kingdee/jetty/domains/$app/{logs,etc,bin}
+#RUN mkdir -p /kingdee/jetty/domains/$app/bin
+#RUN mkdir -p /kingdee/jetty/domains/$app/etc
 COPY bin/* /kingdee/jetty/domains/$app/bin/
 COPY etc/* /kingdee/jetty/domains/$app/etc/
 
 # deploy appcation
 RUN mkdir -p /kingdee/webapp/root\\\$${app}/$app
-COPY $app.war /tmp/
-RUN unzip /tmp/$app.war -d /kingdee/webapp/root\\\$${app}/$app
+#COPY $app.war /tmp/
+RUN curl -GET http://192.168.1.50:8098/dkr/$grp/$branch/$typ/$app.$typ -o /tmp/$app.$typ && \
+	unzip /tmp/$app.war -d /kingdee/webapp/root\\\$${app}/$app && \
+	touch /kingdee/webapp/root\\\$${app}/$app/ping.html && \
+	echo "ping succeed ! this image build by kingdee ${date} "  > /kingdee/webapp/root\\\$${app}/$app/ping.html && \
+	rm -rf /tmp/*
 
 # mount kingdee dir
 VOLUME ["/kingdee/jetty/domains/$app/logs"]
 
 # clean /tmp dir
-RUN rm -rf /tmp/*
+#RUN rm -rf /tmp/*
 
 # start apps
 WORKDIR /kingdee/jetty/domains/$app/bin/

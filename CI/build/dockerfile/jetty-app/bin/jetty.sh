@@ -3,7 +3,7 @@
 #
 #        AUTHOR: shibaolan (), shibaolan@kingdee.com
 #  ORGANIZATION: 
-#       CREATED: 2012Äê09ÔÂ21ÈÕ 11Ê±54·Ö26Ãë CST
+#       CREATED: 2012ï¿½ï¿½09ï¿½ï¿½21ï¿½ï¿½ 11Ê±54ï¿½ï¿½26ï¿½ï¿½ CST
 #      REVISION:  ---
 #===============================================================================
 BIN_HOME=`pwd`
@@ -112,7 +112,7 @@ fi
 #####################################################
 #DATE=`date +%Y%m%d%H%M`
 #GC_LOG_FILE_NAME=jvm_gc_$DATE.log
-JVM_MEM_OPTIONSFirst="-Xmx6144m -Xms256m -XX:PermSize=128m -XX:MaxPermSize=368m "
+JVM_MEM_OPTIONSFirst="-Xmx2g -Xms256m -XX:PermSize=128m -XX:MaxPermSize=368m "
 
 #####################################################
 JVM_MEM_OPTIONS="$JVM_MEM_OPTIONSFirst $JVM_MEM_OPTIONS"

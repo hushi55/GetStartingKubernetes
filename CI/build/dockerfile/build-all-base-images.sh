@@ -23,6 +23,11 @@ sh image.sh
 
 
 
+sh ../clean.sh
+
+
+
+
 
 
 

@@ -114,7 +114,7 @@
 		</init-param>
 		<init-param>
 			<param-name>gzip</param-name>
-			<param-value>true</param-value>
+			<param-value>false</param-value>
 		</init-param>
 		<init-param>
 			<param-name>maxCachedFileSize</param-name>
@@ -123,10 +123,6 @@
 		<init-param>
 			<param-name>maxCachedFiles</param-name>
 			<param-value>2048</param-value>
-		</init-param>
-		<init-param>
-			<param-name>gzip</param-name>
-			<param-value>true</param-value>
 		</init-param>
 		<init-param>
 			<param-name>useFileMappedBuffer</param-name>
