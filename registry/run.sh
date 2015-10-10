@@ -3,6 +3,9 @@
 docker run -d -p 5002:5000  -v /kingdee/docker/registry/images/:/var/lib/registry registry:2
 
 docker run -d -p 5000:5000 --restart=always -v /kingdee/docker/registry/images/:/var/lib/registry registry:2
+docker run -d -p 5000:5000 --restart=always -v /kingdee/docker/registry/images/:/var/lib/registry \
+		-e REGISTRY_STORAGE_DELETE_ENABLED=true
+		registry:2
 docker run -d -p 5000:5000 --restart=always -v /kingdee/docker/registry/images/:/var/lib/registry registry-1.docker.io/distribution/registry:2.1
 docker run -d -p 5000:5000 --restart=always registry:2
 docker run -d -p 5000:5000 --restart=always --name registry registry:2
@@ -49,7 +52,9 @@ hyper/docker-registry-web
 docker run -d -p 5000:5000 \
 --restart=always \
 -v /home/registry/:/var/lib/registry \
-registry:2
+-e REGISTRY_STORAGE_DELETE_ENABLED=true \
+--privileged=true \
+registry:2.1.1
  
 
 mkdir -p certs && openssl req \
