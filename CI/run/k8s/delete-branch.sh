@@ -1,5 +1,5 @@
 
-
+kubectl --namespace='kingdee-hushikssp12121212' delete rc,pods,services --all
 
 etcdctl -C 192.168.1.237:2379 rm --recursive /kingdee/git/${branch}
 
