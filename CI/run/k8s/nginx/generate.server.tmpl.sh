@@ -25,14 +25,14 @@ cat <<EOF >${confd_conf_dir}/templates/${branch}-server.tmpl
 
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}/*"}}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-upstream {{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
+upstream ${branch}-{{\$data.metadata.name}} {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
 }{{ end }}
 {{ end }}
 
 {{\$endpoints := getvs "/registry/services/endpoints/kingdee-${branch}-ab/*"}}
 {{range \$spec := \$endpoints}} {{\$data := json \$spec}} {{ if \$data.subsets }}
-upstream {{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
+upstream ${branch}-{{\$data.metadata.name}}-ab {	{{range \$si, \$se := \$data.subsets}} {{range  \$ai, \$ae := \$se.addresses}}
 	server {{\$ae.ip}}:10091; {{ end }} {{ end }}
 }{{ end }}
 {{ end }}
@@ -73,9 +73,9 @@ server {
 		 	error_page 404  /res/error/404.html;
 			error_page 500  /res/error/500.html;
 			{{if exists (printf "/registry/services/endpoints/kingdee-${branch}-ab/%s" \$data.metadata.name)}}
-			proxy_pass http://{{\$data.metadata.name}}\$group;
+			proxy_pass http://${branch}-{{\$data.metadata.name}}\$group;
 			{{else}}
-			proxy_pass http://{{\$data.metadata.name}};
+			proxy_pass http://${branch}-{{\$data.metadata.name}};
 			{{end}}
 			
 		    #health_check;
