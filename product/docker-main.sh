@@ -7,10 +7,11 @@ groupadd docker
 ## install brctl
 yum install -y bridge-utils
 
+GUESTHOST=(hostname -i)
 
 cat <<EOF >$DOCKER_CONFIG
 OPTIONS=--selinux-enabled=false 
-GUESTHOST=(hostname -i)
+GUESTHOST=${GUESTHOST}
 EOF
 
 cat <<EOF >/usr/lib/systemd/system/docker.socket
