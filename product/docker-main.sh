@@ -51,7 +51,7 @@ ExecStart=/usr/bin/docker \\
 			--storage-opt dm.override_udev_sync_check=true \\
 			-H unix:///var/run/docker.sock \\
 			--label guesthost=${GUESTHOST} \\
-			--log-driver=fluentd \\
+			--log-driver=json-file \\
 			--log-opt labels=guesthost  \\
 			${OPTIONS}
 LimitNOFILE=1048576
