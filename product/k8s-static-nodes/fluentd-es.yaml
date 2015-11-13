@@ -31,3 +31,5 @@ spec:
   - name: localtime
     hostPath:
       path: /etc/localtime
+  hostNetwork: true
+  
