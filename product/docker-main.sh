@@ -10,6 +10,7 @@ yum install -y bridge-utils
 
 cat <<EOF >$DOCKER_CONFIG
 OPTIONS=--selinux-enabled=false 
+GUESTHOST=(hostname -i)
 EOF
 
 cat <<EOF >/usr/lib/systemd/system/docker.socket
@@ -30,6 +31,7 @@ EOF
 #--storage-driver=devicemapper \\
 #			--storage-opt dm.override_udev_sync_check=true \\
 #**-l**, **--log-level**="*debug*|*info*|*error*|*fatal*""
+#--log-driver=json-file  \\
 
 source $DOCKER_CONFIG
 cat <<EOF >/usr/lib/systemd/system/docker.service
@@ -44,9 +46,13 @@ Type=notify
 EnvironmentFile=-$DOCKER_CONFIG
 ExecStart=/usr/bin/docker \\
 			daemon \\
+			--insecure-registry 172.20.10.220:5000 \\
 			--log-level=warn \\
 			--storage-opt dm.override_udev_sync_check=true \\
 			-H unix:///var/run/docker.sock \\
+			--label guesthost=${GUESTHOST} \\
+			--log-driver=fluentd \\
+			--log-opt labels=guesthost  \\
 			${OPTIONS}
 LimitNOFILE=1048576
 LimitNPROC=1048576
