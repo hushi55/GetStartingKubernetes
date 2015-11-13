@@ -24,7 +24,7 @@ systemctl disable kubelet
 
 echo "========= cleaning etcd config ..."
 etcdctl -C 192.168.1.237:2379 rm /registry --recursive
-
+etcdctl -C 192.168.1.237:2379 rm /skydns --recursive
 
 
 echo "========= cleaning iptables rules ..."

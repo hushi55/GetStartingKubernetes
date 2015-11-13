@@ -26,6 +26,7 @@ systemctl disable  kube-proxy.service
 
 echo "========= cleaning etcd config ..."
 etcdctl -C 192.168.1.237:2379 rm /registry --recursive
+etcdctl -C 192.168.1.237:2379 rm /skydns --recursive
 
 
 
