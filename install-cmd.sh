@@ -49,6 +49,14 @@ cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/Get
 #########################################################
 ########    k8s on docker for product   ##################
 #########################################################
+cd ~/GetStartingKubernetes && git pull &&  cd ~/GetStartingKubernetes/product/centos7-service && sh install-k8s-master.sh
+
+
+cd ~/GetStartingKubernetes && git pull && cd ~/GetStartingKubernetes/product/centos7-service && sh install-k8s-slave.sh
+
+#########################################################
+########    k8s for product   ##################
+#########################################################
 cd && rm -fr ~/GetStartingKubernetes && git clone https://github.com/hushi55/GetStartingKubernetes.git ~/GetStartingKubernetes && cd ~/GetStartingKubernetes/product/ && sh install-k8s-master.sh
 
 

@@ -7,7 +7,7 @@ groupadd docker
 ## install brctl
 yum install -y bridge-utils
 
-GUESTHOST=(hostname -i)
+GUESTHOST=`hostname -i`
 
 cat <<EOF >$DOCKER_CONFIG
 OPTIONS=--selinux-enabled=false 
