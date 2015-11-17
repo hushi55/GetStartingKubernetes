@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: monitoring-microblog-v1
+  namespace: kingdee-smoke
+  labels:
+    k8s-app: microblog
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    k8s-app: microblog
+    version: v1
+  template:
+    metadata:
+      labels:
+        k8s-app: microblog
+        version: v1
+    spec:
+      containers:
+        - image: 172.20.10.220:5000/kingdee/microblog-smoke
+          name: microblog
+          livenessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - curl -GET 127.0.0.1:10091/microblog/ping.html >/dev/null
+            initialDelaySeconds: 30
+            timeoutSeconds: 5

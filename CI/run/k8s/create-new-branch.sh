@@ -146,9 +146,9 @@ fi
 etcdctl -C 192.168.1.237:2379 set ${key_apps} "${old_apps}"
 
 
-#if [ ${#deployapps[@]} > 0 ]; then 
-#	for a in ${deployapps} 
-#	do
-#		sh ${BASE_DIR}/deploy-yaml.sh -a $a -b $branch -n $ns
-#	done
-#fi
+if [ ${#deployapps[@]} > 0 ]; then 
+	for a in ${deployapps} 
+	do
+		sh ${BASE_DIR}/deploy-yaml.sh -a $a -b $branch -n $ns
+	done
+fi

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: res-master
-  namespace: kingdee-master
+  name: res-smoke
+  namespace: kingdee-smoke
   labels: 
-    kingdee/res-master: "true"
-    kingdee/name: "res-master"
+    kingdee/res-smoke: "true"
+    kingdee/name: "res-smoke"
 spec: 
   ports: 
     - port: 80

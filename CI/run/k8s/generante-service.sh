@@ -41,15 +41,15 @@ spec:
         - image: ${image}
           name: ${app}
          # defines the health checking
-          livenessProbe:
+          #livenessProbe:
               # an http probe
-              httpGet:
-                 path: /${app}/ping.html
-                 port: 10091
+           #   httpGet:
+           #      path: /${app}/ping.html
+           #      port: 10091
               # length of time to wait for a pod to initialize
               # after pod startup, before applying health checking
-              initialDelaySeconds: 300
-              timeoutSeconds: 2         
+           #   initialDelaySeconds: 300
+           #   timeoutSeconds: 2         
 EOF
 
 redEcho "generated ${app}-controller.yaml"
@@ -59,7 +59,7 @@ cat <<EOF >${tmp_dir}/${app}-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: ${app}-${branch}
+  name: ${app}
   namespace: ${namespace}
   labels: 
     kingdee/${app}-${branch}: "true"

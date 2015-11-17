@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microblog-smoke-ab
+  namespace: kingdee-smoke-ab
+  labels: 
+    kingdee/microblog-smoke-ab: "true"
+    kingdee/name: "microblog-smoke-ab"
+spec: 
+  ports: 
+    - port: 80
+      targetPort: 10091
+  selector: 
+    k8s-app: microblog-ab
+
