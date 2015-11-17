@@ -35,7 +35,8 @@ cat <<EOF >./etc/jetty-deploy.xml
             <Arg>
               <New class="org.eclipse.jetty.deploy.providers.ContextProvider">
                 <Set name="monitoredDir"><Property name="jetty.home" default="." />/contexts</Set>
-                <Set name="scanInterval">5</Set>
+                <!-- <Set name="scanInterval">5</Set> -->
+                <Set name="scanInterval">0</Set>
               </New>
             </Arg>
           </Call>
@@ -46,7 +47,8 @@ cat <<EOF >./etc/jetty-deploy.xml
               <New class="org.eclipse.jetty.deploy.providers.WebAppProvider">
                 <Set name="monitoredDir">/kingdee/webapp/root\$${APP}</Set>
                 <Set name="defaultsDescriptor"><Property name="jetty.home" default="."/>/etc/webdefault.xml</Set>
-                <Set name="scanInterval">5</Set>
+                <!-- <Set name="scanInterval">5</Set> -->
+                <Set name="scanInterval">0</Set>
                 <Set name="contextXmlDir"><Property name="jetty.home" default="." />/contexts</Set>
               </New>
             </Arg>

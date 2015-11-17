@@ -16,12 +16,13 @@ Options:
     -t, --type	    	set the appcation's type: war or jar.
     -o, --output    	set the jenkins dir.
     -r, --repository	set the docker push repository address.
+    -v, --version		set docker image's version.
     -h, --help      	display this help and exit
 EOF
     exit $1
 }
 
-ARGS=`getopt -n "$PROG" -a -o a:b:t:r:o:h -l app:,branch:,type:,output:,repository:,help -- "$@"`
+ARGS=`getopt -n "$PROG" -a -o a:b:t:r:o:v:h -l app:,branch:,type:,output:,repository:,version:,help -- "$@"`
 [ $? -ne 0 ] && usage 1
 eval set -- "${ARGS}"
 
@@ -45,6 +46,10 @@ while true; do
         ;;
     -r|--repository)
         repository="$2"
+        shift 2
+        ;;
+    -v|--version)
+        version="$2"
         shift 2
         ;;
     -h|--help)
@@ -102,7 +107,7 @@ if [ ! -z "${map[$app]}" ]; then
 fi
 
 
-########## replace env vars
+########### replace env vars
 confFile=${work_dir}/apps-properties/master.env
 function replacevar()
 {
@@ -137,8 +142,12 @@ git pull
 
 redEcho "generate jetty deploy files and dockerfile"
 sh generate-jetty-deploy.sh $app
-sh generate-dockerfile.sh $app $grp $branch $typ
 
+if [ "voice"x = "$app"x ];then
+	sh ${BASE_DIR}/ugly/generate-voice-dockerfile.sh $app $grp $branch $typ
+else
+	sh generate-dockerfile.sh $app $grp $branch $typ
+fi
 
 mkdir -p config
 
@@ -148,8 +157,8 @@ if [ -d ${work_dir}/apps-properties/$app ] && [ -f ${work_dir}/apps-properties/$
 	echo "COPY config/* /kingdee/webapp/root\\\$${app}/$app/WEB-INF/config/" >> Dockerfile
 elif [ -d ${work_dir}/apps-properties/$app ];then
 	cp ${work_dir}/apps-properties/common_config/* config
-	replacevar config
 	cp ${work_dir}/apps-properties/${app}/* config/
+	replacevar config
 	echo "COPY config/* /kingdee/webapp/root\\\$${app}/$app/WEB-INF/config/" >> Dockerfile
 else
 	cp ${work_dir}/apps-properties/common_config/* config/
@@ -168,8 +177,9 @@ docker push ${repository}/kingdee/${branch}/${app}:latest
 
 redEcho "docker retag date version images"
 date=`date +"%Y-%m-%d-%H-%M"`
-docker tag kingdee/${branch}/${app}:latest ${repository}/kingdee/${branch}/${app}:${date}
-docker push ${repository}/kingdee/${branch}/${app}:${date}
+version=${version:-${date}}
+docker tag kingdee/${branch}/${app}:latest ${repository}/kingdee/${branch}/${app}:${version}
+docker push ${repository}/kingdee/${branch}/${app}:${version}
 
 
 sh ../clean.sh
