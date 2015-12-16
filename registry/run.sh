@@ -41,7 +41,17 @@ https://github.com/mkuchin/docker-registry-web.git
 
 docker run -d \
 --restart=always \
+--add-host=registry.docker.kingdee:172.20.10.220 \
 -p 5050:8080 \
+-e REGISTRY_HOST=registry.docker.kingdee \
+-e REGISTRY_PORT=5000 \
+hyper/docker-registry-web
+
+
+docker run -d \
+--restart=always \
+--add-host=registry.docker.kingdee:172.20.10.220 \
+-p 5051:8080 \
 -e REGISTRY_HOST=172.20.10.220 \
 -e REGISTRY_PORT=5000 \
 hyper/docker-registry-web
